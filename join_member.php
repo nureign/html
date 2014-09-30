@@ -125,7 +125,7 @@
 
 <div class="checkbox" align="right">
   <label>
-    <input type="checkbox" value="agree1" id="check1">
+    <input type="checkbox" value="agree1">
     에스트렐라 코리아 이용약관에 동의합니다.
   </label>
 </div>  
@@ -212,12 +212,12 @@
 
 <div class="checkbox" align="right">
   <label>
-    <input type="checkbox" value="agree2" id="check2">
+    <input type="checkbox" value="agree2">
    개인정보 수집에 대하여 내용을 모두 확인하였으며, 동의합니다.
   </label>
 </div>
 <div class="text-center">
-<button type="button" class="btn btn-primary" onclick="check();">동의함</button>  
+<button type="button" class="btn btn-primary">동의함</button>  
 <button type="button" class="btn btn-default">동의안함</button>
 </div>
   </div>
@@ -242,14 +242,5 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
     <script src="../../assets/js/docs.min.js"></script>
-	<script>
-		function check()
-		{
-			if( $('#check1').is(':checked') && $('#check2').is(':checked') )
-				location.href='./join_member2.php';
-			else
-				alert('약관에 동의해주시기 바랍니다.');
-		}
-	</script>
   </body>
 </html>
