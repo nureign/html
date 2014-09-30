@@ -142,7 +142,7 @@
   </div>
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-8" align="center">
-      <button type="submit" class="btn btn-default">가입하기</button>
+      <button type="submit" id="join" class="btn btn-default">가입하기</button>
     </div>
   </div>
 </form>
@@ -182,5 +182,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="../../dist/js/bootstrap.min.js"></script>
     <script src="../../assets/js/docs.min.js"></script>
+	<script src="js/join_member.js"></script>
   </body>
 </html>

@@ -92,7 +92,7 @@
 			<br />
 			<div class="btn-group btn-group-justified">
 				<div class="btn-group">
-					<button type="button" class="btn btn-default" onclick="location.href='http://nureign.ddns.co.kr/project/join_member.php';">회원가입</button>
+					<button type="button" class="btn btn-default" onclick="location.href='./join_member.php';">회원가입</button>
 				</div>
 				<div class="btn-group">
 					<button type="button" class="btn btn-default">로그인</button>
