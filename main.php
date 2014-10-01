@@ -1,24 +1,9 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
- 
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>The Chef Webgame</title>
-    <link rel="stylesheet" href="./css/bootstrap.css" type="text/css" media="screen" title="no title" />
-    <link rel="stylesheet" href="./css/font-awesome.css" type="text/css" media="screen" title="no title" /> 
-     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="js/bootstrap.js"></script> 
-        <!-- Custom styles for this template -->
-    <link href="navbar-static-top.css" rel="stylesheet">
-</head>
-
 <?
+	/*
+		Main.php
+	*/
+	
+	include_once "./common/header.php";
 	include_once "./common/nav.php";
 ?> 
 
@@ -62,19 +47,19 @@
 	</div>
 	<div class="btn-group btn-group-justified">
 		<div class="btn-group">
-			<button type="button" class="btn btn-default">메뉴3</button>
+			<a href="./basemarket.php"><button type="button" class="btn btn-default">베이스시장</button></a>
   		</div>
         <div class="btn-group">
-        	<button type="button" class="btn btn-default">메뉴4</button>
+        	<button type="button" class="btn btn-default">무기시장</button>
         </div>
 	</div>
     
 	<div class="btn-group btn-group-justified">
 		<div class="btn-group">
-			<button type="button" class="btn btn-default">메뉴5</button>
+			<button type="button" class="btn btn-default">업그레이드</button>
   		</div>
         <div class="btn-group">
-        	<button type="button" class="btn btn-default">메뉴6</button>
+        	<button type="button" class="btn btn-default">진급</button>
         </div>
 	</div>
     
@@ -172,6 +157,18 @@
 					</div>
 				</div>
                 <span class="input-group-addon">1980/2000</span>
+		</div>
+        <!-- 멘탈부분 닫기 -->
+
+        <!-- 경험치부분 열기 -->
+        <div class="input-group">
+  			<span class="input-group-addon"><span class="label label-info">경험</span></span>
+  				<div class="progress, form-control">
+					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
+					30%
+					</div>
+				</div>
+                <span class="input-group-addon">300/1000</span>
 		</div>
         <!-- 멘탈부분 닫기 -->
         
