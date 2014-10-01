@@ -5,17 +5,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Estrella Webgame</title>
     <link rel="stylesheet" href="./css/bootstrap.css" type="text/css" media="screen" title="no title" />
-    <link rel="stylesheet" href="./css/font-awesome.css" type="text/css" media="screen" title="no title" /> 
-     <meta charset="utf-8">
+    <!--<link rel="stylesheet" href="./css/font-awesome.css" type="text/css" media="screen" title="no title" /> -->
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="js/bootstrap.js"></script> 
-        <!-- Custom styles for this template -->
-    <link href="navbar-static-top.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="./css/navbar-static-top.css" rel="stylesheet">
 </head>
 
 <?
@@ -125,7 +123,7 @@
 
 <div class="checkbox" align="right">
   <label>
-    <input type="checkbox" value="agree1">
+    <input type="checkbox" id="agree1" value="agree1">
     에스트렐라 코리아 이용약관에 동의합니다.
   </label>
 </div>  
@@ -212,13 +210,13 @@
 
 <div class="checkbox" align="right">
   <label>
-    <input type="checkbox" value="agree2">
+    <input type="checkbox" id="agree2" value="agree2">
    개인정보 수집에 대하여 내용을 모두 확인하였으며, 동의합니다.
   </label>
 </div>
 <div class="text-center">
-<button type="button" class="btn btn-primary">동의함</button>  
-<button type="button" class="btn btn-default">동의안함</button>
+<button type="button" class="btn btn-primary" onclick="AgreeCheck();">다음으로</button>  
+<!--<button type="button" class="btn btn-default">동의안함</button>-->
 </div>
   </div>
   </div>
@@ -240,7 +238,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
+	<script src="js/bootstrap.js"></script> 
+	<script src="js/join_member.js"></script>
   </body>
 </html>
