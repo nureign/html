@@ -13,7 +13,7 @@ $mysqli = mysqli_init();
 
 if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 {
-	$sql = "INSERT INTO project_members ( email_address, password, name ) VALUES ( '$email', MD5('$password'), $name );";
+	$sql = "INSERT INTO project_members ( email_address, password, name ) VALUES ( '$email', MD5('$password'), '$name' );";
 	$mysqli->query($sql);
 }
 
