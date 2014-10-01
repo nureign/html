@@ -284,24 +284,11 @@
     <!-- 가운데 내기지 현황 부분 닫기 -->
 
     <div class="col-md-1"><!--여백--></div>
+</div>
 
-
+	<?
+		include_once "./common/footer.php";
+	?>
     
-    
-
-      <!-- FOOTER -->
-      <footer><br /><br />
-        <p align="center">&copy; 2014 The Chef Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-      </footer>
-
-    </div>
-    <!-- 아래 하단 로우 닫기 -->
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
   </body>
 </html>

@@ -5,20 +5,7 @@
 	
 	include_once "./common/header.php";
 	include_once "./common/nav.php";
-
-		$host = "localhost";
-		$dbid="project";
-		$dbpass="project!";
-		$dbname="project";
-
-		function my_connect($host, $id, $pass, $db)
-		{
-			$connect = mysql_connect($host, $id, $pass);
-			mysql_select_db($db);
-			return $connect;
-		}
-
-		$connect=my_connect($host, $dbid, $dbpass, $dbname);
+	include_once "./common/db_conn.php";
 ?>
 
 <!-- 윗 상단 로우 전체 시작 -->
