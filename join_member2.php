@@ -78,7 +78,12 @@
   <div class="form-group">
     <label for="username" class="col-lg-3 control-label">케릭터 이름</label>
     <div class="col-lg-9">
+	  <div class="input-group">
       <input type="text" class="form-control" id="username" placeholder="케릭터 이름">
+	  <span class="input-group-btn">
+	    <button class="btn btn-default" type="button" id="NameCheck">중복 확인</button>
+	  </span>
+	  </div>
     </div>
   </div>
   

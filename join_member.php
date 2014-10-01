@@ -215,8 +215,8 @@
   </label>
 </div>
 <div class="text-center">
-<button type="button" class="btn btn-primary" onclick="AgreeCheck();">다음으로</button>  
-<!--<button type="button" class="btn btn-default">동의안함</button>-->
+<button type="button" class="btn btn-primary" onclick="AgreeCheck();">동의하기</button>  
+<button type="button" class="btn btn-default" onclick="location.href='./';">동의안함</button>
 </div>
   </div>
   </div>
