@@ -31,6 +31,7 @@ function SendAuthMail()
 	});
 
 	alert('인증번호가 전송되었습니다. 이메일을 확인해주시기 바랍니다.');
+	email.prop('disabled', true);
 
 }
 
@@ -56,7 +57,6 @@ $('#AuthConfirm').click( function() {
 			if( data == hex_md5(code.val()) )
 			{
 				alert('인증이 완료되었습니다.');
-				email.prop('disabled', true);
 				code.prop('disabled', true);
 			}
 			else
