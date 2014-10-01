@@ -13,7 +13,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
     <!-- Custom styles for this template -->
-    <link href="./css/navbar-static-top.css" rel="stylesheet">
+    <!--<link href="./css/navbar-static-top.css" rel="stylesheet">-->
 </head>
 
 <?
@@ -238,7 +238,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="js/bootstrap.js"></script> 
+	<script src="js/bootstrap.js"></script>
 	<script src="js/join_member.js"></script>
   </body>
 </html>

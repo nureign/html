@@ -13,7 +13,7 @@
 	<meta name="author" content="">
 	<link rel="icon" href="../../favicon.ico">
 	<!-- Custom styles for this template -->
-	<link href="./css/navbar-static-top.css" rel="stylesheet">
+	<!--<link href="./css/navbar-static-top.css" rel="stylesheet">-->
 </head>
 
 <?
