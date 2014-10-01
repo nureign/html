@@ -4,16 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Estrella Webgame</title>
-	<link rel="stylesheet" href="./css/bootstrap.css" type="text/css" media="screen" title="no title" />
-	<!--<link rel="stylesheet" href="./css/font-awesome.css" type="text/css" media="screen" title="no title" /> -->
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<link rel="icon" href="../../favicon.ico">
-	<!-- Custom styles for this template -->
-	<link href="./css/navbar-static-top.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/bootstrap.css" type="text/css" media="screen" title="no title" />
+    <link rel="stylesheet" href="./css/font-awesome.css" type="text/css" media="screen" title="no title" /> 
+     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script> 
+        <!-- Custom styles for this template -->
+    <link href="navbar-static-top.css" rel="stylesheet">
 </head>
 
 <?
@@ -46,7 +48,7 @@
       <div class="input-group">
       <input type="email" class="form-control" id="inputEmail1" placeholder="Email" required>
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button" onclick="SendAuthMail()">인증번호 보내기</button>
+        <button class="btn btn-default" type="button">인증번호 보내기</button>
       </span>
       </div>
     </div>
@@ -55,9 +57,9 @@
   <label for="emailcheck" class="col-lg-3 control-label">인증번호</label>
   <div class="col-lg-9">
     <div class="input-group">
-      <input type="text" class="form-control" id="inputCode1">
+      <input type="text" class="form-control">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button" id="AuthConfirm">확인</button>
+        <button class="btn btn-default" type="button">확인</button>
       </span>
     </div><!-- /input-group -->
     인증이 완료되었습니다. / 인증이 불일치 합니다.
@@ -140,7 +142,7 @@
   </div>
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-8" align="center">
-      <button type="button" id="join" class="btn btn-default">가입하기</button>
+      <button type="submit" class="btn btn-default">가입하기</button>
     </div>
   </div>
 </form>
@@ -178,8 +180,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="js/bootstrap.js"></script>
-	<script src="js/md5.js"></script>
-	<script src="js/join_member.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/docs.min.js"></script>
   </body>
 </html>
