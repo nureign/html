@@ -9,6 +9,15 @@
 ?>
 
 <!-- 윗 상단 로우 전체 시작 -->
+<style type="text/css">
+body {
+
+	background-image: url(images/bgleft.gif), url(images/bgright.gif); 
+   background-repeat: repeat-y; 
+   background-position: top left, top right; 
+}
+</style>
+
 <div class="row" align="center">
 	<div class="col-md-2"><!--여백--></div>
 

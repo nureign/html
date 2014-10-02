@@ -2,8 +2,7 @@
 		Doc name : 공통 메뉴 부분
         Date : 2014.09.19
 -->
-
-
+<body>
 <!-- Static navbar -->
     <div class="navbar navbar-default navbar-static-top" role="navigation">
       <div class="container">
