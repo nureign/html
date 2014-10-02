@@ -43,7 +43,7 @@
         <table class="table table-bordered">
             <tr>
               <td>
-              	<img src="./images/char1.gif" alt="..." width="160" height="160" class="img-rounded, media-object" data-src="holder.js/300x300">
+              	<img src="./images/char1.gif" alt="..." width="170" height="170" class="img-rounded" data-src="holder.js/300x300">
               </td>
               <td align="center">
               
@@ -115,7 +115,7 @@
         <table class="table table-bordered">
             <tr>
               <td>
-              	<img src="./images/mob_goblin.gif" alt="..." width="160" height="160" class="img-rounded, media-object" data-src="holder.js/300x300">
+              	<img src="./images/mob_goblin.gif" alt="..." width="170" height="170" class="img-rounded" data-src="holder.js/300x300">
               </td>
               <td>
               
@@ -131,8 +131,9 @@
                 </div>
                 <!-- 체력부분 닫기 -->
                
-            <br />  
+ 
             <ul class="list-group">
+			  <li class="list-group-item">이름 : 고블린전사</li>
               <li class="list-group-item">속성 : 물리타입</li>
               <li class="list-group-item">자원형태 : 골드</li>
             </ul>
