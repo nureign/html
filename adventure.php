@@ -1,6 +1,6 @@
 <?
 	/*
-		PlanetAttack.php
+		adventure.php
 	*/
 	
 	include_once "./common/header.php";
@@ -42,11 +42,66 @@
 	<div class="col-md-4">
         <table class="table table-bordered">
             <tr>
-              <td>이미지</td>
-              <td>스텟</td>
-            </tr>
-            <tr>
-            	<td colspan="2">전체 이미지</td>
+              <td>
+              	<img src="./images/char1.gif" alt="..." width="160" height="160" class="img-rounded, media-object" data-src="holder.js/300x300">
+              </td>
+              <td align="center">
+              
+                <!-- 체력부분 열기 -->
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="label label-danger">체력</span></span>
+                        <div class="progress, form-control">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                            100%
+                            </div>
+                        </div>
+                        <span class="input-group-addon">5000/5000</span>
+                </div>
+                <!-- 체력부분 닫기 -->
+                
+		<!-- 멘탈부분 열기 -->
+        <div class="input-group">
+  			<span class="input-group-addon"><span class="label label-warning">멘탈</span></span>
+  				<div class="progress, form-control">
+					<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 99%;">
+					99%
+					</div>
+				</div>
+                <span class="input-group-addon">1980/2000</span>
+		</div>
+        <!-- 멘탈부분 닫기 -->
+        
+        		<!-- 스킬 사용 부분 시작 -->
+        		<br />
+                <div class="btn-group">
+                  <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                    스킬사용<span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">스킬첫번째</a></li>
+                    <li><a href="#">스킬두번째</a></li>
+                    <li><a href="#">스킬세번재</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">특수스킬</a></li>
+                  </ul>
+                </div>
+                <!-- 스킬 사용 부분 종료 -->
+
+				<!-- 아이템 사용 부분 -->
+                <div class="btn-group">
+                  <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown">
+                    아이템 사용<span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">합금용액</a></li>
+                    <li><a href="#">A부품</a></li>
+                    <li><a href="#">프리즘호출기</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">GMP 에너지펄스</a></li>
+                  </ul>
+                </div>
+				<!-- 아이템 사용 부분 종료 -->
+              </td>
             </tr>
         </table>
     </div>
@@ -59,11 +114,30 @@
 	<div class="col-md-4">
         <table class="table table-bordered">
             <tr>
-              <td>이미지</td>
-              <td>스텟</td>
-            </tr>
-            <tr>
-            	<td colspan="2">전체 이미지</td>
+              <td>
+              	<img src="./images/mob_goblin.gif" alt="..." width="160" height="160" class="img-rounded, media-object" data-src="holder.js/300x300">
+              </td>
+              <td>
+              
+				<!-- 체력부분 열기 -->
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="label label-danger">체력</span></span>
+                        <div class="progress, form-control">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                            100%
+                            </div>
+                        </div>
+                        <span class="input-group-addon">5000/5000</span>
+                </div>
+                <!-- 체력부분 닫기 -->
+               
+            <br />  
+            <ul class="list-group">
+              <li class="list-group-item">속성 : 물리타입</li>
+              <li class="list-group-item">자원형태 : 골드</li>
+            </ul>
+
+              </td>
             </tr>
         </table>
     </div>
