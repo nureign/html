@@ -7,7 +7,8 @@
 	include_once "./common/nav.php";
 	//include_once "./common/db_conn.php";
 ?>
-
+<audio src="./bgm/adventure_bg.mp3" autoplay="autoplay" loop="loop">
+</audio>
 <!-- 윗 상단 로우 전체 시작 -->
 <style type="text/css">
 body {
