@@ -1,6 +1,6 @@
 <?
 	/*
-		Basemarket.php
+		PlanetReady.php
 	*/
 	
 	include_once "./common/header.php";

@@ -51,7 +51,7 @@
 	while ($showme = mysql_fetch_array($choosing))
 	{
 		//$showme[lastName] = addslashes($s_a[lastName]);
-		$popular_sum = mysql_query("select sum(popular) from `base_item`");
+		$popular_sum = mysql_query("select sum(popular) from `base_item` WHERE `type` = `weapons`");
 		$popular_sum = mysql_result($popular_sum, 0, 0);
 		
 		$tests = $showme[popular] * 9;
@@ -89,7 +89,7 @@
 				<td>$showme[price] 수정</td>
 				<td>
                     <form role='form' method='post' action='basemarket_confirm.php'>
-                        <input type='hidden' id='no' value='.$showme[baseitem_no].'>
+                        <input type='hidden' id='no' value='$showme[baseitem_no]'>
                         <button type='submit' class='btn btn-default'>구매</button>
                     </form>
                     </td>
@@ -122,7 +122,7 @@
 	while ($showme = mysql_fetch_array($choosing))
 	{
 		//$showme[lastName] = addslashes($s_a[lastName]);
-		$popular_sum = mysql_query("select sum(popular) from `base_item`");
+		$popular_sum = mysql_query("select sum(popular) from `base_item` WHERE `type` = `weapons`");
 		$popular_sum = mysql_result($popular_sum, 0, 0);
 		
 		$tests = $showme[popular] * 9;
@@ -160,7 +160,7 @@
 				<td>$showme[price] 수정</td>
 				<td>
                     <form role='form' method='post' action='basemarket_confirm.php'>
-                        <input type='hidden' id='no' value='.$showme[baseitem_no].'>
+                        <input type='hidden' id='no' value='$showme[baseitem_no]'>
                         <button type='submit' class='btn btn-default'>구매</button>
                     </form>
                     </td>

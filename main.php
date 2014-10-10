@@ -22,7 +22,7 @@
         
 	<div class="btn-group btn-group-justified">
 		<div class="btn-group">
-			<button type="button" class="btn btn-default">모험하기</button>
+			<a href="./adventure.php"><button type="button" class="btn btn-default">모험하기</button></a>
   		</div>
         <div class="btn-group">
         	<button type="button" class="btn btn-default">행성공략</button>
@@ -30,19 +30,19 @@
 	</div>
 	<div class="btn-group btn-group-justified">
 		<div class="btn-group">
-			<button type="button" class="btn btn-default">편의점</button>
+			<button type="button" class="btn btn-default">스테이터스</button>
   		</div>
         <div class="btn-group">
-        	<button type="button" class="btn btn-default">스테이터스</button>
+        	<button type="button" class="btn btn-default">기지관리</button>
         </div>
 	</div>
     
 	<div class="btn-group btn-group-justified">
 		<div class="btn-group">
-			<button type="button" class="btn btn-default">기지관리</button>
+			<button type="button" class="btn btn-default">편의점</button>
   		</div>
         <div class="btn-group">
-        	<button type="button" class="btn btn-default">테스트</button>
+        	<a href="./charactermarket.php"><button type="button" class="btn btn-default">전통시장</button></a>
         </div>
 	</div>
 	<div class="btn-group btn-group-justified">
@@ -50,22 +50,22 @@
 			<a href="./basemarket.php"><button type="button" class="btn btn-default">베이스시장</button></a>
   		</div>
         <div class="btn-group">
-        	<button type="button" class="btn btn-default">무기시장</button>
+        	<button type="button" class="btn btn-default">블랙마켓</button>
         </div>
 	</div>
     
 	<div class="btn-group btn-group-justified">
 		<div class="btn-group">
-			<button type="button" class="btn btn-default">업그레이드</button>
+			<button type="button" class="btn btn-default">함선시장</button>
   		</div>
         <div class="btn-group">
-        	<button type="button" class="btn btn-default">진급</button>
+        	<button type="button" class="btn btn-default">연구소(업글)</button>
         </div>
 	</div>
     
 	<div class="btn-group btn-group-justified">
 		<div class="btn-group">
-			<button type="button" class="btn btn-default">메뉴7</button>
+			<button type="button" class="btn btn-default">진급</button>
   		</div>
         <div class="btn-group">
         	<button type="button" class="btn btn-default">메뉴8</button>
