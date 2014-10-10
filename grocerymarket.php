@@ -50,7 +50,7 @@
 	
 	while ($showme = mysql_fetch_array($choosing))
 	{
-		$popular_sum = mysql_query("select sum(popular) from `character_item` WHERE `type` = 'recovery'");
+		$popular_sum = mysql_query("select sum(popular) from `grocery_item` WHERE `type` = 'recovery'");
 		$popular_sum = mysql_result($popular_sum, 0, 0);
 		
 		$tests = $showme[popular] * 9;
@@ -120,7 +120,7 @@
 	
 	while ($showme = mysql_fetch_array($choosing))
 	{
-		$popular_sum = mysql_query("select sum(popular) from `character_item` WHERE `type` = 'recovery'");
+		$popular_sum = mysql_query("select sum(popular) from `grocery_item` WHERE `type` = 'recovery'");
 		$popular_sum = mysql_result($popular_sum, 0, 0);
 		
 		$tests = $showme[popular] * 9;
