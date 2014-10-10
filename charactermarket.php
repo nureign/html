@@ -100,6 +100,8 @@
       </table>
         </p>
       </div>
+      
+      
       <div class="tab-pane fade" id="top">
         <p>
 <p>
@@ -175,7 +177,7 @@
       </div>
       
       
-      <div class="tab-pane fade in active" id="pants">
+      <div class="tab-pane fade" id="pants">
         <p>
             <table class="table table-condensed">
 				<tr align="center">
@@ -249,7 +251,7 @@
       </div>
       
       
-      <div class="tab-pane fade in active" id="shoes">
+      <div class="tab-pane fade" id="shoes">
         <p>
             <table class="table table-condensed">
 				<tr align="center">
@@ -324,7 +326,7 @@
       
 
 
-      <div class="tab-pane fade in active" id="accessory">
+      <div class="tab-pane fade" id="accessory">
         <p>
             <table class="table table-condensed">
 				<tr align="center">

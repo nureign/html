@@ -51,7 +51,7 @@
 	while ($showme = mysql_fetch_array($choosing))
 	{
 		//$showme[lastName] = addslashes($s_a[lastName]);
-		$popular_sum = mysql_query("select sum(popular) from `base_item` WHERE `type` = `weapons`");
+		$popular_sum = mysql_query("select sum(popular) from `base_item` WHERE `type` = 'weapons'");
 		$popular_sum = mysql_result($popular_sum, 0, 0);
 		
 		$tests = $showme[popular] * 9;
