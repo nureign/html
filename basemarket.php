@@ -86,7 +86,7 @@
 				<td>$showme[low_power]~$showme[max_power]</td>
 				<td>$showme[durability]</td>
 				<td>$rate</td>
-				<td>$showme[price] 수정</td>
+				<td>$showme[price] 루비</td>
 				<td>
                     <form role='form' method='post' action='basemarket_confirm.php'>
                         <input type='hidden' id='no' value='$showme[baseitem_no]'>
@@ -157,7 +157,7 @@
 				<td>$showme[min_defense]~$showme[max_defense]</td>
 				<td>$showme[durability]</td>
 				<td>$rate</td>
-				<td>$showme[price] 수정</td>
+				<td>$showme[price] 루비</td>
 				<td>
                     <form role='form' method='post' action='basemarket_confirm.php'>
                         <input type='hidden' id='no' value='$showme[baseitem_no]'>

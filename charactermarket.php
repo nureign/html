@@ -44,7 +44,7 @@
                     <td class="info">구매</td>
                 </tr>
                 
-<? //아직 이부분은 손안봄 //
+<?
 	$charinfo = mysql_query("SELECT `level` FROM `project_members` WHERE `id` = '$email'");
 	@$charinfo_level = mysql_result($charinfo, 0, 0); //@는 임시.
 	$charinfo_level = '10'; //아직 지정되지 않았으므로 임시.... 나중에 지워야함!!!!
@@ -87,9 +87,9 @@
 				<td>$showme[attribute]</td>
 				<td>$showme[low_power]~$showme[max_power]</td>
 				<td>$rate</td>
-				<td>$showme[price] 수정</td>
+				<td>$showme[price] 루비</td>
 				<td>
-                    <form role='form' method='post' action='basemarket_confirm.php'>
+                    <form role='form' method='post' action='charactermarket_confirm.php'>
                         <input type='hidden' id='no' value='$showme[characteritem_no]'>
                         <button type='submit' class='btn btn-default'>구매</button>
                     </form>
@@ -160,12 +160,12 @@
 				<td>$showme[attribute]</td>
 				<td>$showme[defense]</td>
 				<td>$showme[stat1] / $showme[stat2] / $showme[stat3] / $showme[stat4] / $showme[stat5] / $showme[stat6]</td>
-				<td>$special</td>
+				<td>$showme[special]</td>
 				<td>$rate</td>
-				<td>$showme[price] 수정</td>
+				<td>$showme[price] 루비</td>
 				<td>
-                    <form role='form' method='post' action='basemarket_confirm.php'>
-                        <input type='hidden' id='no' value='$showme[baseitem_no]'>
+                    <form role='form' method='post' action='charactermarket_confirm.php'>
+                        <input type='hidden' id='no' value='$showme[characteritem_no]'>
                         <button type='submit' class='btn btn-default'>구매</button>
                     </form>
                     </td>
@@ -234,12 +234,12 @@
 				<td>$showme[attribute]</td>
 				<td>$showme[defense]</td>
 				<td>$showme[stat1] / $showme[stat2] / $showme[stat3] / $showme[stat4] / $showme[stat5] / $showme[stat6]</td>
-				<td>$special</td>
+				<td>$showme[special]</td>
 				<td>$rate</td>
-				<td>$showme[price] 수정</td>
+				<td>$showme[price] 루비</td>
 				<td>
-                    <form role='form' method='post' action='basemarket_confirm.php'>
-                        <input type='hidden' id='no' value='$showme[baseitem_no]'>
+                    <form role='form' method='post' action='charactermarket_confirm.php'>
+                        <input type='hidden' id='no' value='$showme[characteritem_no]'>
                         <button type='submit' class='btn btn-default'>구매</button>
                     </form>
                     </td>
@@ -308,12 +308,12 @@
 				<td>$showme[attribute]</td>
 				<td>$showme[defense]</td>
 				<td>$showme[stat1] / $showme[stat2] / $showme[stat3] / $showme[stat4] / $showme[stat5] / $showme[stat6]</td>
-				<td>$special</td>
+				<td>$showme[special]</td>
 				<td>$rate</td>
-				<td>$showme[price] 수정</td>
+				<td>$showme[price] 루비</td>
 				<td>
-                    <form role='form' method='post' action='basemarket_confirm.php'>
-                        <input type='hidden' id='no' value='$showme[baseitem_no]'>
+                    <form role='form' method='post' action='charactermarket_confirm.php'>
+                        <input type='hidden' id='no' value='$showme[characteritem_no]'>
                         <button type='submit' class='btn btn-default'>구매</button>
                     </form>
                     </td>
@@ -340,7 +340,7 @@
                     <td class="info">구매</td>
                 </tr>
                 
-<? //아직 이부분은 손안봄 //
+<?
 	$charinfo = mysql_query("SELECT `level` FROM `project_members` WHERE `id` = '$email'");
 	@$charinfo_level = mysql_result($charinfo, 0, 0); //@는 임시.
 	$charinfo_level = '10'; //아직 지정되지 않았으므로 임시.... 나중에 지워야함!!!!
@@ -383,12 +383,12 @@
 				<td>$showme[attribute]</td>
 				<td>$showme[defense]</td>
 				<td>$showme[stat1] / $showme[stat2] / $showme[stat3] / $showme[stat4] / $showme[stat5] / $showme[stat6]</td>
-				<td>$special</td>
+				<td>$showme[special]</td>
 				<td>$rate</td>
-				<td>$showme[price] 수정</td>
+				<td>$showme[price] 루비</td>
 				<td>
-                    <form role='form' method='post' action='basemarket_confirm.php'>
-                        <input type='hidden' id='no' value='$showme[baseitem_no]'>
+                    <form role='form' method='post' action='charactermarket_confirm.php'>
+                        <input type='hidden' id='no' value='$showme[characteritem_no]'>
                         <button type='submit' class='btn btn-default'>구매</button>
                     </form>
                     </td>
