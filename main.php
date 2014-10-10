@@ -39,7 +39,7 @@
     
 	<div class="btn-group btn-group-justified">
 		<div class="btn-group">
-			<button type="button" class="btn btn-default">편의점</button>
+			<a href="./grocerymarket.php"><button type="button" class="btn btn-default">편의점</button></a>
   		</div>
         <div class="btn-group">
         	<a href="./charactermarket.php"><button type="button" class="btn btn-default">전통시장</button></a>
