@@ -207,7 +207,7 @@
                     <td class="danger" align="center">행운</td>
                     <td class="danger" align="center">매력</td>
 					<td class="danger" align="center">명예</td>
-					<td class="danger" align="center">골드</td>
+					<td class="danger" align="center">루비</td>
                     </tr>
 					<tr class="warning">
                     <td class="warning" align="center">80</td>
