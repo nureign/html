@@ -158,7 +158,7 @@
 		echo("<tr align='center'>
 				<td>$showme[name]</td>
 				<td>$showme[attribute]</td>
-				<td>$showme[min_defense]</td>
+				<td>$showme[defense]</td>
 				<td>$showme[stat1] / $showme[stat2] / $showme[stat3] / $showme[stat4] / $showme[stat5] / $showme[stat6]</td>
 				<td>$special</td>
 				<td>$rate</td>
@@ -232,7 +232,7 @@
 		echo("<tr align='center'>
 				<td>$showme[name]</td>
 				<td>$showme[attribute]</td>
-				<td>$showme[min_defense]</td>
+				<td>$showme[defense]</td>
 				<td>$showme[stat1] / $showme[stat2] / $showme[stat3] / $showme[stat4] / $showme[stat5] / $showme[stat6]</td>
 				<td>$special</td>
 				<td>$rate</td>
@@ -306,7 +306,7 @@
 		echo("<tr align='center'>
 				<td>$showme[name]</td>
 				<td>$showme[attribute]</td>
-				<td>$showme[min_defense]</td>
+				<td>$showme[defense]</td>
 				<td>$showme[stat1] / $showme[stat2] / $showme[stat3] / $showme[stat4] / $showme[stat5] / $showme[stat6]</td>
 				<td>$special</td>
 				<td>$rate</td>
@@ -381,7 +381,7 @@
 		echo("<tr align='center'>
 				<td>$showme[name]</td>
 				<td>$showme[attribute]</td>
-				<td>$showme[min_defense]</td>
+				<td>$showme[defense]</td>
 				<td>$showme[stat1] / $showme[stat2] / $showme[stat3] / $showme[stat4] / $showme[stat5] / $showme[stat6]</td>
 				<td>$special</td>
 				<td>$rate</td>
