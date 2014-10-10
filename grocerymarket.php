@@ -100,7 +100,7 @@
       </div>
       
       
-      <div class="tab-pane fade in active" id="buff">
+      <div class="tab-pane fade" id="buff">
         <p>
             <table class="table table-condensed">
 				<tr align="center">
@@ -169,7 +169,7 @@
         </p>
       </div>
       
-      <div class="tab-pane fade in active" id="grocery">
+      <div class="tab-pane fade" id="grocery">
         <p>
             <table class="table table-condensed">
 				<tr align="center">
@@ -189,7 +189,7 @@
 	
 	while ($showme = mysql_fetch_array($choosing))
 	{
-		$popular_sum = mysql_query("select sum(popular) from `character_item` WHERE `type` = 'grocery'");
+		$popular_sum = mysql_query("select sum(popular) from `grocery_item` WHERE `type` = 'grocery'");
 		$popular_sum = mysql_result($popular_sum, 0, 0);
 		
 		$tests = $showme[popular] * 9;
