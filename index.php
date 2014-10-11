@@ -5,17 +5,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Estrella Webgame</title>
     <link rel="stylesheet" href="./css/bootstrap.css" type="text/css" media="screen" title="no title" />
-    <link rel="stylesheet" href="./css/font-awesome.css" type="text/css" media="screen" title="no title" /> 
+    <!--<link rel="stylesheet" href="./css/font-awesome.css" type="text/css" media="screen" title="no title" /> -->
      <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="js/bootstrap.js"></script> 
         <!-- Custom styles for this template -->
-    <link href="navbar-static-top.css" rel="stylesheet">
+    <!--<link href="navbar-static-top.css" rel="stylesheet">-->
 </head>
 
 <?
@@ -83,11 +81,11 @@
 		<div class="form-group">
 			<div class="input-group input-group-sm">
 				<span class="input-group-addon">메일계정</span>
-				<input type="text" class="form-control" placeholder="Enter E-mail">
+				<input type="text" class="form-control" placeholder="Enter E-mail" id="email">
 			</div>
 			<div class="input-group input-group-sm">
 				<span class="input-group-addon">비밀번호</span>
-				<input type="password" class="form-control" placeholder="Password">
+				<input type="password" class="form-control" placeholder="Password" id="password">
 			</div>
 			<br />
 			<div class="btn-group btn-group-justified">
@@ -95,7 +93,7 @@
 					<button type="button" class="btn btn-default" onclick="location.href='./join_member.php';">회원가입</button>
 				</div>
 				<div class="btn-group">
-					<button type="button" class="btn btn-default">로그인</button>
+					<button type="button" class="btn btn-default" id="login">로그인</button>
 				</div>
 			</div>
 		</div>
@@ -116,7 +114,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
+    <script src="js/login.js"></script>
   </body>
 </html>
