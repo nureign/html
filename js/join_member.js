@@ -1,6 +1,38 @@
 
+//alert($('#tendency').val());
+
+// 건너뛰기 방지
+//alert(location.pathname);
+switch( location.pathname )
+{
+	case '/project/join_member.php':
+	{
+		sessionStorage.removeItem('JoinProgress');
+		break;
+	}
+	case '/project/join_member2.php':
+	{
+		if( sessionStorage.getItem('JoinProgress') != 1 )
+		{
+			sessionStorage.removeItem('JoinProgress');
+			location.href = './join_member.php';
+		}
+		break;
+	}
+	case '/project/join_member3.php':
+	{
+		if( sessionStorage.getItem('JoinProgress') != 2 )
+		{
+			sessionStorage.removeItem('JoinProgress');
+			location.href = './join_member.php';
+		}
+		break;
+	}
+}
+
 var g_bAuthed = false;
 var g_bAuthSent = false;
+var g_bNameChecked = false;
 
 function AgreeCheck()
 {
@@ -9,7 +41,8 @@ function AgreeCheck()
 		alert('모든 약관에 동의해주시기 바랍니다.');
 		return;
 	}
-
+	
+	sessionStorage.setItem('JoinProgress', '1');
 	location.href = './join_member2.php';
 	return;
 }
@@ -119,7 +152,7 @@ $('#AuthConfirm').click( function() {
 });
 
 $('#NameCheck').click( function() {
-
+	
 	var name = $('#username');
 	
 	if( name.val().length < 2 || name.val().length > 12 )
@@ -136,16 +169,22 @@ $('#NameCheck').click( function() {
 			name: name.val()
 		},
 		success: function(data) {
+		
 			if( data == name.val() )
 			{
 				name.empty();
 				alert('이미 가입되어 있는 케릭터 이름입니다.');
 			}
 			else
+			{
+				g_bNameChecked = true;
+				name.prop('disabled', true);
 				alert('사용 가능합니다.');
+			}
+			
+			//alert(JSON.parse(data)['name']);
 		}
 	});
-
 });
 
 $('#join').click( function() {
@@ -154,6 +193,7 @@ $('#join').click( function() {
 	var password1 = $('#inputPassword1');
 	var password2 = $('#inputPassword2');
 	var name = $('#username');
+	var tendency = $('#tendency');
 	
 	if( !g_bAuthed )
 	{
@@ -185,6 +225,18 @@ $('#join').click( function() {
 		return;
 	}
 
+	if( !g_bNameChecked )
+	{
+		alert('케릭터 이름 중복 확인을 하지 않으셨습니다.');
+		return;
+	}
+
+	if( !$('#agree3').is(':checked') )
+	{
+		alert('미정인 것에 동의하지 않으셨습니다.');
+		return;
+	}
+
 	$.ajax({
 		cache: false,
 		type: 'POST',
@@ -192,10 +244,21 @@ $('#join').click( function() {
 		data: {
 			email: email.val(),
 			password: password1.val(),
-			name: name.val()
+			name: name.val(),
+			tendency: tendency.val(),
+			stat1: $('#stat1').text(),
+			stat2: $('#stat2').text(),
+			stat3: $('#stat3').text(),
+			stat4: $('#stat4').text(),
+			stat5: $('#stat5').text(),
+			stat6: $('#stat6').text()
 		},
 		success: function(data) {
-			alert('가입이 완료되었습니다!');
+			sessionStorage.setItem('id', JSON.parse(data)['id']);
+			sessionStorage.setItem('email', email.val());
+			sessionStorage.setItem('name', name.val());
+			sessionStorage.setItem('joindate', JSON.parse(data)['joindate']);
+			sessionStorage.setItem('JoinProgress', '2');
 			location.href = './join_member3.php';
 		}
 	});

@@ -97,34 +97,31 @@
         <td class="active">근력</td>
         <td class="active">민첩</td>
         <td class="active">지력</td>
-    	<td class="active">???</td>    
     </tr>
     <tr>
-        <td>10</td>
-        <td>12</td>
-        <td>10</td>
-    	<td>8</td>    
+        <td id="stat1"></td>
+        <td id="stat2"></td>
+        <td id="stat3"></td>
     </tr>
     <tr>
         <td class="active">예지력</td>
-        <td class="active">???</td>
         <td class="active">행운</td>
-    	<td class="active">매력</td>    
+        <td class="active">매력</td>
     </tr>
     <tr>
-        <td>10</td>
-        <td>10</td>
-        <td>8</td>
-    	<td>5</td>    
+        <td id="stat4"></td>
+        <td id="stat5"></td>
+        <td id="stat6"></td>   
     </tr>
 	</table>
+	<button class="btn btn-default" type="button" id="statusroll">다시 배정하기</button>
     </div>
   </div>
   
   <div class="form-group">
     <label for="username" class="col-lg-3 control-label">성향</label>
     <div class="col-lg-9">
-      <select class="form-control">
+      <select class="form-control" id="tendency">
           <option>무기성애자</option>
           <option>책략가</option>
           <option>앞을 내다 보는 자</option>
@@ -138,7 +135,7 @@
     <div class="col-lg-offset-2 col-lg-10">
       <div class="checkbox">
         <label>
-          <input type="checkbox"> 아직 미정인 것을 동의합니다.
+          <input type="checkbox" id="agree3"> 아직 미정인 것을 동의합니다.
         </label>
       </div>
     </div>
@@ -186,5 +183,6 @@
 	<script src="js/bootstrap.js"></script>
 	<script src="js/md5.js"></script>
 	<script src="js/join_member.js"></script>
+	<script src="js/statusroll.js"></script>
   </body>
 </html>

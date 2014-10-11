@@ -5,8 +5,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Estrella Webgame</title>
     <link rel="stylesheet" href="./css/bootstrap.css" type="text/css" media="screen" title="no title" />
-    <link rel="stylesheet" href="./css/font-awesome.css" type="text/css" media="screen" title="no title" /> 
-     <meta charset="utf-8">
+    <!--<link rel="stylesheet" href="./css/font-awesome.css" type="text/css" media="screen" title="no title" /> -->
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -14,8 +14,8 @@
     <link rel="icon" href="../../favicon.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="js/bootstrap.js"></script> 
-        <!-- Custom styles for this template -->
-    <link href="navbar-static-top.css" rel="stylesheet">    
+    <!-- Custom styles for this template -->
+    <!--<link href="navbar-static-top.css" rel="stylesheet">-->
 </head>
 
 <?
@@ -46,19 +46,19 @@
 	<table class="table table-condensed" style="text-align:center">
         <tr>
             <td class="active">회원번호</td>
-            <td>#103</td>   
+            <td id="account_no"></td>   
         </tr>
         <tr>
             <td class="active">이메일 계정</td>
-            <td>helloworld@cdma.com</td>   
+            <td id="account_email"></td>   
         </tr>
         <tr>
             <td class="active">케릭터 이름</td>
-            <td>엘프짱짱</td>    
+            <td id="account_name"></td>    
         </tr>
 		<tr>
             <td class="active">가입일자</td>
-            <td>2014-10-02 08:01</td>    
+            <td id="account_joindate"></td>    
         </tr>
     </table>
   </div>
@@ -104,7 +104,9 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/md5.js"></script>
+	<script src="js/join_member.js"></script>
+	<script src="js/join_member_end.js"></script>
   </body>
 </html>
