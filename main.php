@@ -68,7 +68,7 @@
 			<button type="button" class="btn btn-default">진급</button>
   		</div>
         <div class="btn-group">
-        	<button type="button" class="btn btn-default">메뉴8</button>
+        	<button type="button" class="btn btn-default">퀘스트</button>
         </div>
 	</div>    
 

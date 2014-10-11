@@ -83,7 +83,6 @@
 				<td>$showme[name]</td>
 				<td>$showme[explain]</td>
 				<td>$showme[level]</td>
-				<td>$showme[popular]</td>
 				<td>$rate</td>
 				<td>$showme[price] 루비</td>
 				<td>
@@ -153,7 +152,6 @@
 				<td>$showme[name]</td>
 				<td>$showme[explain]</td>
 				<td>$showme[level]</td>
-				<td>$showme[popular]</td>
 				<td>$rate</td>
 				<td>$showme[price] 루비</td>
 				<td>
@@ -222,7 +220,6 @@
 				<td>$showme[name]</td>
 				<td>$showme[explain]</td>
 				<td>$showme[level]</td>
-				<td>$showme[popular]</td>
 				<td>$rate</td>
 				<td>$showme[price] 루비</td>
 				<td>
