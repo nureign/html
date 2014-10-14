@@ -63,10 +63,13 @@ function Login()
 			password: password.val()
 		},
 		success: function(data) {
-		
-			if( data == email.val() )
+			var parsed = JSON.parse(data);
+			
+			if( parsed['email'] == email.val() )
 			{
-				alert('로그인 성공');
+				sessionStorage.removeItem('id');
+				sessionStorage.setItem('id', parsed['id']);
+				location.href = './main.php';
 			}
 			else
 			{

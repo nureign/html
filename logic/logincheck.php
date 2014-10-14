@@ -18,10 +18,11 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 
 	while( $row = $result->fetch_array() )
 	{
+		$id = $row['id'];
 		$email_address = $row['email_address'];
 	}
 
-	echo $email_address;
+	echo json_encode(array('id'=>$id, 'email'=>$email_address));
 }
 
 $mysqli->close();

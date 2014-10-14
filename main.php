@@ -129,22 +129,22 @@
     <div class="col-md-3">
         <ol class="breadcrumb">
             <li class="active">캐릭터 이름</a></li>
-            <li>모에모에 (#1653)</a></li>
+            <li id="name"></a></li>
         </ol>
 		<ol class="breadcrumb">
             <li class="active">등급(레벨)</a></li>
-            <li>견습(Lv.10)</a></li>
+            <li id="level"></a></li>
         </ol>
         
         <!-- 체력부분 열기 -->
 		<div class="input-group">
   			<span class="input-group-addon"><span class="label label-danger">체력</span></span>
   				<div class="progress, form-control">
-					<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-					100%
+					<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;" id="hp_per">
+					0%
 					</div>
 				</div>
-                <span class="input-group-addon">5000/5000</span>
+                <span class="input-group-addon" id="hp_text">0/0</span>
 		</div>
         <!-- 체력부분 닫기 -->
         
@@ -152,11 +152,11 @@
         <div class="input-group">
   			<span class="input-group-addon"><span class="label label-warning">멘탈</span></span>
   				<div class="progress, form-control">
-					<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 99%;">
-					99%
+					<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;" id="mental_per">
+					0%
 					</div>
 				</div>
-                <span class="input-group-addon">1980/2000</span>
+                <span class="input-group-addon" id="mental_text">0/0</span>
 		</div>
         <!-- 멘탈부분 닫기 -->
 
@@ -164,11 +164,11 @@
         <div class="input-group">
   			<span class="input-group-addon"><span class="label label-info">경험</span></span>
   				<div class="progress, form-control">
-					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
-					30%
+					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;" id="exp_per">
+					0%
 					</div>
 				</div>
-                <span class="input-group-addon">300/1000</span>
+                <span class="input-group-addon" id="exp_text">0/0</span>
 		</div>
         <!-- 멘탈부분 닫기 -->
         
@@ -179,7 +179,7 @@
 		<table class="table table-condensed" align="center">
 			<tr class="active">
 				<td class="active" align="center">성향</td>
-				<td colspan="4" align="center" class="success">책략가</td>
+				<td colspan="4" align="center" class="success" id='tendency'></td>
 			</tr>
 		</table>
         </div>
@@ -198,10 +198,10 @@
                     </tr>
                     </tr>
                     <tr class="warning">
-                    <td class="warning" align="center">30</td>
-                    <td class="warning" align="center">45</td>
-                    <td class="warning" align="center">57</td>
-					<td class="warning" align="center">12</td>
+                    <td class="warning" align="center" id="stat1"></td>
+                    <td class="warning" align="center" id="stat2"></td>
+                    <td class="warning" align="center" id="stat3"></td>
+					<td class="warning" align="center" id="stat4"></td>
                     </tr>
                     <tr class="danger">
                     <td class="danger" align="center">행운</td>
@@ -210,10 +210,10 @@
 					<td class="danger" align="center">루비</td>
                     </tr>
 					<tr class="warning">
-                    <td class="warning" align="center">80</td>
-                    <td class="warning" align="center">60</td>
-                    <td class="warning" align="center">10,000</td>
-					<td class="warning" align="center">754,210</td>
+                    <td class="warning" align="center" id="stat5"></td>
+                    <td class="warning" align="center" id="stat6"></td>
+                    <td class="warning" align="center" id="honor"></td>
+					<td class="warning" align="center" id="ruby"></td>
                     </tr>
                 </table>
            </div>
