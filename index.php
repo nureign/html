@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
- 
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Estrella Webgame</title>
-    <link rel="stylesheet" href="./css/bootstrap.css" type="text/css" media="screen" title="no title" />
-    <!--<link rel="stylesheet" href="./css/font-awesome.css" type="text/css" media="screen" title="no title" /> -->
-     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-        <!-- Custom styles for this template -->
-    <!--<link href="navbar-static-top.css" rel="stylesheet">-->
-</head>
+<?
+	include_once "./common/header.php";
+?>
 
 <?
 	include_once "./common/nav.php";
@@ -31,17 +17,17 @@
       </ol>
       <div class="carousel-inner">
         <div class="item active" align="center">
-          <img src="images/test.gif" alt="First slide">
+          <img src="images/index_bg1.gif" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
               <h1>이 세상의 원천에는 자원이 있다!</h1>
               <p>궁극적으로 더 나은 생활을 위해서는 자원개발이 필수일지도 모릅니다.<br />자원을 찾고 종족을 위해 플레이어가 직접 되어보세요.</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">지금 바로 가입하기</a></p>
+              <p><a class="btn btn-lg btn-primary" href="./join_member.php" role="button">지금 바로 가입하기</a></p>
             </div>
           </div>
         </div>
         <div class="item" align="center">
-          <img src="images/test.gif" alt="Second slide">
+          <img src="images/index_bg2.gif" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
               <h1>새로운 신규 이벤트!</h1>
@@ -51,7 +37,7 @@
           </div>
         </div>
         <div class="item" align="center">
-          <img src="images/test.gif" alt="Third slide">
+          <img src="images/index_bg3.gif" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
               <h1>계정을 안전하게 지키는 방법!</h1>
@@ -103,10 +89,9 @@
   <div class="col-md-2"></div>
 </div>    
     
-      <!-- FOOTER -->
-      <footer>
-        <p align="center">&copy; 2014 The Estrella Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-      </footer>
+<?
+	include_once "./common/footer.php";
+?>
 
     </div><!-- /.container -->
 
