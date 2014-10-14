@@ -33,7 +33,7 @@
 			<button type="button" class="btn btn-default">스테이터스</button>
   		</div>
         <div class="btn-group">
-        	<button type="button" class="btn btn-default">기지관리</button>
+        	<a href="./mybase.php"><button type="button" class="btn btn-default">기지관리</button></a>
         </div>
 	</div>
     
