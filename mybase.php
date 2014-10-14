@@ -401,13 +401,90 @@
 
     <!-- 기지 연구소 시작 -->
 	<div class="tab-pane fade" id="research">
-		기지 연구소는 차후 업데이트 될 예정입니다.
+		<h3>기지 연구소</h3>
+        <div class="well well-sm">유닛 연구</div>
+        <table class="table">
+         <tr class="info" align="center">
+            <td>유닛형태</td>
+			<td>유닛타입</td>
+         	<td>유닛이름</td>
+            <td>레벨</td>
+            <td>우선타겟</td>
+            <td>공격력</td>
+            <td>업그레이드 금액</td>
+			<td>업그레이드</td>
+         </tr>
+         <tr align="center">
+         	<td><img src="./images/mine_p0.gif" alt="..." width="50" height="50"></td>
+         	<td>공중타입</td>
+            <td>종이비행기</td>
+            <td>Lv 2</td>
+            <td>적 공중</td>
+            <td>30(+5)</td>
+            <td>800 티타늄</td>
+            <td>
+            <Form class="form-inline" role="form">
+				<input type="hidden" id="unit_no" value="" />
+				<button type="submit" class="btn btn-default">업그레이드</button>
+            </Form>
+            </td>
+         </tr>
+         <tr align="center"><!-- 하나도 보여보려고 테스트용 -->
+         	<td><img src="./images/mine_p0.gif" alt="..." width="50" height="50"></td>
+         	<td>공중타입</td>
+            <td>종이비행기</td>
+            <td>Lv 2</td>
+            <td>적 공중</td>
+            <td>30(+5)</td>
+            <td>800 티타늄</td>
+            <td>
+            <Form class="form-inline" role="form">
+				<input type="hidden" id="unit_no" value="" />
+				<button type="submit" class="btn btn-default">업그레이드</button>
+            </Form>
+            </td>
+         </tr><!-- 테스트용 종료 -->
+        </table>
 	</div>
     <!-- 기지 연구소 닫기 -->
     
     <!-- 함선 항공관리소 시작 -->
 	<div class="tab-pane fade" id="battleship">
-		함선 항공관리소는 차후 업데이트 예정입니다.
+		<h3>함선 항공관리소</h3>
+        <div class="well well-sm">모에모에님의 함선 제원</div>
+      <table class="table">
+          <tr>
+            <td rowspan="5"><img src="./images/spaceship_0.gif" alt="..." width="400" height="230" data-src="holder.js/90x90"></td>
+            <td class="info">이름</td>
+            <td>RX-2</td>
+            <td class="info">등급</td>
+            <td>기본함선</td>
+          </tr>
+          <tr>
+            <td class="info">워프기술력</td>
+            <td>1등급</td>
+            <td class="info">최대속도</td>
+            <td>50</td>
+          </tr>
+          <tr>
+            <td class="info">회피율</td>
+            <td>10%</td>
+            <td class="info">항법장치</td>
+            <td>구식NV-6</td>
+          </tr>
+          <tr>
+            <td class="info">공격무기</td>
+            <td>120mm 발칸포</td>
+            <td class="info">방어장갑</td>
+            <td>기본장갑</td>
+          </tr>
+          <tr>
+            <td class="info">특수능력</td>
+            <td>없음</td>
+            <td class="info">-</td>
+            <td>-</td>
+          </tr>
+        </table>
 	</div>
     <!-- 함선 항공관리소 닫기 -->
 
