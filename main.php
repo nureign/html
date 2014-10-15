@@ -6,6 +6,14 @@
 	include_once "./common/header.php";
 	include_once "./common/nav.php";
 ?> 
+<style type="text/css">
+body {
+
+	background-image: url(images/main_bg_left.gif), url(images/main_bg_right.gif); 
+	background-repeat: repeat-y; 
+	background-position: top left, top right; 
+}
+</style>
 
     <!-- Carousel
     ================================================== -->
@@ -21,9 +29,9 @@
             <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">공격대기<span class="caret"></span></button>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">모험하기</a></li>
+                    <li><a href="./adventure.php">모험하기</a></li>
                     <li class="divider"></li>
-                    <li style="text-align:center"><a href="#">행성공략</a></li>
+                    <li style="text-align:center"><a href="">행성공략</a></li>
                 </ul>
             </div>
             <!-- 행성공략 버튼 닫기 -->
@@ -31,9 +39,9 @@
             <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">마켓방문<span class="caret"></span></button>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">편의점</a></li>
-                    <li><a href="#">전통시장</a></li>
-                    <li><a href="#">베이스시장</a></li>
+                    <li><a href="./grocerymarket.php">편의점</a></li>
+                    <li><a href="./charactermarket.php">전통시장</a></li>
+                    <li><a href="./basemarket.php">베이스시장</a></li>
                     <li><a href="#">함선시장</a></li>
                     <li class="divider"></li>
                     <li style="text-align:center"><a href="#">블랙마켓</a></li>
@@ -44,7 +52,7 @@
             <!-- 마켓 버튼 닫기 -->
             <!-- 일반 버튼 -->
             <button type="button" class="btn btn-default">스테이터스</button>
-            <button type="button" class="btn btn-default">기지관리</button>
+            <a href="./mybase.php"><button type="button" class="btn btn-default">기지관리</button></a>
             <button type="button" class="btn btn-default">연구소</button>
             <button type="button" class="btn btn-default">퀘스트</button>
             <button type="button" class="btn btn-default">진급</button>
@@ -62,6 +70,7 @@
         <!-- 메뉴부분 닫기 -->
 
 		<!-- 케릭터 현황 시작 -->
+        <h4 align="left" style="margin-left:120px"><strong>케릭터 현황</h4></strong>
         <table class="table table-condensed width" align="center">
           <tr>
             <td width="300px"><img data-src="holder.js/300x300" src="./images/char1.gif" alt="..."></td>
@@ -185,6 +194,7 @@
 		<!-- 케릭터 현황 닫기 -->
         
 		<!-- 기지 현황 시작 -->
+        <h4 align="left" style="margin-left:120px"><strong>기지 현황</h4></strong>
         <table class="table table-condensed width" align="center">
           <tr>
             <td width="400px"><img src="./images/base10.jpg" alt="..." width="400px" height="260px"></td>
