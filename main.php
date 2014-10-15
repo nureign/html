@@ -101,22 +101,22 @@
                     <table class="table table-condensed" align="center">
                         <tr align="center">
                         <td class="active">왼손 무기</td>
-                        <td>목검</td>
+                        <td id="lefthand"></td>
                         <td class="active">오른손 무기</td>
-                        <td>죽도</td>
+                        <td id="righthand"></td>
                         </tr>
                         </tr>
                         <tr align="center">
                         <td class="active">상의</td>
-                        <td>와이셔츠</td>
+                        <td id="top"></td>
                         <td class="active">하의</td>
-                        <td>팬티</td>
+                        <td id="pants"></td>
                         </tr>
                         <tr align="center">
                         <td class="active">신발</td>
-                        <td>금색단화 +1</td>
+                        <td id="shoes"></td>
                         <td class="active">악세사리</td>
-                        <td>블링블링 매니큐어</td>
+                        <td id="accessory"></td>
                         </tr>
                     </table>
 			</div>
@@ -289,6 +289,6 @@
 	<?
 		include_once "./common/footer.php";
 	?>
-    
+		<script src="js/main.js"></script>
   </body>
 </html>

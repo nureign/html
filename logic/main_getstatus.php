@@ -33,9 +33,15 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 		$stat6 = $row['stat6'];
 		$honor = $row['honor'];
 		$ruby = $row['ruby'];
+		$lefthand = $row['lefthand'];
+		$righthand = $row['righthand'];
+		$top = $row['top'];
+		$pants = $row['pants'];
+		$shoes = $row['shoes'];
+		$accessory = $row['accessory'];
 	}
 
-	echo json_encode(	array('name'=>$name, 'level'=>$level, 'tendency'=>$tendency, 'hp'=>$hp, 'mental'=>$mental, 'exp'=>$exp, 'stat1'=>$stat1, 'stat2'=>$stat2, 'stat3'=>$stat3, 'stat4'=>$stat4, 'stat5'=>$stat5, 'stat6'=>$stat6, 'honor'=>$honor, 'ruby'=>$ruby)	);
+	echo json_encode(	array('name'=>$name, 'level'=>$level, 'tendency'=>$tendency, 'hp'=>$hp, 'mental'=>$mental, 'exp'=>$exp, 'stat1'=>$stat1, 'stat2'=>$stat2, 'stat3'=>$stat3, 'stat4'=>$stat4, 'stat5'=>$stat5, 'stat6'=>$stat6, 'honor'=>$honor, 'ruby'=>$ruby, 'lefthand'=>$lefthand, 'righthand'=>$righthand, 'top'=>$top, 'pants'=>$pants, 'shoes'=>$shoes, 'accessory'=>$accessory)	);
 }
 
 $mysqli->close();
