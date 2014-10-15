@@ -12,10 +12,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="js/bootstrap.js"></script> 
-        <!-- Custom styles for this template -->
-    <link href="./css/navbar-static-top.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="./css/non-responsive.css" rel="stylesheet">
 </head>
