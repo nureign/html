@@ -29,9 +29,9 @@ body {
             <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">공격대기<span class="caret"></span></button>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="./adventure.php">모험하기</a></li>
+                    <li class="center"><a href="./adventure.php">모험하기</a></li>
                     <li class="divider"></li>
-                    <li style="text-align:center"><a href="">행성공략</a></li>
+                    <li class="center"><a href="">행성공략</a></li>
                 </ul>
             </div>
             <!-- 행성공략 버튼 닫기 -->
@@ -39,14 +39,14 @@ body {
             <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">마켓방문<span class="caret"></span></button>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="./grocerymarket.php">편의점</a></li>
-                    <li><a href="./charactermarket.php">전통시장</a></li>
-                    <li><a href="./basemarket.php">베이스시장</a></li>
-                    <li><a href="#">함선시장</a></li>
+                    <li class="center"><a href="./grocerymarket.php">편의점</a></li>
+                    <li class="center"><a href="./charactermarket.php">전통시장</a></li>
+                    <li class="center"><a href="./basemarket.php">베이스시장</a></li>
+                    <li class="center"><a href="#">함선시장</a></li>
                     <li class="divider"></li>
-                    <li style="text-align:center"><a href="#">블랙마켓</a></li>
-                    <li style="text-align:center"><a href="#">경매장</a></li>
-                    <li style="text-align:center"><a href="#">프리미엄 마켓</a></li>
+                    <li class="center"><a href="#">블랙마켓</a></li>
+                    <li class="center"><a href="#">경매장</a></li>
+                    <li class="center"><a href="#">프리미엄 마켓</a></li>
                 </ul>
             </div>
             <!-- 마켓 버튼 닫기 -->
@@ -61,8 +61,8 @@ body {
             <div class="btn-group">
                 <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">모험하기<span class="caret"></span></button>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">알려진 블랙홀</a></li>
-                    <li><a href="#">지구로 귀환</a></li>
+                    <li class="center"><a href="#">알려진 블랙홀</a></li>
+                    <li class="center"><a href="#">지구로 귀환</a></li>
                 </ul>
             </div>
             <!-- 모험하기 닫기 -->
