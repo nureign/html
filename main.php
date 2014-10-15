@@ -6,14 +6,6 @@
 	include_once "./common/header.php";
 	include_once "./common/nav.php";
 ?> 
-<style type="text/css">
-body {
-
-	background-image: url(images/main_bg_left.gif), url(images/main_bg_right.gif); 
-	background-repeat: repeat-y; 
-	background-position: top left, top right; 
-}
-</style>
 
     <!-- Carousel
     ================================================== -->
