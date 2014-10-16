@@ -14,9 +14,11 @@ $(document).ready(function(){
 			InitialSetup(data);
 			
 			var parsed = JSON.parse(data);
+			var sound_start = parsed['m_sound_start'];
 			var bid = parsed['bid'];
 			var seq = 0;
 			
+			setTimeout(function(){ PlaySound(sound_start) }, 1000);
 			var timer = setInterval(function() {
 				
 				$.ajax({
@@ -99,9 +101,7 @@ function InitialSetup(data)
 	$('#p_mental_text').text(p_mental + ' / ' + p_MaxMental);
 	$('#p_mental_per').text(p_PerMental + '%');
 	$('#p_mental_per').attr('style', 'width: ' + p_GraphMental + '%;');
-	
-	PlaySound(m_sound_start);
-	console.log(m_sound_start);
+
 	$('#m_image').attr('src', m_image);
 	$('#m_image').attr('alt', m_name);
 	$('#m_hp_text').text(m_hp + ' / ' + m_MaxHP);
@@ -144,7 +144,6 @@ function UpdateBattlelog(data)
 	if( $('#m_name').text() == '이름: ' + attacker )
 	{
 		$('#m_turn').attr('style', 'border-color: red; border-width: 3px;');
-		$('#p_turn').attr('style', 'border-color: blue; border-width: 3px;');
 
 		if( damage > 0 )
 			ShakeImg($('#p_image'), 2);
@@ -152,7 +151,6 @@ function UpdateBattlelog(data)
 	else
 	{
 		$('#p_turn').attr('style', 'border-color: red; border-width: 3px;');
-		$('#m_turn').attr('style', 'border-color: blue; border-width: 3px;');
 
 		if( damage > 0 )
 			ShakeImg($('#m_image'), 2);
