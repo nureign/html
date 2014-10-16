@@ -7,24 +7,24 @@
 	include_once "./common/nav.php";
 	include_once "./common/db_conn.php";
 ?>
-<audio src="./bgm/adventure_bg.mp3" autoplay="autoplay" loop="loop"></audio>
+<!--<audio src="./bgm/adventure_bg.mp3" autoplay="autoplay" loop="loop"></audio>-->
 <!-- 윗 상단 로우 전체 시작 -->
-<style type="text/css">
+<!--<style type="text/css">
 body {
 
 	background-image: url(images/bgleft.gif), url(images/bgright.gif); 
 	background-repeat: repeat-y; 
 	background-position: top left, top right; 
 }
-</style>
+</style>-->
 
 <div class="row" align="center">
 	<div class="col-xs-1"><!--여백--></div>
 
     <!-- 중간부분 정렬로우 -->
-	<div class="col-cs-10">
+	<div class="col-xs-10">
 		<!-- 모험하기 시작 -->
-     	<div class="well well-sm width"><h2>모험을 떠나왔다</h2>행성이름 : 갤슈아 행성<br />위치 : 목초지</div>
+     	<div class="well well-sm width"><h2>모험을 떠나왔다</h2><span id="m_planet">행성: </span><br /><span id="m_location">위치: </span></div>
 		<div class="panel panel-info width">
             <div class="panel-heading">특수아이템 발동</div>
             <div class="panel-body" align="center">
@@ -59,9 +59,9 @@ body {
                 <div class="input-group">
                     <span class="input-group-addon"><span class="label label-danger">체력</span></span>
                         <div class="progress, form-control">
-                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">100%</div>
+                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;" id="p_hp_per">0%</div>
                         </div>
-                        <span class="input-group-addon">5000/5000</span>
+                        <span class="input-group-addon" id="p_hp_text">0 / 0</span>
                 		</div>
                 <!-- 체력부분 닫기 -->
                 
@@ -69,9 +69,9 @@ body {
                 <div class="input-group">
                     <span class="input-group-addon"><span class="label label-warning">멘탈</span></span>
                         <div class="progress, form-control">
-                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 99%;">99%</div>
+                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;" id="p_mental_per">0%</div>
                         </div>
-                        <span class="input-group-addon">1980/2000</span>
+                        <span class="input-group-addon" id="p_mental_text">0 / 0</span>
                         </div>
                 <!-- 멘탈부분 닫기 -->
         
@@ -108,7 +108,7 @@ body {
               </td>
               <td align="center">
               	<!-- 모험의 적 이미지 표시 -->
-				<img src="./images/mob_goblin.gif" alt="..." width="170" height="170" class="img-rounded" data-src="holder.js/300x300">
+				<img src="" width="170" height="170" class="img-rounded" data-src="holder.js/300x300" id="m_image">
                 <!-- 모험의 적 이미지 닫기 -->
               </td>
               <td align="center" width="380px">
@@ -116,17 +116,17 @@ body {
                 <div class="input-group">
                     <span class="input-group-addon"><span class="label label-danger">체력</span></span>
                         <div class="progress, form-control">
-                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">100%</div>
+                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;" id="m_hp_per">0%</div>
                         </div>
-                        <span class="input-group-addon">5000/5000</span>
+                        <span class="input-group-addon" id="m_hp_text">0/0</span>
                 		</div>
                 <!-- 체력부분 닫기 -->
             
             <!-- 모험의 적 이름, 속성 자원형태 표시부분 -->   
             <ul class="list-group">
-			  <li class="list-group-item">이름 : 고블린전사</li>
-              <li class="list-group-item">속성 : 물리타입</li>
-              <li class="list-group-item">자원형태 : 골드</li>
+			  <li class="list-group-item" id="m_name"></li>
+              <li class="list-group-item" id="m_type"></li>
+              <li class="list-group-item" id="m_resource"></li>
             </ul>
             <!-- 모험의 적 이름, 속성, 자원형태 표시 닫기 -->
               </td>
@@ -149,16 +149,15 @@ body {
     	<!-- 전투 로직 디자인 시작 -->
         <div class="panel panel-default width">
           <div class="panel-body">
-            <ul class="list-group">
-            	<li class="list-group-item">모에모에 이(/가) 고블린에게 도전하였다!<br />소지하고 있던 엑스칼리버로 적을 두동강 냈다! 적은 13500 데미지를 입었다!</li>
+			<button type="button" class="btn btn-default">스킵</button><br/><br/>
+            <ul class="list-group" id="battlelog">
+            	<!--<li class="list-group-item">모에모에 이(/가) 고블린에게 도전하였다!<br />소지하고 있던 엑스칼리버로 적을 두동강 냈다! 적은 13500 데미지를 입었다!</li>
                 <li class="list-group-item">고블린 이(/가) 모에모에에게 강력한 토네이도 발차기를 시전하였다!<br />모에모에는 1300 데미지를 입었다!</li>
               <li class="list-group-item list-group-item-success">전투에서 승리하였습니다.<br />골드 100,000, 엘릭서 500,000을 획득하였습니다!</li>
               <li class="list-group-item list-group-item-info">스킬작동!</li>
               <li class="list-group-item list-group-item-warning">특수아이템 발동!!!!!!</li>
-              <li class="list-group-item list-group-item-danger">아직미정(보스전 활용)</li>
+              <li class="list-group-item list-group-item-danger">아직미정(보스전 활용)</li>-->
             </ul>
-            <button type="button" class="btn btn-default">전투포기</button>&nbsp;
-            <button type="button" class="btn btn-default">전투마무리</button>
           </div>
         </div>
         <!-- 전투 로직 디자인 종료 -->
@@ -168,8 +167,9 @@ body {
 	<div class="col-xs-1"><!-- 공백 --></div>
 </div>
 <!-- 아래 로우 전체 닫기 -->
-	<?
-		include_once "./common/footer.php";
-	?>
+<?
+	include_once "./common/footer.php";
+?>
+	<script src="js/adventure.js"></script>
   </body>
 </html>
