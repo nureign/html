@@ -32,10 +32,10 @@ $(document).ready(function(){
 					}
 				});
 
-				if( seq >= 20 )
+				if( seq >= 10 )
 					clearTimeout(timer);
 
-			}, 3000);
+			}, 6000);
 		}
 	});
 });
@@ -117,6 +117,8 @@ function UpdateBattlelog(data)
 	console.log(data);
 	var parsed = JSON.parse(data);
 
+	var attacker = parsed['attacker'];
+	var damage = parseInt(parsed['damage']);
 	var sound = parsed['sound'];
 	var message = parsed['message'];
 	var message_type = parsed['message_type'];
@@ -132,7 +134,29 @@ function UpdateBattlelog(data)
 	}
 	item += '">';
 
-	$('#battlelog').prepend(item + message + '</li>');
+	$('#battlelog').empty();
+	$('#battlelog').append(item + message + '</li>');
+
+	$('#p_turn').removeAttr('style');
+	$('#m_turn').removeAttr('style');
+
+	console.log(attacker);
+	if( $('#m_name').text() == '이름: ' + attacker )
+	{
+		$('#m_turn').attr('style', 'border-color: red; border-width: 3px;');
+		$('#p_turn').attr('style', 'border-color: blue; border-width: 3px;');
+
+		if( damage > 0 )
+			ShakeImg($('#p_image'), 2);
+	}
+	else
+	{
+		$('#p_turn').attr('style', 'border-color: red; border-width: 3px;');
+		$('#m_turn').attr('style', 'border-color: blue; border-width: 3px;');
+
+		if( damage > 0 )
+			ShakeImg($('#m_image'), 2);
+	}
 }
 
 function PlaySound(file)
@@ -140,4 +164,29 @@ function PlaySound(file)
 	var audio = new Audio();
 	audio.src = file;
 	audio.play();
+}
+
+function ShakeImg(img, time)
+{
+	var timer = setInterval(function(){
+		switch( Math.floor( Math.random()*4 ) )
+		{
+			case 0:
+				img.attr('style', "position: relative; top: 3px;");
+				break;
+			case 1:
+				img.attr('style', "position: relative; left: 3px;");
+				break;
+			case 2:
+				img.attr('style', "position: relative; top: -3px;");
+				break;
+			case 3:
+				img.attr('style', "position: relative; left: -3px;");
+				break;
+		}
+	}, 10);
+	setTimeout(function(){
+		clearTimeout(timer);
+		img.removeAttr('style');
+	}, time*1000);
 }

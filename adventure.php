@@ -48,9 +48,9 @@ body {
 	<div class="col-xs-10">
         <table class="table table-bordered width">
             <tr>
-              <td align="center">
+              <td align="center" id="p_turn">
               	<!-- 나의 케릭터 현황 -->
-              	<img src="./images/char1.gif" alt="..." width="170" height="170" class="img-rounded" data-src="holder.js/300x300">
+              	<img src="./images/char1.gif" alt="..." width="170" height="170" class="img-rounded" data-src="holder.js/300x300" id="p_image">
                 <!-- 나의 케릭터 현황 닫기 -->
               </td>
               <td align="center" width="380px">
@@ -106,7 +106,7 @@ body {
                 </div>
 				<!-- 아이템 사용 부분 종료 -->
               </td>
-              <td align="center">
+              <td align="center" id="m_turn">
               	<!-- 모험의 적 이미지 표시 -->
 				<img src="" width="170" height="170" class="img-rounded" data-src="holder.js/300x300" id="m_image">
                 <!-- 모험의 적 이미지 닫기 -->

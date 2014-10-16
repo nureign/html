@@ -89,7 +89,7 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 		$m_stat[$rand]++;
 	}
 
-	for($i=0; $i<20; $i++)
+	for($i=0; $i<10; $i++)
 	{
 		$attacker;
 		$defender;
@@ -159,6 +159,8 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 			}
 		}
 		
+		$a_name = $attacker['name'];
+		$d_name = $defender['name'];
 		$damage = 0;
 		$crits = false;
 
@@ -167,10 +169,10 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 		{
 			// 회피
 			$avoid = array( '', '', '예지력을 발휘하여 ', '순간의 집중력으로 ', '운 좋게 ', '한숨을 쉬며 ' );
-			$message = $defender['name'] . "이(가) " . $avoid[rand(0,5)] . $attacker['name'] . "의 공격을 피했다!";
+			$message = $d_name . "이(가) " . $avoid[rand(0,5)] . $a_name ."의 공격을 피했다!";
 			$message_type = "normal";
 			$sound = "./sounds/claw_miss1.wav";
-			$sql = "INSERT INTO battlelog ( bid, seq, damage, crits, sound, message, message_type ) VALUES ( $bid, $i, $damage, '$crits', '$sound', '$message', '$message_type' );";
+			$sql = "INSERT INTO battlelog ( bid, seq, attacker, defender, damage, crits, sound, message, message_type ) VALUES ( $bid, $i, '$a_name', '$d_name', $damage, '$crits', '$sound', '$message', '$message_type' );";
 			$mysqli->query($sql);
 		}
 		else
@@ -186,10 +188,10 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 				$crits = true;
 			}
 			
-			$message = $attacker['name'] . "이(가) " . $defender['name'] . "을(를) 공격했다!" . ($crits ? " (크리티컬!)" : "") . "<br/>" . $defender['name'] . "은(는) " . $damage . "의 피해를 입었다!";
+			$message = $a_name . "이(가) " . $d_name . "을(를) 공격했다!" . ($crits ? " (크리티컬!)" : "") . "<br/>" . $d_name . "은(는) " . $damage . "의 피해를 입었다!";
 			$message_type = ($crits ? "warning" : "normal");
 			$sound = "./sounds/claw_strike1.wav";
-			$sql = "INSERT INTO battlelog ( bid, seq, damage, crits, sound, message, message_type ) VALUES ( $bid, $i, $damage, '$crits', '$sound', '$message', '$message_type' );";
+			$sql = "INSERT INTO battlelog ( bid, seq, attacker, defender, damage, crits, sound, message, message_type ) VALUES ( $bid, $i, '$a_name', '$d_name', $damage, '$crits', '$sound', '$message', '$message_type' );";
 			$mysqli->query($sql);
 		}
 		

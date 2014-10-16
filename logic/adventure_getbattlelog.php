@@ -20,12 +20,20 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 
 	while( $row = $result->fetch_array() )
 	{
+		$attacker = $row['attacker'];
+		$defender = $row['defender'];
+		$damage = $row['damage'];
+		$crits = $row['crits'];
 		$sound = $row['sound'];
 		$message = $row['message'];
 		$message_type = $row['message_type'];
 	}
 
 	echo json_encode(array(
+		'attacker' => $attacker,
+		'defender' => $defender,
+		'damage' => $damage,
+		'crits' => $crits,
 		'sound' => $sound,
 		'message' => $message,
 		'message_type' => $message_type
