@@ -101,6 +101,7 @@ function InitialSetup(data)
 	$('#p_mental_per').attr('style', 'width: ' + p_GraphMental + '%;');
 	
 	PlaySound(m_sound_start);
+	console.log(m_sound_start);
 	$('#m_image').attr('src', m_image);
 	$('#m_image').attr('alt', m_name);
 	$('#m_hp_text').text(m_hp + ' / ' + m_MaxHP);
