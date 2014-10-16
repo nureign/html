@@ -93,26 +93,31 @@ function InitialSetup(data)
 	var seq = 0;
 	
 	setTimeout(function(){ PlaySound(m_sound_start) }, 1000);
-	
-	var timer = setInterval(function() {
-		
-		$.ajax({
-			cache: false,
-			type: 'POST',
-			url: './logic/adventure_getbattlelog.php',
-			data: {
-				bid: bid,
-				seq: seq++
-			},
-			success: function(data) {
-				if( JSON.parse(data)['att_name'] != null )
-					UpdateBattlelog(data);
-				else
-					clearTimeout(timer);
-			}
-		});
+	setTimeout(function(){ 
 
-	}, 6000);
+		PlaySound('./sounds/battleground.mp3');
+		$('#battlelog').append('<li class="list-group-item list-group-item-info">전투에 돌입합니다!</li>');
+		var timer = setInterval(function() {
+		
+			$.ajax({
+				cache: false,
+				type: 'POST',
+				url: './logic/adventure_getbattlelog.php',
+				data: {
+					bid: bid,
+					seq: seq++
+				},
+				success: function(data) {
+					if( JSON.parse(data)['att_name'] != null )
+						UpdateBattlelog(data);
+					else
+						clearTimeout(timer);
+				}
+			});
+
+		}, 3000);
+
+	}, 7000);
 }
 
 function UpdateBattlelog(data)
