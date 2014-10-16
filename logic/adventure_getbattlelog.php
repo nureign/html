@@ -1,4 +1,5 @@
 <?php
+include_once "./alicetaylor.php";
 
 $bid = $_POST['bid'];
 $seq = $_POST['seq'];
@@ -20,23 +21,25 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 
 	while( $row = $result->fetch_array() )
 	{
-		$attacker = $row['attacker'];
-		$defender = $row['defender'];
-		$damage = $row['damage'];
-		$crits = $row['crits'];
-		$sound = $row['sound'];
-		$message = $row['message'];
-		$message_type = $row['message_type'];
+		$att_name = $row['att_name'];
+		$def_name = $row['def_name'];
+		$def_maxhp = $row['def_maxhp'];
+		$def_curhp = $row['def_curhp'];
+		$dmg = $row['dmg'];
+		$crit = $row['crit'];
+		$snd = $row['snd'];
+		$msg = $row['msg'];
 	}
 
 	echo json_encode(array(
-		'attacker' => $attacker,
-		'defender' => $defender,
-		'damage' => $damage,
-		'crits' => $crits,
-		'sound' => $sound,
-		'message' => $message,
-		'message_type' => $message_type
+		'att_name' => $att_name,
+		'def_name' => $def_name,
+		'def_maxhp' => $def_maxhp,
+		'def_curhp' => $def_curhp,
+		'dmg' => $dmg,
+		'crit' => $crit,
+		'snd' => $snd,
+		'msg' => $msg
 	));
 }
 

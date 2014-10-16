@@ -12,32 +12,6 @@ $(document).ready(function(){
 		},
 		success: function(data) {
 			InitialSetup(data);
-			
-			var parsed = JSON.parse(data);
-			var sound_start = parsed['m_sound_start'];
-			var bid = parsed['bid'];
-			var seq = 0;
-			
-			setTimeout(function(){ PlaySound(sound_start) }, 1000);
-			var timer = setInterval(function() {
-				
-				$.ajax({
-					cache: false,
-					type: 'POST',
-					url: './logic/adventure_getbattlelog.php',
-					data: {
-						bid: bid,
-						seq: seq++
-					},
-					success: function(data) {
-						UpdateBattlelog(data);
-					}
-				});
-
-				if( seq >= 10 )
-					clearTimeout(timer);
-
-			}, 6000);
 		}
 	});
 });
@@ -58,6 +32,7 @@ function InitialSetup(data)
 {
 	var parsed = JSON.parse(data);
 
+	var p_name = parsed['p_name'];
 	var p_hp = parseInt(parsed['p_hp']);
 	var p_mental = parseInt(parsed['p_mental']);
 	var p_stat1 = parseInt(parsed['p_stat1']);
@@ -110,50 +85,106 @@ function InitialSetup(data)
 	$('#m_name').text("이름: " + m_name);
 	$('#m_type').text("속성: " + m_type);
 	$('#m_resource').text("자원형태: " + m_resource);
+
+	$('#battlelog').append('<li class="list-group-item list-group-item-info">' + josa(p_name, '이') + ' ' + josa(m_name, '을') + ' 발견했습니다!' + '</li>');
+	$('#battlelog').append('<li class="list-group-item">'+ josa(p_name, '은') + ' 가지고 있던 무기를 고쳐쥐고 크게 심호흡을 합니다.' +'</li>');
+
+	var bid = parsed['bid'];
+	var seq = 0;
+	
+	setTimeout(function(){ PlaySound(m_sound_start) }, 1000);
+	
+	var timer = setInterval(function() {
+		
+		$.ajax({
+			cache: false,
+			type: 'POST',
+			url: './logic/adventure_getbattlelog.php',
+			data: {
+				bid: bid,
+				seq: seq++
+			},
+			success: function(data) {
+				if( JSON.parse(data)['att_name'] != null )
+					UpdateBattlelog(data);
+				else
+					clearTimeout(timer);
+			}
+		});
+
+	}, 6000);
 }
 
 function UpdateBattlelog(data)
 {
-	console.log(data);
 	var parsed = JSON.parse(data);
 
-	var attacker = parsed['attacker'];
-	var damage = parseInt(parsed['damage']);
-	var sound = parsed['sound'];
-	var message = parsed['message'];
-	var message_type = parsed['message_type'];
+	var att_name = parsed['att_name'];
+	var def_name = parsed['def_name'];
+	var def_maxhp = parseInt(parsed['def_maxhp']);
+	var def_curhp = parseInt(parsed['def_curhp']);
+	var dmg = parseInt(parsed['dmg']);
+	var snd = parsed['snd'];
+	var msg = parsed['msg'];
 
-	PlaySound(sound);
+	PlaySound(snd);
+	$('#battlelog').empty();
 
 	var item = '<li class="list-group-item';
-	switch( message_type )
+	var temp = msg.split('/');
+	for(var i=0; i<temp.length; i++)
 	{
-		case 'warning':
-			item += ' list-group-item-warning';
-			break;
+		var item = '<li class="list-group-item';
+		switch( temp[i].substr(0, 1) )
+		{
+			case '2':	// info
+				item += ' list-group-item-info';
+				break;
+			case '3':	// warn
+				item += ' list-group-item-warning';
+				break;
+			case '4':	// danger
+				item += ' list-group-item-danger';
+				break;
+		}
+		item += '">';
+		$('#battlelog').append(item + temp[i].slice(1) + '</li>');
 	}
-	item += '">';
-
-	$('#battlelog').empty();
-	$('#battlelog').append(item + message + '</li>');
 
 	$('#p_turn').removeAttr('style');
 	$('#m_turn').removeAttr('style');
-
-	console.log(attacker);
-	if( $('#m_name').text() == '이름: ' + attacker )
+	
+	if( $('#m_name').text() == '이름: ' + att_name )
 	{
 		$('#m_turn').attr('style', 'border-color: red; border-width: 3px;');
 
-		if( damage > 0 )
+		if( dmg > 0 )
+		{
 			ShakeImg($('#p_image'), 2);
+			
+			var per = Math.floor(def_curhp / def_maxhp * 100);
+			var graph = per;
+			if( graph < 25 ) graph = 25;
+			$('#p_hp_text').text(def_curhp + ' / ' + def_maxhp);
+			$('#p_hp_per').text(per + '%');
+			$('#p_hp_per').attr('style', 'width: ' + graph + '%;');
+		}
 	}
 	else
 	{
 		$('#p_turn').attr('style', 'border-color: red; border-width: 3px;');
 
-		if( damage > 0 )
+		if( dmg > 0 )
+		{
 			ShakeImg($('#m_image'), 2);
+
+			var per = Math.floor(def_curhp / def_maxhp * 100);
+			var graph = per;
+			if( graph < 25 ) graph = 25;
+			$('#m_hp_text').text(def_curhp + ' / ' + def_maxhp);
+			$('#m_hp_per').text(per + '%');
+			$('#m_hp_per').attr('style', 'width: ' + graph + '%;');
+		}
 	}
 }
 

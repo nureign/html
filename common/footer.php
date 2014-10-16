@@ -9,3 +9,4 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="//nureign.ddns.co.kr:8989/socket.io/socket.io.js"></script>
+	<script src="js/alicetaylor.js"></script>
