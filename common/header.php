@@ -14,4 +14,6 @@
     <link rel="icon" href="../../favicon.ico">
     <!-- Custom styles for this template -->
     <link href="./css/non-responsive.css" rel="stylesheet">
+    <!-- Magnific Popup for Mybase -->
+	<link rel='stylesheet prefetch' href='http://dimsemenov-static.s3.amazonaws.com/dist/magnific-popup.css'>
 </head>

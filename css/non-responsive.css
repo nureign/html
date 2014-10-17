@@ -130,3 +130,13 @@ body {
 .center {
 	text-align:center;
 }
+
+/* Magnific Popup for Mybase */
+.white-popup {
+  position: relative;
+  background: #FFF;
+  padding: 20px;
+  width:auto;
+  max-width: 1100px;
+  margin: 20px auto;
+}
