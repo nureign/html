@@ -95,7 +95,7 @@ function InitialSetup(data)
 	setTimeout(function(){ PlaySound(m_sound_start) }, 1000);
 	setTimeout(function(){ 
 
-		PlaySound('./sounds/battleground.mp3');
+		var bgm = PlaySound('./sounds/battleground.mp3');
 		$('#battlelog').append('<li class="list-group-item list-group-item-info">전투에 돌입합니다!</li>');
 		var timer = setInterval(function() {
 		
@@ -111,7 +111,10 @@ function InitialSetup(data)
 					if( JSON.parse(data)['att_name'] != null )
 						UpdateBattlelog(data);
 					else
+					{
 						clearTimeout(timer);
+						bgm.pause();
+					}
 				}
 			});
 
@@ -129,6 +132,7 @@ function UpdateBattlelog(data)
 	var def_maxhp = parseInt(parsed['def_maxhp']);
 	var def_curhp = parseInt(parsed['def_curhp']);
 	var dmg = parseInt(parsed['dmg']);
+	var crit = parseInt(parsed['crit']);
 	var snd = parsed['snd'];
 	var msg = parsed['msg'];
 
@@ -165,7 +169,7 @@ function UpdateBattlelog(data)
 
 		if( dmg > 0 )
 		{
-			ShakeImg($('#p_image'), 2);
+			ShakeImg($('#p_image'), crit, 2);
 			
 			var per = Math.floor(def_curhp / def_maxhp * 100);
 			var graph = per;
@@ -181,7 +185,7 @@ function UpdateBattlelog(data)
 
 		if( dmg > 0 )
 		{
-			ShakeImg($('#m_image'), 2);
+			ShakeImg($('#m_image'), crit, 2);
 
 			var per = Math.floor(def_curhp / def_maxhp * 100);
 			var graph = per;
@@ -198,24 +202,30 @@ function PlaySound(file)
 	var audio = new Audio();
 	audio.src = file;
 	audio.play();
+	return audio;
 }
 
-function ShakeImg(img, time)
+function ShakeImg(img, crit, time)
 {
+	var amount = 3;
+
+	if( crit > 0 )
+		amount = 6;
+
 	var timer = setInterval(function(){
 		switch( Math.floor( Math.random()*4 ) )
 		{
 			case 0:
-				img.attr('style', "position: relative; top: 3px;");
+				img.attr('style', 'position: relative; top: ' + amount + 'px;');
 				break;
 			case 1:
-				img.attr('style', "position: relative; left: 3px;");
+				img.attr('style', 'position: relative; left: ' + amount + 'px;');
 				break;
 			case 2:
-				img.attr('style', "position: relative; top: -3px;");
+				img.attr('style', 'position: relative; top: -' + amount + 'px;');
 				break;
 			case 3:
-				img.attr('style', "position: relative; left: -3px;");
+				img.attr('style', 'position: relative; left: -' + amount + 'px;');
 				break;
 		}
 	}, 10);
