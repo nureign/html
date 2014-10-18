@@ -1,10 +1,17 @@
 <?
-		$mysqli = new mysqli($DB['localhost'], $DB['project'], $DB['project!'], $DB['project']);
-		if (mysqli_connect_error()) {
-			exit('Connect Error (' . mysqli_connect_errno() . ') '. mysqli_connect_error());
-		}
-		
-		$mysqli->close($mysqli);
+	$DB = array( 
+		'host' => 'localhost',
+		'id' => 'project',
+		'pw' => 'project!',
+		'db' => 'project'
+	);
+	
+	$mysqli = mysqli_init();
 
-		mysql_query('set names utf8');
+	if( !( $mysqli->real_connect($DB['host'], $DB['id'], $DB['pw'], $DB['db']) ) )
+	{
+		exit('Connect Error');
+	}
+
+	$mysqli->query('set names utf8');
 ?>
