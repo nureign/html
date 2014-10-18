@@ -47,6 +47,7 @@
             <a href="./mybase.php"><button type="button" class="btn btn-default">기지관리</button></a>
             <button type="button" class="btn btn-default">연구소</button>
             <button type="button" class="btn btn-default">퀘스트</button>
+            <button type="button" class="btn btn-default">고블린은행</button>
             <button type="button" class="btn btn-default">진급</button>
             <!-- 일반 버튼 닫기 -->
             <!-- 모험하기 -->
