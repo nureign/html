@@ -15,3 +15,11 @@ function josa(str, tail)
 
 	return ((strTemp.charCodeAt(0) - 16) % 28 != 0) ? str + tail.substr(0, 1) : str + tail.substr(1, 1);
 }
+
+var myRedirect = function(redirectUrl, arg, value)
+{
+	var form = $('<form action="' + redirectUrl + '" method="post">' +
+	'<input type="hidden" name="'+ arg +'" value="' + value + '"></input>' + '</form>');
+	$('body').append(form);
+	$(form).submit();
+};

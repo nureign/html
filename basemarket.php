@@ -19,7 +19,7 @@
             	<div class="panel-body">
             		<h3>어서오세요! 이곳은 베이스시장입니다.</h3><br />
                     저렴한 가격으로 손님여러분의 쇼핑을 즐겁게 해드리겠습니다!<br /><br />
-                    오늘의 할인율은 5% 입니다. 모에모에 님에게는 더 싸게(매력도) 드릴수도 있겠군요!<br />
+                    오늘의 할인율은 <span id="salesrate"></span>% 입니다. <span id="name"></span>님께는 더 싸게(매력도) 드릴수도 있겠군요!<br />
             	</div>
             </div>
   <div class="bs-example bs-example-tabs">
@@ -42,12 +42,10 @@
                 </tr>
                 
 <?
-	$id = 14;
-	//$charinfo = $mysqli->query("SELECT `level` FROM `project_members` WHERE `id` = '$id'");
-	//$row = $charinfo->fetch_array();
-	//@$charinfo_level = $row['level'];
-	//$charinfo_level = '10'; //아직 지정되지 않았으므로 임시.... 나중에 지워야함!!!!
-	//$choosing = $mysqli->query("SELECT `baseitem_no`, `name`, `level`, `attribute`, `low_power`, `max_power`, `durability`, `popular`, `price` FROM `base_item` WHERE `level` = '1' and `type` = 'weapons'"); 
+	$id = $_POST['id'];
+	if( !isset($id) )
+		exit;
+
 	$result = $mysqli->query("SELECT * FROM base_item WHERE type = 'weapons' AND level = (SELECT level FROM project_members WHERE id = $id);"); 
 
 	while( $showme = $result->fetch_array() )
@@ -56,6 +54,7 @@
 		$popular_sum = $mysqli->query("SELECT sum(popular) as popular_sum FROM base_item WHERE type = 'weapons' AND level = (SELECT level FROM project_members WHERE id = $id);");
 		$row = $popular_sum->fetch_array();
 		$popular_sum = $row['popular_sum'];
+		if( $popular_sum < 1 ) $popular_sum = 1;
 		
 		$tests = $showme[popular] * 9;
 
@@ -130,6 +129,7 @@
 		$popular_sum = $mysqli->query("SELECT sum(popular) as popular_sum FROM base_item WHERE type = 'defense' AND level = (SELECT level FROM project_members WHERE id = $id);");
 		$row = $popular_sum->fetch_array();
 		$popular_sum = $row['popular_sum'];
+		if( $popular_sum < 1 ) $popular_sum = 1;
 		
 		$tests = $showme[popular] * 9;
 
@@ -197,6 +197,7 @@
 	<?
 		include_once "./common/footer.php";
 	?>
+	<script src="js/basemarket.js"></script>
 
   </body>
 </html>

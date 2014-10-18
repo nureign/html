@@ -21,9 +21,9 @@
             <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">공격대기<span class="caret"></span></button>
                 <ul class="dropdown-menu" role="menu">
-                    <li class="center"><a href="./adventure.php">모험하기</a></li>
+                    <li class="center"><a href="javascript:;" id="adventure">모험하기</a></li>
                     <li class="divider"></li>
-                    <li class="center"><a href="">행성공략</a></li>
+                    <li class="center"><a href="javascript:;" id="planetattack">행성공략</a></li>
                 </ul>
             </div>
             <!-- 행성공략 버튼 닫기 -->
@@ -31,19 +31,19 @@
             <div class="btn-group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">마켓방문<span class="caret"></span></button>
                 <ul class="dropdown-menu" role="menu">
-                    <li class="center"><a href="./grocerymarket.php">편의점</a></li>
-                    <li class="center"><a href="./charactermarket.php">전통시장</a></li>
-                    <li class="center"><a href="./basemarket.php">베이스시장</a></li>
-                    <li class="center"><a href="#">함선시장</a></li>
+                    <li class="center"><a href="javascript:;" id="grocerymarket">편의점</a></li>
+                    <li class="center"><a href="javascript:;" id="charactermarket">전통시장</a></li>
+                    <li class="center"><a href="javascript:;" id="basemarket">베이스시장</a></li>
+                    <li class="center"><a href="javascript:;">함선시장</a></li>
                     <li class="divider"></li>
-                    <li class="center"><a href="#">블랙마켓</a></li>
-                    <li class="center"><a href="#">경매장</a></li>
-                    <li class="center"><a href="#">프리미엄 마켓</a></li>
+                    <li class="center"><a href="javascript:;">블랙마켓</a></li>
+                    <li class="center"><a href="javascript:;">경매장</a></li>
+                    <li class="center"><a href="javascript:;">프리미엄 마켓</a></li>
                 </ul>
             </div>
             <!-- 마켓 버튼 닫기 -->
             <!-- 일반 버튼 -->
-            <button type="button" class="btn btn-default">스테이터스</button>
+            <button type="button" class="btn btn-default" id="privateroom">개인룸</button>
             <a href="./mybase.php"><button type="button" class="btn btn-default">기지관리</button></a>
             <button type="button" class="btn btn-default">연구소</button>
             <a href="./quest.php"><button type="button" class="btn btn-default">퀘스트</button></a>
@@ -75,7 +75,7 @@
                 </ol>
                 <ol class="breadcrumb">
                 <li class="active">캐릭터 소개말</a></li>
-                <li id="">모에모에 케릭♡</a></li>
+                <li id="intro"></a></li>
                 </ol>
                 <ol class="breadcrumb">
                 <li class="active">직책 (레벨)</a></li>

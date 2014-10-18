@@ -114,6 +114,7 @@ function InitialSetup(data)
 					{
 						clearTimeout(timer);
 						bgm.pause();
+						PlaySound('./sounds/victory.mp3');
 					}
 				}
 			});

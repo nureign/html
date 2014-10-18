@@ -1,8 +1,56 @@
 
-var socket = io('http://nureign.ddns.co.kr:8989');
+//var socket = io('http://nureign.ddns.co.kr:8989');
 
 $(document).ready(function(){
 
+	RefreshStatus();
+
+});
+
+$('#adventure').click(function() {
+
+	location.href = './adventure.php';
+
+});
+
+$('#planetattack').click(function() {
+
+	location.href = './planetattack.php';
+
+});
+
+$('#charactermarket').click(function() {
+
+	myRedirect('./charactermarket.php', 'id', sessionStorage.getItem('id'));
+
+});
+
+$('#grocerymarket').click(function() {
+
+	myRedirect('./grocerymarket.php', 'id', sessionStorage.getItem('id'));
+
+});
+
+$('#basemarket').click(function() {
+
+	myRedirect('./basemarket.php', 'id', sessionStorage.getItem('id'));
+
+});
+
+$('#privateroom').click(function() {
+
+	myRedirect('./privateroom.php', 'id', sessionStorage.getItem('id'));
+
+});
+
+/*socket.on( 'UpdateStatus', function(data) {
+
+	UpdateStatus(data);
+
+});*/
+
+function RefreshStatus()
+{
 	$.ajax({
 		cache: false,
 		type: 'POST',
@@ -12,23 +60,16 @@ $(document).ready(function(){
 		},
 		success: function(data) {
 			UpdateStatus(data);
-			socket.emit( 'InitialConnect', data );
 		}
 	});
+}
 
-});
-
-socket.on( 'UpdateStatus', function(data) {
-
-	UpdateStatus(data);
-
-});
-
-function UpdateStatus(data, update)
+function UpdateStatus(data)
 {
 	var parsed = JSON.parse(data);
 	
 	var name = parsed['name'];
+	var classn = parsed['class'];
 	var level = parseInt(parsed['level']);
 	var	tendency = parsed['tendency'];
 	var hp = parseInt(parsed['hp']);
@@ -48,6 +89,7 @@ function UpdateStatus(data, update)
 	var pants = parsed['pants'];
 	var shoes = parsed['shoes'];
 	var accessory = parsed['accessory'];
+	var intro = parsed['intro'];
 
 	// 공식 (체력)
 	var CurLevel = level;
@@ -58,31 +100,26 @@ function UpdateStatus(data, update)
 	var NextLevel = CurLevel + 1;
 
 	var MaxHP = CurLevel * 100;
-	var PerHP = CurHP / MaxHP * 100;
-	var GraphHP = PerHP;
-	if( GraphHP < 25 ) GraphHP = 25;
+	var PerHP = Math.floor(CurHP / MaxHP * 100);
 
 	var MaxMental = CurLevel * 100;
-	var PerMental = CurMental / MaxMental * 100;
-	var GraphMental = PerMental;
-	if( GraphMental < 25 ) GraphMental = 25;
+	var PerMental = Math.floor(CurMental / MaxMental * 100);
 
 	var NextEXP = Math.floor( Math.pow((NextLevel-1), 2) * ( Math.pow(NextLevel, 2) - (NextLevel * 13) + 82 ) );
-	var PerEXP = CurEXP / NextEXP * 100;
-	var GraphEXP = PerEXP;
-	if( GraphEXP < 20 ) GraphEXP = 20;
+	var PerEXP = Math.floor(CurEXP / NextEXP * 100);
 
 	$('#name').text(name);
-	$('#level').text('견습(Lv.'+ level +')');
+	$('#intro').text(intro);
+	$('#level').text(classn + '(Lv.'+ level +')');
 	$('#hp_text').text(hp + ' / ' + MaxHP);
 	$('#hp_per').text(PerHP + '%');
-	$('#hp_per').attr('style', 'width: ' + GraphHP + '%;');
+	$('#hp_per').attr('style', 'width: ' + PerHP + '%;');
 	$('#mental_text').text(mental + ' / ' + MaxMental);
 	$('#mental_per').text(PerMental + '%');
-	$('#mental_per').attr('style', 'width: ' + GraphMental + '%;');
+	$('#mental_per').attr('style', 'width: ' + PerMental + '%;');
 	$('#exp_text').text(exp + ' / ' + NextEXP);
 	$('#exp_per').text(PerEXP + '%');
-	$('#exp_per').attr('style', 'width: ' + GraphEXP + '%;');
+	$('#exp_per').attr('style', 'width: ' + PerEXP + '%;');
 	$('#tendency').text(tendency);
 	$('#stat1').text(stat1);
 	$('#stat2').text(stat2);
@@ -98,9 +135,4 @@ function UpdateStatus(data, update)
 	$('#pants').text(pants);
 	$('#shoes').text(shoes);
 	$('#accessory').text(accessory);
-
-	if( update )
-	{
-
-	}
 }

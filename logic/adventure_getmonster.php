@@ -46,6 +46,7 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 		$m_hp = $row['hp'];
 		$m_type = $row['type'];
 		$m_resource = $row['resource'];
+		$m_exp = $row['exp'];
 	}
 
 	$sql = "SELECT bid FROM battlelog ORDER BY bid DESC LIMIT 1;";
@@ -84,7 +85,7 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 
 	// 몬스터 스탯 배분
 	$m_stat = array( 1, 0, 0, 0, 0, 0 );
-	for($i=0; $i<$m_level*3; $i++)
+	for($i=0; $i<$m_level*6; $i++)
 	{
 		$rand = rand( 0, 5 );
 		$m_stat[$rand]++;
@@ -97,6 +98,7 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 		if( $i == 0 )
 		{
 			$att = array(
+				'isplayer' => false,
 				'name' => $m_name,
 				'level' => $m_level,
 				'maxhp' => $m_hp,
@@ -106,10 +108,12 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 				'stat3' => $m_stat[2], 
 				'stat4' => $m_stat[3], 
 				'stat5' => $m_stat[4], 
-				'stat6' => $m_stat[5]
+				'stat6' => $m_stat[5],
+				'exp' => $m_exp
 			);
 
 			$def = array(
+				'isplayer' => true,
 				'name' => $p_name,
 				'level' => $p_level,
 				'maxhp' => $p_hp,
@@ -175,6 +179,16 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 				// 죽음 처리
 				$isdead = true;
 				$msg = $msg . '/2' . josa($att_name, '이', '가') . ' ' . josa($def_name, '과', '와') . '의 대결에서 승리했습니다!';
+
+				if( $def['isplayer'] )
+				{
+					// 자원뺏김
+				}
+				else
+				{
+					// 경험치 획득
+					$msg= $msg . '/2' . josa($att_name, '은', '는') . ' 보상으로 ' . $def['exp'] . '의 경험치를 획득하였습니다!';
+				}
 			}
 		}
 

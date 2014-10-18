@@ -14,12 +14,25 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 	$sql = "SET NAMES UTF8";
 	$mysqli->query($sql);
 
+	$sql = "SELECT exp FROM battlelog_queue WHERE id = '$id' LIMIT 1;";
+	$result = $mysqli->query($sql);
+
+	while( $row = $result->fetch_array() )
+	{
+		$exp = $row['exp'];
+		$sql = "UPDATE project_members SET exp = exp + $exp WHERE id = '$id';";
+		$mysqli->query($sql);
+		$sql = "DELETE FROM battlelog_queue WHERE id = '$id';";
+		$mysqli->query($sql);
+	}
+
 	$sql = "SELECT * FROM project_members WHERE id = '$id';";
 	$result = $mysqli->query($sql);
 
 	while( $row = $result->fetch_array() )
 	{
 		$name = $row['name'];
+		$class = $row['class'];
 		$level = $row['level'];
 		$tendency = $row['tendency'];
 		$hp = $row['hp'];
@@ -39,9 +52,23 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 		$pants = $row['pants'];
 		$shoes = $row['shoes'];
 		$accessory = $row['accessory'];
+		$intro = $row['intro'];
 	}
 
-	echo json_encode(	array('name'=>$name, 'level'=>$level, 'tendency'=>$tendency, 'hp'=>$hp, 'mental'=>$mental, 'exp'=>$exp, 'stat1'=>$stat1, 'stat2'=>$stat2, 'stat3'=>$stat3, 'stat4'=>$stat4, 'stat5'=>$stat5, 'stat6'=>$stat6, 'honor'=>$honor, 'ruby'=>$ruby, 'lefthand'=>$lefthand, 'righthand'=>$righthand, 'top'=>$top, 'pants'=>$pants, 'shoes'=>$shoes, 'accessory'=>$accessory)	);
+	echo json_encode(array(
+		'name'=>$name, 
+		'class' => $class,
+		'level'=>$level, 
+		'tendency'=>$tendency, 
+		'hp'=>$hp, 
+		'mental'=>$mental, 
+		'exp'=>$exp, 
+		'stat1'=>$stat1, 'stat2'=>$stat2, 'stat3'=>$stat3, 'stat4'=>$stat4, 'stat5'=>$stat5, 'stat6'=>$stat6, 
+		'honor'=>$honor, 
+		'ruby'=>$ruby, 
+		'lefthand'=>$lefthand, 'righthand'=>$righthand, 'top'=>$top, 'pants'=>$pants, 'shoes'=>$shoes, 'accessory'=>$accessory, 
+		'intro'=>$intro
+	));
 }
 
 $mysqli->close();

@@ -6,6 +6,11 @@
 	include_once "./common/header.php";
 	include_once "./common/nav.php";
 	include_once "./common/db_conn.php";
+
+	$id = $_POST['id'];
+
+	if( !isset($id) )
+		exit;
 ?>
 <!-- 로우 전체 시작 -->
 <div class="row" align="center">

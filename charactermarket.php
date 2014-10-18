@@ -45,16 +45,19 @@
                 </tr>
                 
 <?
-	$charinfo = mysql_query("SELECT `level` FROM `project_members` WHERE `id` = '$email'");
-	@$charinfo_level = mysql_result($charinfo, 0, 0); //@는 임시.
-	$charinfo_level = '10'; //아직 지정되지 않았으므로 임시.... 나중에 지워야함!!!!
-	$choosing = mysql_query("SELECT `characteritem_no`, `name`, `level`, `attribute`, `low_power`, `max_power`, `special`, `popular`, `price` FROM `character_item` WHERE `level` = '1' and `type` = 'weapons'"); 
+	$id = $_POST['id'];
+
+	if( !isset($id) )
+		exit;
+
+	$result = $mysqli->query("SELECT * FROM character_item WHERE type = 'weapons' AND level = (SELECT level FROM project_members WHERE id = $id);"); 
 	
-	while ($showme = mysql_fetch_array($choosing))
+	while ($showme = $result->fetch_array())
 	{
-		//$showme[lastName] = addslashes($s_a[lastName]);
-		$popular_sum = mysql_query("select sum(popular) from `character_item` WHERE `type` = 'weapons'");
-		$popular_sum = mysql_result($popular_sum, 0, 0);
+		$popular_sum = $mysqli->query("SELECT sum(popular) as popular_sum FROM character_item WHERE type = 'weapons' AND level = (SELECT level FROM project_members WHERE id = $id);");
+		$row = $popular_sum->fetch_array();
+		$popular_sum = $row['popular_sum'];
+		if( $popular_sum < 1 ) $popular_sum = 1;
 		
 		$tests = $showme[popular] * 9;
 
@@ -118,16 +121,14 @@
                 </tr>
                 
 <?
-	$charinfo = mysql_query("SELECT `level` FROM `project_members` WHERE `id` = '$email'");
-	@$charinfo_level = mysql_result($charinfo, 0, 0); //@는 임시.
-	$charinfo_level = '10'; //아직 지정되지 않았으므로 임시.... 나중에 지워야함!!!!
-	$choosing = mysql_query("SELECT * FROM `character_item` WHERE `level` = '1' and `type` = 'top'"); 
+	$result = $mysqli->query("SELECT * FROM character_item WHERE type = 'top' AND level = (SELECT level FROM project_members WHERE id = $id);"); 
 	
-	while ($showme = mysql_fetch_array($choosing))
+	while ($showme = $result->fetch_array())
 	{
-		//$showme[lastName] = addslashes($s_a[lastName]);
-		$popular_sum = mysql_query("select sum(popular) from `character_item` WHERE `type` = 'top'");
-		$popular_sum = mysql_result($popular_sum, 0, 0);
+		$popular_sum = $mysqli->query("SELECT sum(popular) as popular_sum FROM character_item WHERE type = 'top' AND level = (SELECT level FROM project_members WHERE id = $id);");
+		$row = $popular_sum->fetch_array();
+		$popular_sum = $row['popular_sum'];
+		if( $popular_sum < 1 ) $popular_sum = 1;
 		
 		$tests = $showme[popular] * 9;
 
@@ -192,16 +193,14 @@
                 </tr>
                 
 <?
-	$charinfo = mysql_query("SELECT `level` FROM `project_members` WHERE `id` = '$email'");
-	@$charinfo_level = mysql_result($charinfo, 0, 0); //@는 임시.
-	$charinfo_level = '10'; //아직 지정되지 않았으므로 임시.... 나중에 지워야함!!!!
-	$choosing = mysql_query("SELECT * FROM `character_item` WHERE `level` = '1' and `type` = 'pants'"); 
+	$result = $mysqli->query("SELECT * FROM character_item WHERE type = 'pants' AND level = (SELECT level FROM project_members WHERE id = $id);"); 
 	
-	while ($showme = mysql_fetch_array($choosing))
+	while ($showme = $result->fetch_array())
 	{
-		//$showme[lastName] = addslashes($s_a[lastName]);
-		$popular_sum = mysql_query("select sum(popular) from `character_item` WHERE `type` = 'pants'");
-		$popular_sum = mysql_result($popular_sum, 0, 0);
+		$popular_sum = $mysqli->query("SELECT sum(popular) as popular_sum FROM character_item WHERE type = 'pants' AND level = (SELECT level FROM project_members WHERE id = $id);");
+		$row = $popular_sum->fetch_array();
+		$popular_sum = $row['popular_sum'];
+		if( $popular_sum < 1 ) $popular_sum = 1;
 		
 		$tests = $showme[popular] * 9;
 
@@ -266,16 +265,14 @@
                 </tr>
                 
 <?
-	$charinfo = mysql_query("SELECT `level` FROM `project_members` WHERE `id` = '$email'");
-	@$charinfo_level = mysql_result($charinfo, 0, 0); //@는 임시.
-	$charinfo_level = '10'; //아직 지정되지 않았으므로 임시.... 나중에 지워야함!!!!
-	$choosing = mysql_query("SELECT * FROM `character_item` WHERE `level` = '1' and `type` = 'shoes'"); 
+	$result = $mysqli->query("SELECT * FROM character_item WHERE type = 'shoes' AND level = (SELECT level FROM project_members WHERE id = $id);"); 
 	
-	while ($showme = mysql_fetch_array($choosing))
+	while ($showme = $result->fetch_array())
 	{
-		//$showme[lastName] = addslashes($s_a[lastName]);
-		$popular_sum = mysql_query("select sum(popular) from `character_item` WHERE `type` = 'shoes'");
-		$popular_sum = mysql_result($popular_sum, 0, 0);
+		$popular_sum = $mysqli->query("SELECT sum(popular) as popular_sum FROM character_item WHERE type = 'shoes' AND level = (SELECT level FROM project_members WHERE id = $id);");
+		$row = $popular_sum->fetch_array();
+		$popular_sum = $row['popular_sum'];
+		if( $popular_sum < 1 ) $popular_sum = 1;
 		
 		$tests = $showme[popular] * 9;
 
@@ -341,16 +338,14 @@
                 </tr>
                 
 <?
-	$charinfo = mysql_query("SELECT `level` FROM `project_members` WHERE `id` = '$email'");
-	@$charinfo_level = mysql_result($charinfo, 0, 0); //@는 임시.
-	$charinfo_level = '10'; //아직 지정되지 않았으므로 임시.... 나중에 지워야함!!!!
-	$choosing = mysql_query("SELECT * FROM `character_item` WHERE `level` = '1' and `type` = 'accessory'"); 
+	$result = $mysqli->query("SELECT * FROM character_item WHERE type = 'accessory' AND level = (SELECT level FROM project_members WHERE id = $id);"); 
 	
-	while ($showme = mysql_fetch_array($choosing))
+	while ($showme = $result->fetch_array())
 	{
-		//$showme[lastName] = addslashes($s_a[lastName]);
-		$popular_sum = mysql_query("select sum(popular) from `character_item` WHERE `type` = 'accessory'");
-		$popular_sum = mysql_result($popular_sum, 0, 0);
+		$popular_sum = $mysqli->query("SELECT sum(popular) as popular_sum FROM character_item WHERE type = 'accessory' AND level = (SELECT level FROM project_members WHERE id = $id);");
+		$row = $popular_sum->fetch_array();
+		$popular_sum = $row['popular_sum'];
+		if( $popular_sum < 1 ) $popular_sum = 1;
 		
 		$tests = $showme[popular] * 9;
 
