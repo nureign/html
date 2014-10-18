@@ -47,53 +47,66 @@
           </div>
         </div>
       </div>
-    </div><!-- /.carousel -->
+    </div>
+    <!-- /.carousel -->
     <br />
     
 <div class="row" align="center">
-  <div class="col-md-2"></div>
-  <div class="col-md-4"><div class="well">공지 / 업데이트 안내<br /><br />
-  <ol>
-  <li>(2014.08.24 정규 업데이트)</li>
-  <li>(2014.08.26 보안 업데이트)</li>
-  <li>고객센터 휴무 안내</li>
-  <li>던전 3종 추가 업데이트</li>  
-  <li>게임 이름 테스트 안내</li>
-  <li>종족 밸런스 수정 (V1.2)</li>
-</ol></div></div>
-  <div class="col-md-4">
-  	<div class="well">에스트렐라 세계로 출발<br /><br />
-	<form role="form">
-		<div class="form-group">
-			<div class="input-group input-group-sm">
-				<span class="input-group-addon">메일계정</span>
-				<input type="text" class="form-control" placeholder="Enter E-mail" id="email">
+  <div class="col-xs-2"></div>
+  <div class="col-xs-8">
+  <table class="table table-condensed width center">
+  	<tr>
+    	<td width="400px">
+			<div class="panel panel-default">
+			<div class="panel-body"><h4>공지 업데이트</h4>
+     			<ol>
+					<li>(2014.08.24 정규 업데이트)</li>
+                    <li>(2014.08.26 보안 업데이트)</li>
+                    <li>고객센터 휴무 안내</li>
+                    <li>던전 3종 추가 업데이트</li>  
+                    <li>게임 이름 테스트 안내</li>
+                    <li>종족 밸런스 수정 (V1.2)</li>
+				</ol> 
 			</div>
-			<div class="input-group input-group-sm">
-				<span class="input-group-addon">비밀번호</span>
-				<input type="password" class="form-control" placeholder="Password" id="password">
 			</div>
-			<br />
-			<div class="btn-group btn-group-justified">
-				<div class="btn-group">
-					<button type="button" class="btn btn-default" onclick="location.href='./join_member.php';">회원가입</button>
-				</div>
-				<div class="btn-group">
-					<button type="button" class="btn btn-default" id="login">로그인</button>
-				</div>
+		</td>
+        <td width="400px">
+			<div class="panel panel-default">
+			<div class="panel-body"><h4>에스트렐라 세계로 출발!</h4>
+			<Form role="form">
+                <div class="form-group">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">메일계정</span>
+                        <input type="text" class="form-control" placeholder="Enter E-mail" id="email">
+                    </div>
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-addon">비밀번호</span>
+                        <input type="password" class="form-control" placeholder="Password" id="password">
+                    </div>
+                    <br />
+                    <div class="btn-group btn-group-justified">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default" onclick="location.href='./join_member.php';">회원가입</button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default" id="login">로그인</button>
+                        </div>
+                    </div>
+                </div>
+            </Form>
 			</div>
-		</div>
-	</form>
-    </div>
-  </div>
-  <div class="col-md-2"></div>
+			</div>
+		</td>
+     </tr>
+	</table>
+	</div>
+
+  <div class="col-xs-2"></div>
 </div>    
     
 <?
 	include_once "./common/footer.php";
 ?>
-
-    </div><!-- /.container -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

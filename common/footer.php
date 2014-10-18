@@ -1,5 +1,5 @@
       <!-- FOOTER -->
-      <footer><br /><br />
+      <footer>
         <p align="center">&copy; 2014 Estrella Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
       </footer>
 
