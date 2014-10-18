@@ -5,6 +5,7 @@ $('.open-popup-link').magnificPopup({
 });
 
 // Example: 2 Dynamically created
+
 $('button').magnificPopup({
   items: {
       src: '<div class="white-popup">Dynamically created popup</div>',
@@ -12,4 +13,3 @@ $('button').magnificPopup({
   },
   closeBtnInside: true
 });
-
