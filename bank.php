@@ -40,9 +40,11 @@
 	</div>
     <!-- 위에 표시 닫기 -->
 
+	<!-- 현재 출금세율 비율 -->
 	<div class="alert alert-danger width center" role="alert">
     	<strong>현재 출금세율 비율</strong> : 30% / <strong>전산오류 무사고 시간</strong> : 0시간 0분
     </div>
+    <!-- 현재 출금세율 비율 -->
     
 	<!-- 은행 핵심기능 시작 -->
     <div class="panel panel-default width">
@@ -101,7 +103,7 @@
                 </td>
             </tr>
          </table>
-        <!-- 종합스텟 닫기 -->
+        <!-- 입출금 닫기 -->
         
         <!-- 루비 부자 상위 5명 -->
         <table class="table table-condensed center" style="width:700px;">
@@ -178,6 +180,7 @@
                 <td>걸린횟수</td>
             </tr>
         </table>
+        <!-- 전산오류 자주 걸린 상위 5명 닫기 -->
     </div>
     </div>
     <!-- 은행 핵심기능 닫기 -->
