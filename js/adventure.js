@@ -1,5 +1,5 @@
 
-var socket = io('http://nureign.ddns.co.kr:8989');
+//var socket = io('http://nureign.ddns.co.kr:8989');
 
 $(document).ready(function(){
 
@@ -16,7 +16,13 @@ $(document).ready(function(){
 	});
 });
 
-socket.on( 'UpdateStatus', function(data) {
+$('#skip').click(function() {
+
+	
+
+});
+
+/*socket.on( 'UpdateStatus', function(data) {
 
 	UpdateStatus(data);
 
@@ -26,7 +32,7 @@ socket.on( 'PlaySound', function(data) {
 
 	PlaySound(data);
 
-});
+});*/
 
 function InitialSetup(data)
 {
@@ -34,6 +40,7 @@ function InitialSetup(data)
 
 	var p_name = parsed['p_name'];
 	var p_hp = parseInt(parsed['p_hp']);
+	var p_maxhp = parseInt(parsed['p_maxhp']);
 	var p_mental = parseInt(parsed['p_mental']);
 	var p_stat1 = parseInt(parsed['p_stat1']);
 	var p_stat2 = parseInt(parsed['p_stat2']);
@@ -42,15 +49,8 @@ function InitialSetup(data)
 	var p_stat5 = parseInt(parsed['p_stat5']);
 	var p_stat6 = parseInt(parsed['p_stat6']);
 
-	var p_MaxHP = p_hp;
-	var p_PerHP = p_MaxHP / p_MaxHP * 100;
-	var p_GraphHP = p_PerHP;
-	if( p_GraphHP < 25 ) p_GraphHP = 25;
-
-	var p_MaxMental = p_mental;
-	var p_PerMental = p_MaxMental / p_MaxMental * 100;
-	var p_GraphMental = p_PerMental;
-	if( p_GraphMental < 25 ) p_GraphMental = 25;
+	var p_PerHP = Math.floor(p_hp / p_maxhp * 100);
+	var p_PerMental = Math.floor(p_mental / p_mental * 100);
 
 	var m_name = parsed['m_name'];
 	var m_image = parsed['m_image'];
@@ -64,24 +64,22 @@ function InitialSetup(data)
 
 	var m_MaxHP = m_hp;
 	var m_PerHP = m_MaxHP / m_MaxHP * 100;
-	var m_GraphHP = m_PerHP;
-	if( m_GraphHP < 25 ) m_GraphHP = 25;
-	
+
 	$('#m_planet').text("행성: " + m_planet);
 	$('#m_location').text("위치: " + m_location);
 	
-	$('#p_hp_text').text(p_hp + ' / ' + p_MaxHP);
+	$('#p_hp_text').text(p_hp + ' / ' + p_maxhp);
 	$('#p_hp_per').text(p_PerHP + '%');
-	$('#p_hp_per').attr('style', 'width: ' + p_GraphHP + '%;');
-	$('#p_mental_text').text(p_mental + ' / ' + p_MaxMental);
+	$('#p_hp_per').attr('style', 'width: ' + p_PerHP + '%;');
+	$('#p_mental_text').text(p_mental + ' / ' + p_mental);
 	$('#p_mental_per').text(p_PerMental + '%');
-	$('#p_mental_per').attr('style', 'width: ' + p_GraphMental + '%;');
+	$('#p_mental_per').attr('style', 'width: ' + p_PerMental + '%;');
 
 	$('#m_image').attr('src', m_image);
 	$('#m_image').attr('alt', m_name);
 	$('#m_hp_text').text(m_hp + ' / ' + m_MaxHP);
 	$('#m_hp_per').text(m_PerHP + '%');
-	$('#m_hp_per').attr('style', 'width: ' + m_GraphHP + '%;');
+	$('#m_hp_per').attr('style', 'width: ' + m_PerHP + '%;');
 	$('#m_name').text("이름: " + m_name);
 	$('#m_type').text("속성: " + m_type);
 	$('#m_resource').text("자원형태: " + m_resource);

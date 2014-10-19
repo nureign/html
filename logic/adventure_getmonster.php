@@ -23,6 +23,7 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 		$p_name = $row['name'];
 		$p_level = $row['level'];
 		$p_hp = $row['hp'];
+		$p_maxhp = $row['maxhp'];
 		$p_mental = $row['mental'];
 		$p_stat1 = $row['stat1'];
 		$p_stat2 = $row['stat2'];
@@ -47,6 +48,7 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 		$m_type = $row['type'];
 		$m_resource = $row['resource'];
 		$m_exp = $row['exp'];
+		$m_ruby = $row['ruby'];
 	}
 
 	$sql = "SELECT bid FROM battlelog ORDER BY bid DESC LIMIT 1;";
@@ -59,11 +61,13 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 	}
 
 	echo json_encode(array(
+		// 전투 정보
 		'bid' => $bid,
-
+		// 플레이어 정보
 		'p_name' => $p_name,
 		'p_level' => $p_level,
 		'p_hp' => $p_hp,
+		'p_maxhp' => $p_maxhp,
 		'p_mental' => $p_mental,
 		'p_stat1' => $p_stat1,
 		'p_stat2' => $p_stat2,
@@ -71,7 +75,7 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 		'p_stat4' => $p_stat4,
 		'p_stat5' => $p_stat5,
 		'p_stat6' => $p_stat6,
-
+		// 몬스터 정보
 		'm_name' => $m_name,
 		'm_image' => $m_image,
 		'm_sound_start' => $m_sound_start,
@@ -80,7 +84,9 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 		'm_location' => $m_location,
 		'm_hp' => $m_hp,
 		'm_type' => $m_type,
-		'm_resource' => $m_resource
+		'm_resource' => $m_resource,
+		'm_exp' => $m_exp,
+		'm_ruby' => $m_ruby
 	));
 
 	// 몬스터 스탯 배분
@@ -109,14 +115,15 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 				'stat4' => $m_stat[3], 
 				'stat5' => $m_stat[4], 
 				'stat6' => $m_stat[5],
-				'exp' => $m_exp
+				'exp' => $m_exp,
+				'ruby' => $m_ruby
 			);
 
 			$def = array(
 				'isplayer' => true,
 				'name' => $p_name,
 				'level' => $p_level,
-				'maxhp' => $p_hp,
+				'maxhp' => $p_maxhp,
 				'curhp' => $p_hp,
 				'stat1' => $p_stat1, 
 				'stat2' => $p_stat2, 
@@ -154,7 +161,6 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 		}
 		else
 		{
-			// 맞음
 			$dmg = $att['stat1'] * rand(4, 6);
 			$crit = false;
 
@@ -167,13 +173,16 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 			
 			$snd = "./sounds/claw_strike1.wav";
 			$msg = $msg . '/' . ($crit ? '3' : '1') . '공격 성공! ' . josa($def_name, '은', '는') . ' ' . $dmg . '의 피해를 입었습니다!' . ($crit ? ' (강타!)' : '');
-			
+		}
+
+		if( $dmg )
+		{
 			$def_curhp -= $dmg;
 			$def['curhp'] = $def_curhp;
 
 			if( $def_curhp < 1 )
 			{
-				$def_curhp = 0;
+				$def_curhp = 1;
 				$def['curhp'] = $def_curhp;
 
 				// 죽음 처리
@@ -182,13 +191,25 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 
 				if( $def['isplayer'] )
 				{
-					// 자원뺏김
+					$exp = 0;
+					$ruby = 0;
+					$hp = 1;
 				}
 				else
 				{
 					// 경험치 획득
-					$msg= $msg . '/2' . josa($att_name, '은', '는') . ' 보상으로 ' . $def['exp'] . '의 경험치를 획득하였습니다!';
+					$exp = $def['exp'];
+					$msg= $msg . '/3' . josa($att_name, '은', '는') . ' 보상으로 ' . $exp . '의 경험치를 획득하였습니다!';
+
+					// 루비 획득
+					$ruby = $def['ruby'];
+					$msg= $msg . '/3' . josa($att_name, '은', '는') . ' 보상으로 ' . $ruby . '의 루비를 획득하였습니다!';
+
+					$hp = $att['curhp'];
 				}
+
+				$sql = "INSERT INTO battlelog_queue ( id, exp, ruby, hp ) VALUES ( '$id', '$exp', '$ruby', '$hp' ) ON DUPLICATE KEY UPDATE exp = '$exp', ruby = '$ruby', hp = '$hp';";
+				$mysqli->query($sql);
 			}
 		}
 

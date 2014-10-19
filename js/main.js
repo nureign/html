@@ -60,6 +60,7 @@ function RefreshStatus()
 		},
 		success: function(data) {
 			UpdateStatus(data);
+			setTimeout(function(){RefreshStatus();}, 5000);
 		}
 	});
 }
@@ -73,6 +74,7 @@ function UpdateStatus(data)
 	var level = parseInt(parsed['level']);
 	var	tendency = parsed['tendency'];
 	var hp = parseInt(parsed['hp']);
+	var maxhp = parseInt(parsed['maxhp']);
 	var mental = parseInt(parsed['mental']);
 	var exp = parseInt(parsed['exp']);
 	var stat1 = parseInt(parsed['stat1']);
@@ -99,8 +101,7 @@ function UpdateStatus(data)
 
 	var NextLevel = CurLevel + 1;
 
-	var MaxHP = CurLevel * 100;
-	var PerHP = Math.floor(CurHP / MaxHP * 100);
+	var PerHP = Math.floor(hp / maxhp * 100);
 
 	var MaxMental = CurLevel * 100;
 	var PerMental = Math.floor(CurMental / MaxMental * 100);
@@ -111,7 +112,7 @@ function UpdateStatus(data)
 	$('#name').text(name);
 	$('#intro').text(intro);
 	$('#level').text(classn + '(Lv.'+ level +')');
-	$('#hp_text').text(hp + ' / ' + MaxHP);
+	$('#hp_text').text(hp + ' / ' + maxhp);
 	$('#hp_per').text(PerHP + '%');
 	$('#hp_per').attr('style', 'width: ' + PerHP + '%;');
 	$('#mental_text').text(mental + ' / ' + MaxMental);

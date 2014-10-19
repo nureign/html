@@ -52,8 +52,8 @@
     <br />
     
 <div class="row" align="center">
-  <div class="col-xs-2"></div>
-  <div class="col-xs-8">
+  <div class="col-xs-1"></div>
+  <div class="col-xs-10">
   <table class="table table-condensed width center">
   	<tr>
     	<td width="400px">
@@ -101,7 +101,7 @@
 	</table>
 	</div>
 
-  <div class="col-xs-2"></div>
+  <div class="col-xs-1"></div>
 </div>    
     
 <?
