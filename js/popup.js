@@ -6,9 +6,9 @@ $('.open-popup-link').magnificPopup({
 
 // Example: 2 Dynamically created
 
-$('button').magnificPopup({
+$('buttonss').magnificPopup({
   items: {
-      src: '<div class="white-popup">Dynamically created popup</div>',
+      src: '<div class="white-popup">Shit</div>',
       type: 'inline'
   },
   closeBtnInside: true

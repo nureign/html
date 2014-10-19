@@ -35,6 +35,7 @@
                     <li class="center"><a href="javascript:;" id="charactermarket">전통시장</a></li>
                     <li class="center"><a href="javascript:;" id="basemarket">베이스시장</a></li>
                     <li class="center"><a href="javascript:;">함선시장</a></li>
+                    <li class="cemter"><a href="javascript:;">자원거래소</a></li>
                     <li class="divider"></li>
                     <li class="center"><a href="javascript:;">블랙마켓</a></li>
                     <li class="center"><a href="javascript:;">경매장</a></li>
@@ -47,15 +48,15 @@
             <a href="./mybase.php"><button type="button" class="btn btn-default">기지관리</button></a>
             <button type="button" class="btn btn-default">연구소</button>
             <a href="./quest.php"><button type="button" class="btn btn-default">퀘스트</button></a>
-            <button type="button" class="btn btn-default">고블린은행</button>
+            <a href="./bank.php"><button type="button" class="btn btn-default">고블린은행</button></a>
             <button type="button" class="btn btn-default">진급</button>
             <!-- 일반 버튼 닫기 -->
             <!-- 모험하기 -->
             <div class="btn-group">
                 <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">모험하기<span class="caret"></span></button>
                 <ul class="dropdown-menu" role="menu">
-                    <li class="center"><a href="#">알려진 블랙홀</a></li>
-                    <li class="center"><a href="#">지구로 귀환</a></li>
+                    <li class="center"><a href="javascript:;">알려진 블랙홀</a></li>
+                    <li class="center"><a href="javascript:;">지구로 귀환</a></li>
                 </ul>
             </div>
             <!-- 모험하기 닫기 -->
@@ -250,6 +251,7 @@
     <!-- 가운데 중심 닫기 -->
     <div class="col-xs-1"><!--여백--></div>
 </div>
+
 	<?
 		include_once "./common/footer.php";
 	?>
