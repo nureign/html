@@ -7,10 +7,11 @@
 	include_once "./common/nav.php";
 	include_once "./common/db_conn.php";
 
-	$id = $_POST['id'];
+/*	$id = $_POST['id'];
 
 	if( !isset($id) )
 		exit;
+*/
 ?>
 <!-- 로우 전체 시작 -->
 <div class="row" align="center">
@@ -55,6 +56,24 @@
 	<div class="tab-pane fade in active width" id="status_inven">
     <div class="panel panel-default" style="width:1000px">
       <div class="panel-body">
+      	<!-- 케릭터 소개말 추가 -->
+		<table class="table table-condensed width center">
+        	<tr style="background-color:#FEE;">
+            	<td><strong>케릭터 소개말 바꾸기</strong></td>
+            </tr>
+            <tr>
+				<td><br  />
+                	<div class="form-group has-success">
+                    <Form class="form-inline" role="form" method="post" action="javascript:;">
+					<label class="control-label" for="inputSuccess1">소개말 상태 / 변경</label>&nbsp;
+                	<textarea class="form-control" rows="2" id="introduce" style="width:500px;">현재 소개말이 여기에 적히고 변경 버튼 누르면 바뀜!</textarea>
+                    &nbsp;<button type="submit" class="btn btn-default">소개말 변경</button>
+                    </Form>
+                    </div>
+                </td>
+            </tr>
+         </table>
+        <!-- 케릭터 소개말 닫기 -->
       	<!-- 종합스텟 -->
         <table class="table table-condensed width center">
         	<tr class="info">
