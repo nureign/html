@@ -44,12 +44,12 @@
             </div>
             <!-- 마켓 버튼 닫기 -->
             <!-- 일반 버튼 -->
-            <button type="button" class="btn btn-default" id="privateroom">개인룸</button>
+            <a href="./privateroom.php"><button type="button" class="btn btn-default" id="privateroom">개인룸</button></a>
             <a href="./mybase.php"><button type="button" class="btn btn-default">기지관리</button></a>
-            <button type="button" class="btn btn-default">연구소</button>
+            <a href="./lab.php"><button type="button" class="btn btn-default">연구소</button></a>
             <a href="./quest.php"><button type="button" class="btn btn-default">퀘스트</button></a>
             <a href="./bank.php"><button type="button" class="btn btn-default">고블린은행</button></a>
-            <button type="button" class="btn btn-default">진급</button>
+            <a href="./promotion.php"><button type="button" class="btn btn-default">진급</button></a>
             <!-- 일반 버튼 닫기 -->
             <!-- 모험하기 -->
             <div class="btn-group">
