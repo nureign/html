@@ -1,70 +1,88 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
- 
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>The Chef Webgame</title>
-    <link rel="stylesheet" href="./css/bootstrap.css" type="text/css" media="screen" title="no title" />
-    <link rel="stylesheet" href="./css/font-awesome.css" type="text/css" media="screen" title="no title" /> 
-     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="js/bootstrap.js"></script> 
-        <!-- Custom styles for this template -->
-    <link href="navbar-static-top.css" rel="stylesheet">
-</head>
-
 <?
+	/*
+		worldview.php
+	*/
+	
+	include_once "./common/header.php";
 	include_once "./common/nav.php";
 ?>
 
+<style type="text/css">
+body {
 
-    <div class="bs-example bs-example-tabs">
-      <ul id="myTab" class="nav nav-tabs">
-        <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
-        <li><a href="#profile" data-toggle="tab">Profile</a></li>
-        <li class="dropdown">
-          <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
-            <li><a href="#dropdown1" tabindex="-1" data-toggle="tab">@fat</a></li>
-            <li><a href="#dropdown2" tabindex="-1" data-toggle="tab">@mdo</a></li>
-          </ul>
-        </li>
-      </ul>
-      <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade in active" id="home">
-          <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
-        </div>
-        <div class="tab-pane fade" id="profile">
-          <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
-        </div>
-        <div class="tab-pane fade" id="dropdown1">
-          <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-        </div>
-        <div class="tab-pane fade" id="dropdown2">
-          <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
-        </div>
-      </div>
-    </div>
+	background-image: url(images/bgleft.gif), url(images/bgright.gif); 
+	background-repeat: repeat-y; 
+	background-position: top left, top right; 
+}
+</style>
 
+<!-- 로우 전체 시작 -->
+<div class="row" align="center">
+	<div class="col-xs-1"><!--여백--></div>
 
+    <!-- 세계관 시작 -->
+	<div class="col-xs-10">
 
-      <!-- FOOTER -->
-      <footer><br /><br />
-        <p align="center">&copy; 2014 The Chef Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-      </footer>
+	<table class="table width center">
+    	<tr>
+        	<td>
+            <div class="alert" role="alert" style="background-color:#6C6C6C;"><font color="#FFFFFF" size="+3">세계관</font></div>
+       		</td>
+    	<tr>
+			<td>
+            <img src="./images/worldview_0.jpg" alt="..." width="700px" height="288px">
+			</td>
+        </tr>
+        <tr>
+        	<td align="left" style="padding-left:30px;">
+            	<font size="+3">인</font><font size="+2">류</font><font size="+1">의 자원이</font><br />
+                고갈되어가던 시기인 2050년, 각국의 과학자들의 비단한 노력 끝에 완성된 차원워프기술을 개발하여
+                인류는 자원을 얻기 위해 태양계 밖을 이동하기 시작하였다. 직접 탐사를 통해 여러군데 자원을 얻을 수 있는 행성을
+                발견하였고, 인류는 그러한 곳에 기지를 건설하여 자체적인 자원 이동 시스템을 정착시키고 있었다.
+                다만, 인류가 전혀 생각치도 못한 일들이 벌어졌는데, 드 넓은 우주에 존재하는 또다른 생명체와의 조우가 발단이 되었다.
+                알파프로틴이라고 불리우는 생명과학분야의 연구팀이 지구로부터 1만광년 떨어진 행성에서 자원탐사연구팀으로 연구를
+                진행하고 있던 도중 만나게 되었다. 그동안 아무런 생명체와의 조우는 없었고, 미시적 관점에서 존재하는 소규모 박테리아급
+                정도만 만나고 있었지만, 실제로 판타지 소설에서나 나올법한 생명체를 만나게 될줄 몰랐던 것이다.
+                그들은 어느정도 생명체가 호의적이라고 판단하여 친근하게 접근해보았다. 생긴것으로 봐서는 파란색 피부와 검정색 보석과도
+                같은 큰 눈을 가지고 있었다. 연구팀에서 노벨상을 수상한 연구팀장이 직접 생명체를 살펴보려고 다가가는 순간
+                알 수 없는 굉음과 함께 팀장이 피를 흘리며 그자리에서 쓰러졌다. 연구팀 막내는 그장면을 보자마자 베이스캠프로 도망갔고
+                긴급조난신호를 송출하면서 간단하게 메시지를 보냈다. 우리가 살아 남을지는 모르겠으나, 그들은 적어도 호의적이지 않다고.
+            </td>
+        </tr>
+        <tr>
+        	<td align="left" style="padding-left:30px;">
+            	<font size="+3">그</font><font size="+2">로</font><font size="+1">부터 5년이 지난 후...</font><br />
+                지구에서 태어나 어린 나이에 최연소로 자원탐사분야에 재능을 인정받아 인류의 행성자원의 최전방 전초기지인 웰프로 행성으로
+                이동하게 된 이란성 쌍둥이인 글랜, 애니가 이동한다. 웰프로 행성의 사령관은 외계행성의 외계인과의 전쟁으로 많은 우수한
+                연구원 자원들을 잃어버리게 되었고, 그에 따라 인류 전체에 생기는 막대한 피해를 고스란히 감수하고 있었다.
+                이런 와중에 이란성 쌍둥이인 글랜과 애니이 실전 경험이 부족하지만 부족한 인력을 충당하기 위해 사령관의 명령으로
+                비교적 안전하다고 판단되는 갤슈아 행성으로 가서 간단하게 자원을 분류하고 채집해오는 미션을 받게 된다.
+                갤슈아 행성은 사막화가 다소 이루어진 장소긴 하지만 인류가 숨을 쉴수가 있고, 살아가는데 크게 지장이 없는 장소이다.
+                많은 과학자들이 갤슈아 행성을 발견했을 당시 큰 기대감을 안고 있었는데, 몇차례 정찰을 한 끝에 외계인들의 흔적이 없다고
+                판단하였다. 갤슈아 행성으로 가게된 글랜과 애니는 자신이 가지고 있는 재능을 힘껏 발휘하여 광물 채집에 성공하지만,
+                그곳에 잠복해 있던 외계인들의 갑작스러운 기습에 무장군인들을 죽이고, 심지어 이란성 쌍둥이 중에 한명을 납치해 갔다.
+                왜 그들은 무장군인은 죽이면서 그동안 한번도 보여주지 않았던 인간 납치를 행했는지는 이해가 되지 않는다.
+                그중 살아남은 쌍둥이 한명은 다시금 웰프로 행성의 기지로 오게 되었고, 사정을 들은 사령관은 비록 경험이 적지만
+                납치해간 그들의 의중과 살아남아있기를 바라는 희망으로 납치된 쌍둥이 한명을 되찾기 위해 작은 행성의 기지를 주게 된다.
+                여러분들은 이제, 살아남은 쌍둥이 한명이 되어, 납치해간 외계인들을 섬멸하고, 그들의 의중을 파악하여 납치된 쌍둥이를 되찾는것이 목적이다.
+                더 강해져라! 그리고 살아남아라! 인류의 자원을 위해, 납치된 쌍둥이를 되찾기 위해!
+            </td>
+        </tr>
+        <tr>
+        	<td><br /><img src="./images/worldview_1.jpg" alt="..." width="700px" height="300px">
+			</td>
+        </tr>
+    </table>
+	</div>
+    <!-- 세계관 닫기 -->
 
-    </div><!-- /.container -->
+	<div class="col-xs-1"><!-- 공백 --></div>
+</div>
+<!-- 로우 전체 닫기 -->
+</div></div>
+	<?
+		include_once "./common/footer.php";
+	?>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
   </body>
 </html>
