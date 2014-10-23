@@ -35,7 +35,7 @@
                     <li class="center"><a href="javascript:;" id="charactermarket">전통시장</a></li>
                     <li class="center"><a href="javascript:;" id="basemarket">베이스시장</a></li>
                     <li class="center"><a href="javascript:;">함선시장</a></li>
-                    <li class="cemter"><a href="javascript:;">자원거래소</a></li>
+                    <li class="center"><a href="./resourcetrade.php">자원거래소</a></li>
                     <li class="divider"></li>
                     <li class="center"><a href="javascript:;">블랙마켓</a></li>
                     <li class="center"><a href="javascript:;">경매장</a></li>
