@@ -1,6 +1,12 @@
       <!-- FOOTER -->
       <footer>
-        <p align="center">&copy; 2014 Estrella Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      	<table align="center">
+        	<tr>
+            	<td width="200px"><p align="center">&copy; 2014 Estrella Company, Inc. <br />&middot; <a href="#">Privacy</a> &middot; <a href="#">Terms&middot;&nbsp;</a></p></td>
+                <td width="50px"></td>
+				<td><img src="./images/footer_grade.gif"></td>
+            </tr>
+        </table>
       </footer>
 
     <!-- Bootstrap core JavaScript
