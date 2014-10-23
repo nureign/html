@@ -37,7 +37,7 @@
 
 	<!-- 현재 자원 시세 -->
 	<div class="alert width center" role="alert" style="background-color:#CCC;">
-    	<strong><h4><font color="white">현재 자원 시세</font></h4></strong>
+    	<strong><h4>현재 자원 시세</h4></strong>
         <table class="table center" style="width:940px;">
         	<tr class="center" style="background-color:#F2F2F2;">
             	<td>철</td>
@@ -57,7 +57,7 @@
 			</tr>
          </table>
          
-        <strong><h4><font color="white">현재 소지중인 자원량</font></h4></strong>
+        <strong><h4>현재 소지중인 자원량</h4></strong>
         <table class="table center" style="width:940px;">
         	<tr class="center" style="background-color:#F2F2F2;">
             	<td>철</td>
