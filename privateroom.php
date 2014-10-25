@@ -6,12 +6,7 @@
 	include_once "./common/header.php";
 	include_once "./common/nav.php";
 	include_once "./common/db_conn.php";
-
-/*	$id = $_POST['id'];
-
-	if( !isset($id) )
-		exit;
-*/
+	include_once "./logic/privateroom_initial.php";
 ?>
 <!-- 로우 전체 시작 -->
 <div class="row" align="center">
@@ -30,7 +25,7 @@
             	<td class="right" width="300px"><img src="./images/privateroom_assi.jpg" alt="..." width="250px" height="200px"></td>
                 <td align="left">
                 	<h4 align="center">개인룸 비서</h4><br />
-					환영합니다! [이름] 님! 저는 당신의 업무를 도와드리는 충실한 비서입니다. <br />
+					환영합니다! <?=$name?>님! 저는 당신의 업무를 도와드리는 충실한 비서입니다. <br />
                     이곳에서 주인님이 보기 편하도록 종합현황 데이터를 제공하고 있습니다.<br />
                     이곳저곳에서 수집하고 계신 아이템 현황도 보기 쉽게 인벤토리에 넣어놓았습니다.<br />
                     구매를 하실 때 마다 제가 물건을 가질러 오지만 기쁜마음으로 일을 하고 있습니다.<br />
@@ -66,8 +61,8 @@
                 	<div class="form-group has-success">
                     <Form class="form-inline" role="form" method="post" action="javascript:;">
 					<label class="control-label" for="inputSuccess1">소개말 상태 / 변경</label>&nbsp;
-                	<textarea class="form-control" rows="2" id="introduce" style="width:500px;">현재 소개말이 여기에 적히고 변경 버튼 누르면 바뀜!</textarea>
-                    &nbsp;<button type="submit" class="btn btn-default">소개말 변경</button>
+                	<textarea class="form-control" rows="2" style="width:500px;" id="intro"><?=$intro?></textarea>
+                    &nbsp;<button type="submit" class="btn btn-default" id="changeintro">소개말 변경</button>
                     </Form>
                     </div>
                 </td>
@@ -97,19 +92,19 @@
             </tr>
             <tr>
             	<td class="warning">근력</td>
-                <td>10 (+5)</td>
+                <td><?=$stat1?> (+5)</td>
                 <td class="warning">민첩</td>
-                <td>10 (+3)</td>
+                <td><?=$stat2?> (+3)</td>
                 <td class="warning">지력</td>
-                <td>5 (+0)</td>
+                <td><?=$stat3?> (+0)</td>
             </tr>
             <tr>
             	<td class="warning">예지력</td>
-                <td>3 (+0)</td>
+                <td><?=$stat4?> (+0)</td>
                 <td class="warning">행운</td>
-                <td>10 (+330)</td>
+                <td><?=$stat5?> (+330)</td>
                 <td class="warning">매력</td>
-                <td>20 (+5)</td>
+                <td><?=$stat6?> (+5)</td>
             </tr>
          </table>
         <!-- 종합스텟 닫기 -->
@@ -120,19 +115,19 @@
             </tr>
             <tr>
             	<td class="warning" width="40px">왼손</td>
-                <td width="60px">왼손개틀링</td>
+                <td width="60px" id="lefthand"><?=$lefthand?></td>
                 <td class="warning" width="40px">오른손</td>
-                <td width="60px">엘리온런처</td>
+                <td width="60px" id="righthand"><?=$righthand?></td>
                 <td class="warning" width="40px">상의</td>
-                <td width="60px">빠다코코넛 티셔츠</td>
+                <td width="60px" id="top"><?=$top?></td>
                 <td class="warning" width="40px">하의</td>
-                <td width="60px">줄무늬핑크팬티</td>
+                <td width="60px" id="pants"><?=$pants?></td>
             </tr>
             <tr>
             	<td class="warning" width="40px">신발</td>
-                <td width="60px">황금플레이트 신발</td>
+                <td width="60px" id="shoes"><?=$shoes?></td>
                 <td class="warning" width="40px">악세사리</td>
-                <td width="60px">붉은용의 목걸이</td>
+                <td width="60px" id="accessory"><?=$accessory?></td>
                 <td style="background-color:#EAFEBA" width="40px">특수아이템1</td>
                 <td width="60px"><strong>의문의 넥클레스</strong></td>
                 <td style="background-color:#EAFEBA" width="40px">특수아이템2</td>
@@ -303,6 +298,7 @@
 	<?
 		include_once "./common/footer.php";
 	?>
+	<script src="js/privateroom.js"></script>
 
   </body>
 </html>

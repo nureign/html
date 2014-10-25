@@ -6,7 +6,7 @@
 	include_once "./common/header.php";
 	include_once "./common/nav.php";
 	include_once "./common/db_conn.php";
-
+	include_once "./logic/bank_initial.php";
 ?>
 <!-- 로우 전체 시작 -->
 <div class="row" align="center">
@@ -52,7 +52,7 @@
       	<!-- 입출금 영역 -->
         <table class="table center" style="width:930px;">
         	<tr>
-            	<td colspan="4"><strong>모에모에님의 개인루비통장 현황입니다.</strong><br />현재 소유중인 루비 : 1000</td>
+            	<td colspan="4"><strong><?=$name?>님의 개인루비통장 현황입니다.</strong><br />현재 소유중인 루비 : <?=$ruby?><br />은행에 맡긴 루비 : <?=$bank?></td>
             </tr>
             <tr>
             	<td class="success" colspan="2">입금</td>
@@ -65,40 +65,29 @@
                 <td colspan="2" align="left" style="padding-left:100px;">출금내역서</td>
             </tr>
             <tr>
-            	<td colspan="2" align="left" style="padding-left:100px;">
-                	14-10-19 08:30 100,000 루비 입금<br />
-                    14-10-19 08:53 500 루비 입금<br />
-                    14-10-19 11:20 1,000 루비 입금<br />
-                    14-10-19 12:44 200 루비 입금<br />
-                    14-10-19 15:10 50 루비 입금
+            	<td colspan="2" align="left" style="padding-left:100px;" id="depositlist">
+			<?		for($i=0; $i<count($deposit); $i++)
+						echo '[' . $deposit[$i]['date'] . '] ' . $deposit[$i]['amount'] . ' 루비 입금<br>';	?>
                 </td>
-                <td></td>
-                <td colspan="2" align="left" style="padding-left:100px;">
-                	14-10-19 08:32 80,000 루비 출금<br />
-                    14-10-19 08:59 1,000 루비 출금<br />
-                    14-10-19 11:22 <strong>전산오류</strong>세금 50%<br />
-                    14-10-19 13:00 1,000 루비 출금<br />
-                    14-10-19 16:00 100 루비 출금
+                <td colspan="2" align="left" style="padding-left:100px;" id="withdrawlist">
+			<?		for($i=0; $i<count($withdraw); $i++)
+						echo '[' . $withdraw[$i]['date'] . '] ' . $withdraw[$i]['amount'] . ' 루비 출금' . ( ($withdraw[$i]['type'] == '전산오류') ? ' <b>전산오류</b>' : '' ) . '<br>';	?>
                 </td>
             </tr>
             <tr>
             	<td colspan="2">
                     <div class="form-group has-success">
-                    <Form class="form-inline" role="form" method="post" action="javascript:;">
                       <label class="control-label" for="inputSuccess1">입금할 루비량&nbsp;</label>
                       <input type="text" class="form-control" id="rubyin">
-                      <button type="submit" class="btn btn-success">루비 입금</button>
-                    </Form>
+                      <button type="button" class="btn btn-success" id="deposit">루비 입금</button>
                     </div>
                 </td>
                 <td></td>
                 <td colspan="2">
                     <div class="form-group has-error">
-                    <Form class="form-inline" role="form" method="post" action="javascript:;">
                       <label class="control-label" for="inputSuccess1">출금할 루비량&nbsp;</label>
                       <input type="text" class="form-control" id="rubyout">
-                      <button type="submit" class="btn btn-danger">루비 출금</button>
-                    </Form>
+                      <button type="button" class="btn btn-danger" id="withdraw">루비 출금</button>
                     </div>
                 </td>
             </tr>
@@ -112,34 +101,33 @@
             </tr>
             <tr>
             	<td><span class="glyphicon glyphicon-thumbs-up"></span></td>
-				<td>케릭터명</td>
-                <td>소개말</td>
-                <td>루비량</td>
+				<td><?=$deposit_top5[0]['name']?></td>
+                <td><?=$deposit_top5[0]['intro']?></td>
+                <td><?=$deposit_top5[0]['bank']?></td>
             </tr>
             <tr>
             	<td>2위</td>
-				<td>케릭터명</td>
-                <td>소개말</td>
-                <td>루비량</td>
+				<td><?=$deposit_top5[1]['name']?></td>
+                <td><?=$deposit_top5[1]['intro']?></td>
+                <td><?=$deposit_top5[1]['bank']?></td>
             </tr>
             <tr>
             	<td>3위</td>
-				<td>케릭터명</td>
-                <td>소개말</td>
-                <td>루비량</td>
+				<td><?=$deposit_top5[2]['name']?></td>
+                <td><?=$deposit_top5[2]['intro']?></td>
+                <td><?=$deposit_top5[2]['bank']?></td>
             </tr>
             <tr>
             	<td>4위</td>
-				<td>케릭터명</td>
-                <td>소개말</td>
-                <td>루비량</td>
+				<td><?=$deposit_top5[3]['name']?></td>
+                <td><?=$deposit_top5[3]['intro']?></td>
+                <td><?=$deposit_top5[3]['bank']?></td>
             </tr>
             <tr>
             	<td>5위</td>
-				<td>케릭터명</td>
-                <td>소개말</td>
-                <td>루비량</td>
-
+				<td><?=$deposit_top5[4]['name']?></td>
+                <td><?=$deposit_top5[4]['intro']?></td>
+                <td><?=$deposit_top5[4]['bank']?></td>
             </tr>
         </table>
         <!-- 루비 부자 상위 5명 닫기 -->
@@ -151,33 +139,33 @@
             </tr>
             <tr>
             	<td><span class="glyphicon glyphicon-thumbs-up"></span></td>
-				<td>케릭터명</td>
-                <td>소개말</td>
-                <td>걸린횟수</td>
+				<td><?=$withdraw_top5[0]['name']?></td>
+                <td><?=$withdraw_top5[0]['intro']?></td>
+                <td><?=$withdraw_top5[0]['bank']?></td>
             </tr>
             <tr>
             	<td>2위</td>
-				<td>케릭터명</td>
-                <td>소개말</td>
-                <td>걸린횟수</td>
+				<td><?=$withdraw_top5[1]['name']?></td>
+                <td><?=$withdraw_top5[1]['intro']?></td>
+                <td><?=$withdraw_top5[1]['bank']?></td>
             </tr>
             <tr>
             	<td>3위</td>
-				<td>케릭터명</td>
-                <td>소개말</td>
-                <td>걸린횟수</td>
+				<td><?=$withdraw_top5[2]['name']?></td>
+                <td><?=$withdraw_top5[2]['intro']?></td>
+                <td><?=$withdraw_top5[2]['bank']?></td>
             </tr>
             <tr>
             	<td>4위</td>
-				<td>케릭터명</td>
-                <td>소개말</td>
-                <td>걸린횟수</td>
+				<td><?=$withdraw_top5[3]['name']?></td>
+                <td><?=$withdraw_top5[3]['intro']?></td>
+                <td><?=$withdraw_top5[3]['bank']?></td>
             </tr>
             <tr>
             	<td>5위</td>
-				<td>케릭터명</td>
-                <td>소개말</td>
-                <td>걸린횟수</td>
+				<td><?=$withdraw_top5[4]['name']?></td>
+                <td><?=$withdraw_top5[4]['intro']?></td>
+                <td><?=$withdraw_top5[4]['bank']?></td>
             </tr>
         </table>
         <!-- 전산오류 자주 걸린 상위 5명 닫기 -->
@@ -195,6 +183,6 @@
 	<?
 		include_once "./common/footer.php";
 	?>
-
+	<script src="js/bank.js"></script>
   </body>
 </html>

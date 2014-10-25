@@ -6,6 +6,7 @@
 	include_once "./common/header.php";
 	include_once "./common/nav.php";
 	include_once "./common/db_conn.php";
+	include_once "./logic/grocerymarket_initial.php";
 ?>
 
 <!-- 윗 상단 로우 전체 시작 -->
@@ -43,12 +44,7 @@
                 </tr>
                 
 <?
-	$id = $_POST['id'];
-	
-	if( !isset($id) )
-		exit;
-	
-	$result = $mysqli->query("SELECT * FROM `grocery_item` WHERE type = 'recovery' AND `level` = (SELECT level FROM project_members WHERE id = $id);");
+	$result = $mysqli->query("SELECT * FROM grocery_item WHERE type = 'recovery' AND level = (SELECT level FROM project_members WHERE id = '$id');") or trigger_error($mysqli->error.$sql);
 	
 	while ($showme = $result->fetch_array())
 	{
@@ -116,7 +112,7 @@
                 </tr>
                 
 <?
-	$result = $mysqli->query("SELECT * FROM `grocery_item` WHERE type = 'buff' AND `level` = (SELECT level FROM project_members WHERE id = $id);");
+	$result = $mysqli->query("SELECT * FROM grocery_item WHERE type = 'buff' AND level = (SELECT level FROM project_members WHERE id = $id);");
 	
 	while ($showme = $result->fetch_array())
 	{
@@ -183,7 +179,7 @@
                 </tr>
                 
 <?
-	$result = $mysqli->query("SELECT * FROM `grocery_item` WHERE type = 'grocery' AND `level` = (SELECT level FROM project_members WHERE id = $id);");
+	$result = $mysqli->query("SELECT * FROM grocery_item WHERE type = 'grocery' AND level = (SELECT level FROM project_members WHERE id = $id);");
 	
 	while ($showme = $result->fetch_array())
 	{
