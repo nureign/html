@@ -24,9 +24,9 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">특징<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">자원</a></li>
-                <li><a href="#">모험</a></li>
-                <li><a href="#">퀘스트</a></li>
+                <li><a href="./resource.php">자원</a></li>
+                <li><a href="./adventure_index.php">모험</a></li>
+                <li><a href="./quest_index.php">퀘스트</a></li>
                 <li class="divider"></li>
                 <li class="dropdown-header">스폐셜</li>
                 <li><a href="#">이벤트</a></li>
