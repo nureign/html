@@ -17,7 +17,6 @@
 		echo ("<div align='center'>로그인을 하시기 바랍니다.</div>");
 		exit;
 	}
-*
 
 
 ?>
