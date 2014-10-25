@@ -6,19 +6,6 @@
 	include_once "./common/header.php";
 	include_once "./common/db_conn.php";
 
-	@session_start();
-	
-	$id = $_SESSION['id'];
-
-
-
-	if( !isset($id) )
-	{
-		echo ("<div align='center'>로그인을 하시기 바랍니다.</div>");
-		exit;
-	}
-
-
 ?>
 	<h2 style="margin-left:300px;">에스트렐라 공지 / 업데이트</h2>
 <?   

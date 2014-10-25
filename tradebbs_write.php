@@ -7,27 +7,15 @@
 	include_once "./common/nav.php";
 	include_once "./common/db_conn.php";
 
-/*	$id = $_POST['id'];
+	@session_start();
+	
+	$id = $_SESSION['id'];
 
 	if( !isset($id) )
+	{
+		echo ("<div align='center'>로그인을 하시기 바랍니다.</div>");
 		exit;
-*/
-
-
-/*
-	로그인이 되어 있지 않은지 반드시 체크해야 함
-	
-	로그인이 되어 있지 않은지 반드시 체크해야 함
-	
-	로그인이 되어 있지 않은지 반드시 체크해야 함
-	
-	로그인이 되어 있지 않은지 반드시 체크해야 함
-	
-	로그인이 되어 있지 않은지 반드시 체크해야 함
-	
-	로그인이 되어 있지 않은지 반드시 체크해야 함
-	
-	- 비회원은 읽기 쓰기 모두 못하게....
+	}
 	
 */
 

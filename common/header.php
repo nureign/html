@@ -24,5 +24,16 @@
     var message = "차후 업데이트 될 컨텐츠 입니다.";
     alert(message);
 	}
+	
+	function message_secure(){
+    var message = "보안설정 OTP는 곧 출시됩니다.";
+    alert(message);
+	}
+	
+	function message_event(){
+    var message = "신규 이벤트는 14년 11월 11일에 공개합니다!";
+    alert(message);
+	}
 	</script>
+    
 </head>

@@ -29,8 +29,8 @@
           <div class="container">
             <div class="carousel-caption">
               <h1>새로운 신규 이벤트!</h1>
-              <p>신규회원의 특전을 진행합니다.<br />매일 오후8시부터 10시동안 펼쳐지는 2시간 경험치 이벤트!<br />20% 경험치가 빠르게 오르기 때문에 순위권을 노려보는 사용자들에게 최고의 선물!<br />자세한 사항은 공지사항을 참고하세요!</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">이벤트 확인하기</a></p>
+              <p>신규회원의 특전을 진행합니다.<br />매일 오후8시부터 10시동안 펼쳐지는 2시간 경험치 이벤트!<br />20% 경험치가 빠르게 오르기 때문에 순위권을 노려보는 사용자들에게 최고의 선물!<br />14년 11월 11일에 시행합니다! 자세한 사항은 차후 올라오는 공지사항을 확인하세요!</p>
+              <p><a class="btn btn-lg btn-primary" href="#" onClick="message_event()" role="button">이벤트 확인하기</a></p>
             </div>
           </div>
         </div>
@@ -40,7 +40,7 @@
             <div class="carousel-caption">
               <h1>계정을 안전하게 지키는 방법!</h1>
               <p>에스트렐라 코리아에서는 절대로 운영자가 유저분들의 비밀번호를 요구하지 않습니다.<br />보다 더 안전한 방법을 위해 조만간 제공될 OTP 기능을 사용할 수 있도록 준비중에 있습니다.<br />자세한 사항은 별도의 공지사항을 참고해주시기 바랍니다!</p>
-              <p><a class="btn btn-lg btn-primary" href="#" role="button">보안센터로 이동</a></p>
+              <p><a class="btn btn-lg btn-primary" href="#" onClick="message_secure()" role="button">보안센터로 이동</a></p>
             </div>
           </div>
         </div>

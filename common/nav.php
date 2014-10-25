@@ -46,7 +46,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">설정<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#" onClick="message()">내정보</a></li>
-                <li><a href="#" onClick="message()">보안설정</a></li>
+                <li><a href="#" onClick="message_secure()">보안설정</a></li>
               </ul>
             </li>
             <li><a href="./" onClick="message()">도움말</a></li>
