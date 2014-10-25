@@ -1,4 +1,8 @@
 <?
+	/*
+		에스트렐라에 사용된 모든 소스코드는 저작권의 보호를 받습니다.
+		제작자 : 김종원, 이상국
+	*/
 	include_once "./common/header.php";
 	include_once "./common/nav.php";
 	include_once "./common/db_conn.php";

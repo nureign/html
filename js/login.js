@@ -38,19 +38,19 @@ function Login()
 	
 	if( !IsValidEmail(email.val()) )
 	{
-		alert('로그인 실패');
+		alert('이메일 주소가 틀렸습니다.');
 		return;
 	}
 
 	if( password.val().length < 8 )
 	{
-		alert('로그인 실패');
+		alert('패스워드를 다시 확인해주세요.');
 		return;
 	}
 	
 	if( password.val().search(/[0-9]/g) < 0 || password.val().search(/[a-z]/ig) < 0 )
 	{
-		alert('로그인 실패');
+		alert('패스워드를 다시 확인해주세요.');
 		return;
 	}
 
