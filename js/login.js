@@ -63,19 +63,16 @@ function Login()
 			password: password.val()
 		},
 		success: function(data) {
-			var parsed = JSON.parse(data);
-			
-			if( parsed['email'] == email.val() )
-			{
-				sessionStorage.removeItem('id');
-				sessionStorage.setItem('id', parsed['id']);
-				location.href = './main.php';
-			}
-			else
+			if( data == 'failed' )
 			{
 				alert('로그인에 실패했습니다.');
 			}
-
+			else
+			{
+				sessionStorage.removeItem('id');
+				sessionStorage.setItem('id', data);
+				location.href = './main.php';
+			}
 		}
 	});
 }

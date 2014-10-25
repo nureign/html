@@ -1,4 +1,13 @@
 
+$('#index').click(function(){
+
+	if( sessionStorage.getItem('id') )
+		location.href = './main.php';
+	else
+		location.href = './';
+
+});
+
 function josa(str, tail)
 {
 	strTemp = str.substr(str.length - 1);

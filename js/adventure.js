@@ -2,6 +2,15 @@
 //var socket = io('http://nureign.ddns.co.kr:8989');
 
 $(document).ready(function(){
+	
+	if( sessionStorage.getItem('refresh') )
+	{
+		sessionStorage.removeItem('refresh');
+		location.href = './main.php';
+		return;
+	}
+
+	sessionStorage.setItem('refresh', '1');
 
 	$.ajax({
 		cache: false,
@@ -14,6 +23,7 @@ $(document).ready(function(){
 			InitialSetup(data);
 		}
 	});
+
 });
 
 $('#skip').click(function() {
@@ -171,11 +181,9 @@ function UpdateBattlelog(data)
 			ShakeImg($('#p_image'), crit, 2);
 			
 			var per = Math.floor(def_curhp / def_maxhp * 100);
-			var graph = per;
-			if( graph < 25 ) graph = 25;
 			$('#p_hp_text').text(def_curhp + ' / ' + def_maxhp);
 			$('#p_hp_per').text(per + '%');
-			$('#p_hp_per').attr('style', 'width: ' + graph + '%;');
+			$('#p_hp_per').attr('style', 'width: ' + per + '%;');
 		}
 	}
 	else
@@ -187,11 +195,9 @@ function UpdateBattlelog(data)
 			ShakeImg($('#m_image'), crit, 2);
 
 			var per = Math.floor(def_curhp / def_maxhp * 100);
-			var graph = per;
-			if( graph < 25 ) graph = 25;
 			$('#m_hp_text').text(def_curhp + ' / ' + def_maxhp);
 			$('#m_hp_per').text(per + '%');
-			$('#m_hp_per').attr('style', 'width: ' + graph + '%;');
+			$('#m_hp_per').attr('style', 'width: ' + per + '%;');
 		}
 	}
 }

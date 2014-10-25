@@ -57,12 +57,14 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 
 	while( $row = $result->fetch_array() )
 	{
-		$bid = $row['bid']+1;
+		$bid = $row['bid'] + 1;
 	}
 
 	echo json_encode(array(
+
 		// 전투 정보
 		'bid' => $bid,
+
 		// 플레이어 정보
 		'p_name' => $p_name,
 		'p_level' => $p_level,
@@ -75,6 +77,7 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 		'p_stat4' => $p_stat4,
 		'p_stat5' => $p_stat5,
 		'p_stat6' => $p_stat6,
+
 		// 몬스터 정보
 		'm_name' => $m_name,
 		'm_image' => $m_image,
@@ -90,7 +93,7 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 	));
 
 	// 몬스터 스탯 배분
-	$m_stat = array( 1, 0, 0, 0, 0, 0 );
+	$m_stat = array( 1, 1, 1, 1, 1, 1 );
 	for($i=0; $i<$m_level*6; $i++)
 	{
 		$rand = rand( 0, 5 );
@@ -182,7 +185,7 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 
 			if( $def_curhp < 1 )
 			{
-				$def_curhp = 1;
+				$def_curhp = 0;
 				$def['curhp'] = $def_curhp;
 
 				// 죽음 처리

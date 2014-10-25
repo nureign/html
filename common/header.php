@@ -1,3 +1,5 @@
+<? session_start() ?>
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
  
@@ -6,7 +8,7 @@
 <meta charset="utf-8">
 <title>Estrella Webgame</title>
     <link rel="stylesheet" href="./css/bootstrap.css" type="text/css" media="screen" title="no title" />
-    <link rel="stylesheet" href="./css/font-awesome.css" type="text/css" media="screen" title="no title" /> 
+    <!--<link rel="stylesheet" href="./css/font-awesome.css" type="text/css" media="screen" title="no title" /> -->
     <meta charset="utf8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">

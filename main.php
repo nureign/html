@@ -5,8 +5,9 @@
 	
 	include_once "./common/header.php";
 	include_once "./common/nav.php";
+	include_once "./common/db_conn.php";
+	include_once "./logic/main_initial.php";
 ?> 
-
     <!-- Carousel
     ================================================== -->
 <div class="row" align="center">
@@ -72,22 +73,22 @@
             	<!-- 케릭터이름, 소개말, 직책, 성향 -->
                 <ol class="breadcrumb">
                 <li class="active">캐릭터 이름</a></li>
-                <li id="name"></a></li>
+                <li id="name"><?=$name?></li>
                 </ol>
                 <ol class="breadcrumb">
                 <li class="active">캐릭터 소개말</a></li>
-                <li id="intro"></a></li>
+                <li id="intro"><?=$intro?></li>
                 </ol>
                 <ol class="breadcrumb">
                 <li class="active">직책 (레벨)</a></li>
-                <li id="level"></a></li>
+                <li id="level"><?=$class?>(Lv.<?=$level?>)</li>
                 </ol>
 
                <div class="panel panel-default">
                 <table class="table table-condensed" align="center">
                     <tr class="active">
                         <td class="active" align="center" width="100px">성향</td>
-                        <td colspan="4" align="center" class="success" id='tendency'></td>
+                        <td colspan="4" align="center" class="success" id='tendency'><?=$tendency?></td>
                     </tr>
                 </table>
                 </div>
@@ -96,9 +97,9 @@
                 <div class="input-group">
                 <span class="input-group-addon"><span class="label label-danger">체력</span></span>
                     <div class="progress, form-control" style="background-color:#FEE;">
-                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;" id="hp_per">0%</div>
+                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?=$hp_per?>%;" id="hp_per"><?=$hp_per?>%</div>
                     </div>
-                    <span class="input-group-addon" id="hp_text">0/0</span>
+                    <span class="input-group-addon" id="hp_text"><?=$hp?> / <?=$maxhp?></span>
                 </div>
                 <!-- 체력부분 닫기 -->
             
@@ -106,9 +107,9 @@
                 <div class="input-group">
                 <span class="input-group-addon"><span class="label label-warning">멘탈</span></span>
                     <div class="progress, form-control" style="background-color:#FFE7D9;">
-                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;" id="mental_per">0%</div>
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?=$mental_per?>%;" id="mental_per"><?=$mental_per?>%</div>
                     </div>
-                    <span class="input-group-addon" id="mental_text">0/0</span>
+                    <span class="input-group-addon" id="mental_text"><?=$mental?> / <?=$mental?></span>
                 </div>
                 <!-- 멘탈부분 닫기 -->
     
@@ -116,9 +117,9 @@
                 <div class="input-group">
                 <span class="input-group-addon"><span class="label label-info">경험</span></span>
                     <div class="progress, form-control" style="background-color:#F4FFFF;">
-                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;" id="exp_per">0%</div>
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?=$exp_per?>%;" id="exp_per"><?=$exp_per?>%</div>
                     </div>
-                    <span class="input-group-addon" id="exp_text">0/0</span>
+                    <span class="input-group-addon" id="exp_text"><?=$exp?> / <?=$exp_model[$level]?></span>
                 </div>
                 <!-- 경험치부분 닫기 -->
             </td>
@@ -135,10 +136,10 @@
                             </tr>
                             </tr>
                             <tr class="warning">
-                            <td class="warning" align="center" id="stat1"></td>
-                            <td class="warning" align="center" id="stat2"></td>
-                            <td class="warning" align="center" id="stat3"></td>
-                            <td class="warning" align="center" id="stat4"></td>
+                            <td class="warning" align="center" id="stat1"><?=$stat1?></td>
+                            <td class="warning" align="center" id="stat2"><?=$stat2?></td>
+                            <td class="warning" align="center" id="stat3"><?=$stat3?></td>
+                            <td class="warning" align="center" id="stat4"><?=$stat4?></td>
                             </tr>
                             <tr class="danger">
                             <td class="danger" align="center">행운</td>
@@ -147,10 +148,10 @@
                             <td class="danger" align="center">루비</td>
                             </tr>
                             <tr class="warning">
-                            <td class="warning" align="center" id="stat5"></td>
-                            <td class="warning" align="center" id="stat6"></td>
-                            <td class="warning" align="center" id="honor"></td>
-                            <td class="warning" align="center" id="ruby"></td>
+                            <td class="warning" align="center" id="stat5"><?=$stat5?></td>
+                            <td class="warning" align="center" id="stat6"><?=$stat6?></td>
+                            <td class="warning" align="center" id="honor"><?=$honor?></td>
+                            <td class="warning" align="center" id="ruby"><?=$ruby?></td>
                             </tr>
                         </table>
                    </div>
@@ -162,22 +163,22 @@
                         <table class="table table-condensed" align="center">
                             <tr align="center">
                             <td class="active" width="90px">왼손 무기</td>
-                            <td id="lefthand"></td>
+                            <td id="lefthand"><?=$lefthand?></td>
                             <td class="active" width="90px">오른손 무기</td>
-                            <td id="righthand"></td>
+                            <td id="righthand"><?=$righthand?></td>
                             </tr>
                             </tr>
                             <tr align="center">
                             <td class="active">상의</td>
-                            <td id="top"></td>
+                            <td id="top"><?=$top?></td>
                             <td class="active">하의</td>
-                            <td id="pants"></td>
+                            <td id="pants"><?=$pants?></td>
                             </tr>
                             <tr align="center">
                             <td class="active">신발</td>
-                            <td id="shoes"></td>
+                            <td id="shoes"><?=$shoes?></td>
                             <td class="active">악세사리</td>
-                            <td id="accessory"></td>
+                            <td id="accessory"><?=$accessory?></td>
                             </tr>
                         </table>
                 </div>
