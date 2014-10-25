@@ -39,7 +39,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">커뮤니티<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="./freebbs_list.php">자유토론</a></li>
-                <li><a href="#">거래게시판</a></li>
+                <li><a href="./tradebbs_list.php">거래게시판</a></li>
               </ul>
             </li>
             <li class="dropdown">
