@@ -29,8 +29,8 @@
                 <li><a href="./quest_index.php">퀘스트</a></li>
                 <li class="divider"></li>
                 <li class="dropdown-header">스폐셜</li>
-                <li><a href="#">이벤트</a></li>
-                <li><a href="#">프리미엄 혜택</a></li>
+                <li><a href="#" onclick="message()">이벤트</a></li>
+                <li><a href="#" onclick="message()">프리미엄 혜택</a></li>
               </ul>
             </li>
           </ul>
@@ -39,19 +39,17 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">커뮤니티<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="#">자유토론</a></li>
-                <li><a href="#">종족모임</a></li>
                 <li><a href="#">거래게시판</a></li>
               </ul>
             </li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">설정<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#">내정보</a></li>
-                <li><a href="#">보안설정</a></li>
-                <li><a href="#">미정</a></li>
+                <li><a href="#" onclick="message()">내정보</a></li>
+                <li><a href="#" onclick="message()">보안설정</a></li>
               </ul>
             </li>
-            <li><a href="./">도움말</a></li>
+            <li><a href="./" onclick="message()">도움말</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

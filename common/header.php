@@ -16,4 +16,11 @@
     <link href="./css/non-responsive.css" rel="stylesheet">
     <!-- Magnific Popup for Mybase -->
 	<link rel='stylesheet prefetch' href='http://dimsemenov-static.s3.amazonaws.com/dist/magnific-popup.css'>
+    
+    <script type="text/javascript">
+	function message(){
+    var message = "차후 업데이트 될 컨텐츠 입니다.";
+    alert(message);
+	}
+	</script>
 </head>
