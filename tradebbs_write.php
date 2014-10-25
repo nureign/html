@@ -36,9 +36,9 @@
 <div class="row" align="center">
 	<div class="col-xs-1"><!--여백--></div>
 
-    <!-- 자유토론 글쓰기 시작 -->
+    <!-- 거래게시판 글쓰기 시작 -->
 	<div class="col-xs-10">
-	<h2 align="center">자유토론 커뮤니티</h2><br />
+	<h2 align="center">거래게시판 커뮤니티</h2><br />
     <div align="right" class="width" style="margin-right:70px;"><a href="./tradebbs_list.php"><button type="button" class="btn btn-warning">게시판으로 돌아가기</button></a></div><br />
     <form role="form" action="javascript:;" method="post">
 	<table class="table table-bordered" style="width:900px;">
@@ -75,7 +75,7 @@
         </tr>
     </table></form><br />
 	</div>     
-    <!-- 자유토론 글쓰기 닫기 -->
+    <!-- 거래게시판 글쓰기 닫기 -->
 
 	<div class="col-xs-1"><!-- 공백 --></div>
 </div>

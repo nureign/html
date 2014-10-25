@@ -1,9 +1,7 @@
 <?
 	include_once "./common/header.php";
-?>
-
-<?
 	include_once "./common/nav.php";
+	include_once "./common/db_conn.php";
 ?>
 
     <!-- Carousel
@@ -54,31 +52,48 @@
 <div class="row" align="center">
   <div class="col-xs-1"></div>
   <div class="col-xs-10">
+
   <table class="table table-condensed width center">
   	<tr>
     	<td width="400px">
-			<div class="panel panel-default">
-			<div class="panel-body"><h4>공지 업데이트</h4>
-     			<ol>
-					<li>(2014.08.24 정규 업데이트)</li>
-                    <li>(2014.08.26 보안 업데이트)</li>
-                    <li>고객센터 휴무 안내</li>
-                    <li>던전 3종 추가 업데이트</li>  
-                    <li>게임 이름 테스트 안내</li>
-                    <li>종족 밸런스 수정 (V1.2)</li>
-				</ol> 
+			<div class="panel panel-default" align="center">
+			<div class="panel-body">
+            	<table class="table table-condensed center" style="width:450px;">
+                	<tr>
+                    	<td colspan="3"><h4>공지 / 업데이트</h4></td>
+                    </tr>
+                	<tr style="background-color:#E8E8E8">
+                    	<td>번호</td>
+                        <td>공지내용</td>
+                        <td>날짜</td>
+                    </tr>
+					<?
+                    $result = $mysqli->query("SELECT * FROM notice order by no DESC Limit 5");
+                
+                    while ( $notices = $result->fetch_array() )
+                    {
+						$notices['subject'];
+						$notices['no'];
+					?>
+						<tr>
+                    		<td><?=$notices['no']?></td>
+						    <td><a href="#" onClick="window.open('./notice_read.php?notice_no=<?=$notices['no']?>','new','resizable=no,scrollbars=no,width=970,height=350');return false;"><?=$notices['subject']?></a></td>
+								<td><?=$notices['today']?></td>
+							  </tr>
+					<? } ?>
+                 </table>
 			</div>
 			</div>
 		</td>
         <td width="400px">
 			<div class="panel panel-default">
-			<div class="panel-body"><h4>에스트렐라 세계로 출발!</h4>
+			<div class="panel-body"><h4>에스트렐라 세계로 출발!</h4><br />
 			<Form role="form">
                 <div class="form-group">
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">메일계정</span>
                         <input type="text" class="form-control" placeholder="Enter E-mail" id="email">
-                    </div>
+                    </div><br />
                     <div class="input-group input-group-sm">
                         <span class="input-group-addon">비밀번호</span>
                         <input type="password" class="form-control" placeholder="Password" id="password">
