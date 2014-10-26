@@ -33,7 +33,7 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 	$sql = "INSERT INTO banking ( id, type, amount ) VALUES ( '$id', '입금', '$amount' );";
 	$mysqli->query($sql);
 
-	echo 'success';
+	echo $amount;
 }
 
 $mysqli->close();

@@ -13,7 +13,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="./">Estrella Korea</a>
+          <a class="navbar-brand" href="javascript:;" id="index">Estrella Korea</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">

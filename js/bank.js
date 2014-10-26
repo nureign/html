@@ -25,7 +25,7 @@ $('#deposit').click(function() {
 			}
 			
 			RefreshDeposit();
-			alert('입금 성공');
+			alert(data + '루비 입금 성공!');
 
 		}
 	});
@@ -46,15 +46,14 @@ $('#withdraw').click(function() {
 		},
 		success: function(data) {
 
-			/*if( data == 'not enough ruby' )
+			if( data == 'not enough ruby' )
 			{
-				alert('루비가 부족합니다.');
+				alert('은행에 루비가 부족합니다.');
 				return;
 			}
 			
-			RefreshDeposit();
-			alert('입금 성공');
-*/
+			RefreshWithdraw();
+			alert(data + '루비 출금 성공!');
 		}
 	});
 
@@ -71,28 +70,37 @@ function RefreshDeposit()
 		},
 		success: function(data) {
 			
+			$('#ruby').empty();
+			$('#bank').empty();
 			$('#depositlist').empty();
+			$('#depositlist_top5').empty();
 
 			var parsed = JSON.parse(data);
-			//console.log(parsed.length);
-			for(var i=0; i<parsed.length; i++)
+			
+			$('#ruby').text(parsed.mine[0]['ruby']);
+			$('#bank').text(parsed.mine[0]['bank']);
+
+			for(var i=0; i<parsed.deposit.length; i++)
 			{
-				var date = parsed[i]['date'];
-				var amount = parseInt(parsed[i]['amount']);
+				var date = parsed.deposit[i]['date'];
+				var amount = parseInt(parsed.deposit[i]['amount']);
 				
 				if( i != 0 ) $('#depositlist').append('<br>');
 				$('#depositlist').append('[' + date + ']' + ' ' + amount + ' 루비 입금');
 			}
-			/*
-			var date = parsed['date'];
-			var amount = parseInt(parsed['amount']);
+			
+			var tag = '<tr><td colspan="4" class="danger">루비 부자 상위 5명</td></tr>';
+			$('#depositlist_top5').append(tag);
 
-			for (var i=0; i<parsed.length; i++)
+			for(var i=0; i<parsed.deposit_top5.length; i++)
 			{
-				$('#depositlist').append('[' + date + ']' + ' ' + amount + ' 루비입금');
-				$('#depositlist').append('<br>');
+				var name = parsed.deposit_top5[i]['name'];
+				var intro = parsed.deposit_top5[i]['intro'];
+				var bank = parseInt(parsed.deposit_top5[i]['bank']);
+
+				var tds = '<tr><td>' + ( (i==0) ? '<span class="glyphicon glyphicon-thumbs-up"></span>' : parseInt(i+1)+'위' ) + '</td><td>'+name+'</td><td>'+intro+'</td><td>'+bank+'</td></tr>';
+				$('#depositlist_top5').append(tds);
 			}
-*/
 		}
 	});
 }
@@ -108,8 +116,38 @@ function RefreshWithdraw()
 		},
 		success: function(data) {
 
-			
+			$('#ruby').empty();
+			$('#bank').empty();
+			$('#withdrawlist').empty();
+			$('#withdrawlist_top5').empty();
 
+			var parsed = JSON.parse(data);
+			
+			$('#ruby').text(parsed.mine[0]['ruby']);
+			$('#bank').text(parsed.mine[0]['bank']);
+
+			for(var i=0; i<parsed.withdraw.length; i++)
+			{
+				var date = parsed.withdraw[i]['date'];
+				var amount = parseInt(parsed.withdraw[i]['amount']);
+				var type = parsed.withdraw[i]['type'];
+				var tax = parseInt(parsed.withdraw[i]['tax']);
+
+				if( i != 0 ) $('#withdrawlist').append('<br>');
+				$('#withdrawlist').append('[' + date + ']' + ' ' + amount + ' 루비 출금' + ((type=='전산오류') ? ' <b>전산오류</b>' : '') + ' (세금: ' + tax + ' 루비)' );
+			}
+
+			var tag = '<tr><td colspan="4" class="warning">전산오류 베스트 5명</td></tr>';
+			$('#withdrawlist_top5').append(tag);
+
+			for(var i=0; i<parsed.withdraw_top5.length; i++)
+			{
+				var name = parsed.withdraw_top5[i]['name'];
+				var intro = parsed.withdraw_top5[i]['intro'];
+
+				var tds = '<tr><td>' + ( (i==0) ? '<span class="glyphicon glyphicon-thumbs-up"></span>' : parseInt(i+1)+'위' ) + '</td><td>'+name+'</td><td>'+intro+'</td><td>1</td></tr>';
+				$('#withdrawlist_top5').append(tds);
+			}
 		}
 	});
 }

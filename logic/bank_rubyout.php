@@ -26,16 +26,25 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 		echo 'not enough ruby';
 		return;
 	}
-	
-	$tax = floor($amount * 0.3);
-	
-	$sql = "UPDATE project_members SET bank = bank - '$amount', ruby = ruby + '$amount' WHERE id = '$id';";
+
+	if( rand(0, 9) < 3 )
+	{
+		$tax = round($amount * 0.5);
+		$type = '전산오류';
+	}
+	else
+	{
+		$tax = round($amount * 0.3);
+		$type = '출금';
+	}
+
+	$sql = "UPDATE project_members SET bank = bank - '$amount', ruby = ruby + '$amount' - '$tax' WHERE id = '$id';";
 	$mysqli->query($sql);
 
-	$sql = "INSERT INTO banking ( id, type, amount ) VALUES ( '$id', '입금', '$amount' );";
+	$sql = "INSERT INTO banking ( id, type, amount, tax ) VALUES ( '$id', '$type', '$amount', '$tax' );";
 	$mysqli->query($sql);
-
-	echo 'success';
+	
+	echo $amount;// . ' (세금: ' . $tax . ', 결과: ' . $amount - $tax . ')';
 }
 
 $mysqli->close();

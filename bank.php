@@ -52,17 +52,12 @@
       	<!-- 입출금 영역 -->
         <table class="table center" style="width:930px;">
         	<tr>
-            	<td colspan="4"><strong><?=$name?>님의 개인루비통장 현황입니다.</strong><br />현재 소유중인 루비 : <?=$ruby?><br />은행에 맡긴 루비 : <?=$bank?></td>
+            	<td colspan="4"><strong><?=$name?>님의 개인루비통장 현황입니다.</strong><br />현재 소유중인 루비 : <span id="ruby"><?=$ruby?></span><br />은행에 맡긴 루비 : <span id="bank"><?=$bank?></span></td>
             </tr>
             <tr>
-            	<td class="success" colspan="2">입금</td>
+            	<td class="success" colspan="2">입금내역서</td>
                 <td width="50px"></td>
-                <td class="danger" colspan="2">출금</td>
-            </tr>
-            <tr>
-            	<td colspan="2" align="left" style="padding-left:100px;">입금내역서</td>
-                <td></td>
-                <td colspan="2" align="left" style="padding-left:100px;">출금내역서</td>
+                <td class="danger" colspan="2">출금내역서</td>
             </tr>
             <tr>
             	<td colspan="2" align="left" style="padding-left:100px;" id="depositlist">
@@ -71,23 +66,27 @@
                 </td>
                 <td colspan="2" align="left" style="padding-left:100px;" id="withdrawlist">
 			<?		for($i=0; $i<count($withdraw); $i++)
-						echo '[' . $withdraw[$i]['date'] . '] ' . $withdraw[$i]['amount'] . ' 루비 출금' . ( ($withdraw[$i]['type'] == '전산오류') ? ' <b>전산오류</b>' : '' ) . '<br>';	?>
+						echo '[' . $withdraw[$i]['date'] . '] ' . $withdraw[$i]['amount'] . ' 루비 출금' . ( ($withdraw[$i]['type'] == '전산오류') ? ' <b>전산오류</b>' : '' ) . ' (세금: '.$withdraw[$i]['tax'].' 루비)<br>';	?>
                 </td>
             </tr>
             <tr>
-            	<td colspan="2">
-                    <div class="form-group has-success">
-                      <label class="control-label" for="inputSuccess1">입금할 루비량&nbsp;</label>
+            	<td colspan="2" align="center">
+					<!--<label class="control-label">입금할 루비량</label>-->
+                    <div class="input-group has-success">
                       <input type="text" class="form-control" id="rubyin">
-                      <button type="button" class="btn btn-success" id="deposit">루비 입금</button>
+					  <span class="input-group-btn">
+						<button type="button" class="btn btn-success" id="deposit">루비 입금</button>
+					  </span>
                     </div>
                 </td>
-                <td></td>
-                <td colspan="2">
-                    <div class="form-group has-error">
-                      <label class="control-label" for="inputSuccess1">출금할 루비량&nbsp;</label>
+				<td></td>
+                <td colspan="2" align="center">
+					<!--<label class="control-label" >출금할 루비량</label>-->
+                    <div class="input-group has-error">
                       <input type="text" class="form-control" id="rubyout">
-                      <button type="button" class="btn btn-danger" id="withdraw">루비 출금</button>
+					  <span class="input-group-btn">
+	                      <button type="button" class="btn btn-danger" id="withdraw">루비 출금</button>
+					  </span>
                     </div>
                 </td>
             </tr>
@@ -95,78 +94,26 @@
         <!-- 입출금 닫기 -->
         
         <!-- 루비 부자 상위 5명 -->
-        <table class="table table-condensed center" style="width:700px;">
+        <table class="table table-condensed center" style="width:700px;" id="depositlist_top5">
         	<tr>
             	<td colspan="4" class="danger">루비 부자 상위 5명</td>
             </tr>
-            <tr>
-            	<td><span class="glyphicon glyphicon-thumbs-up"></span></td>
-				<td><?=$deposit_top5[0]['name']?></td>
-                <td><?=$deposit_top5[0]['intro']?></td>
-                <td><?=$deposit_top5[0]['bank']?></td>
-            </tr>
-            <tr>
-            	<td>2위</td>
-				<td><?=$deposit_top5[1]['name']?></td>
-                <td><?=$deposit_top5[1]['intro']?></td>
-                <td><?=$deposit_top5[1]['bank']?></td>
-            </tr>
-            <tr>
-            	<td>3위</td>
-				<td><?=$deposit_top5[2]['name']?></td>
-                <td><?=$deposit_top5[2]['intro']?></td>
-                <td><?=$deposit_top5[2]['bank']?></td>
-            </tr>
-            <tr>
-            	<td>4위</td>
-				<td><?=$deposit_top5[3]['name']?></td>
-                <td><?=$deposit_top5[3]['intro']?></td>
-                <td><?=$deposit_top5[3]['bank']?></td>
-            </tr>
-            <tr>
-            	<td>5위</td>
-				<td><?=$deposit_top5[4]['name']?></td>
-                <td><?=$deposit_top5[4]['intro']?></td>
-                <td><?=$deposit_top5[4]['bank']?></td>
-            </tr>
+			<?php
+				for($i=0; $i<count($deposit_top5); $i++)
+					echo '<tr><td>'.(($i==0)?'<span class="glyphicon glyphicon-thumbs-up"></span>':($i+1).'위').'</td><td>'.$deposit_top5[$i]['name'].'</td><td>'.$deposit_top5[$i]['intro'].'</td><td>'.$deposit_top5[$i]['bank'].'</td></tr>';
+			?>
         </table>
         <!-- 루비 부자 상위 5명 닫기 -->
         
         <!-- 전산오류 자주 걸린 상위 5명 -->
-        <table class="table table-condensed center" style="width:700px;">
+        <table class="table table-condensed center" style="width:700px;" id="withdrawlist_top5">
         	<tr>
             	<td colspan="4" class="warning">전산오류 베스트 5명</td>
             </tr>
-            <tr>
-            	<td><span class="glyphicon glyphicon-thumbs-up"></span></td>
-				<td><?=$withdraw_top5[0]['name']?></td>
-                <td><?=$withdraw_top5[0]['intro']?></td>
-                <td><?=$withdraw_top5[0]['bank']?></td>
-            </tr>
-            <tr>
-            	<td>2위</td>
-				<td><?=$withdraw_top5[1]['name']?></td>
-                <td><?=$withdraw_top5[1]['intro']?></td>
-                <td><?=$withdraw_top5[1]['bank']?></td>
-            </tr>
-            <tr>
-            	<td>3위</td>
-				<td><?=$withdraw_top5[2]['name']?></td>
-                <td><?=$withdraw_top5[2]['intro']?></td>
-                <td><?=$withdraw_top5[2]['bank']?></td>
-            </tr>
-            <tr>
-            	<td>4위</td>
-				<td><?=$withdraw_top5[3]['name']?></td>
-                <td><?=$withdraw_top5[3]['intro']?></td>
-                <td><?=$withdraw_top5[3]['bank']?></td>
-            </tr>
-            <tr>
-            	<td>5위</td>
-				<td><?=$withdraw_top5[4]['name']?></td>
-                <td><?=$withdraw_top5[4]['intro']?></td>
-                <td><?=$withdraw_top5[4]['bank']?></td>
-            </tr>
+			<?php
+				for($i=0; $i<count($withdraw_top5); $i++)
+					echo '<tr><td>'.(($i==0)?'<span class="glyphicon glyphicon-thumbs-up"></span>':($i+1).'위').'</td><td>'.$withdraw_top5[$i]['name'].'</td><td>'.$withdraw_top5[$i]['intro'].'</td><td>1</td></tr>';
+			?>
         </table>
         <!-- 전산오류 자주 걸린 상위 5명 닫기 -->
     </div>
