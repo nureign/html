@@ -135,7 +135,7 @@
     <div class="col-lg-offset-2 col-lg-10">
       <div class="checkbox">
         <label>
-          <input type="checkbox" id="agree3"> 아직 미정인 것을 동의합니다.
+          <input type="checkbox" id="agree3" checked disabled> 이상없이 작성하였으며 모든 약관을 준수하고 가입합니다.
         </label>
       </div>
     </div>

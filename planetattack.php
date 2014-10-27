@@ -24,7 +24,7 @@
 
     <!-- 행성공략 본격 시작 -->
 	<div class="col-xs-10">
-	<h2 align="center">자유토론 커뮤니티</h2><br />
+	<h2 align="center">행성공략 전투시작!</h2><br />
 	<table class="table table-bordered" style="width:900px;">
     	<tr align="center" style="background-color:#F3F3F3;">
         	
