@@ -17,7 +17,8 @@ $result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
 
 while( $row = $result->fetch_array() )
 {
-	$name = $row['name'];
+	$myinfo[] = $row;
+	/*$name = $row['name'];
 	$stat1 = $row['stat1'];
 	$stat2 = $row['stat2'];
 	$stat3 = $row['stat3'];
@@ -30,7 +31,16 @@ while( $row = $result->fetch_array() )
 	$pants = $row['pants'];
 	$shoes = $row['shoes'];
 	$accessory = $row['accessory'];
-	$intro = $row['intro'];
+	$intro = $row['intro'];*/
 }
+
+$sql = "SELECT * FROM inventory WHERE id = '$id';";
+$result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
+
+while( $row = $result->fetch_array() )
+{
+	$inventory[] = $row;
+}
+
 
 ?>

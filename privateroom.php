@@ -25,7 +25,7 @@
             	<td class="right" width="300px"><img src="./images/privateroom_assi.jpg" alt="..." width="250px" height="200px"></td>
                 <td align="left">
                 	<h4 align="center">개인룸 비서</h4><br />
-					환영합니다! <?=$name?>님! 저는 당신의 업무를 도와드리는 충실한 비서입니다. <br />
+					환영합니다! <?=$myinfo[0]['name']?>님! 저는 당신의 업무를 도와드리는 충실한 비서입니다. <br />
                     이곳에서 주인님이 보기 편하도록 종합현황 데이터를 제공하고 있습니다.<br />
                     이곳저곳에서 수집하고 계신 아이템 현황도 보기 쉽게 인벤토리에 넣어놓았습니다.<br />
                     구매를 하실 때 마다 제가 물건을 가질러 오지만 기쁜마음으로 일을 하고 있습니다.<br />
@@ -61,7 +61,7 @@
                 	<div class="form-group has-success">
                     <Form class="form-inline" role="form" method="post" action="javascript:;">
 					<label class="control-label" for="inputSuccess1">소개말 상태 / 변경</label>&nbsp;
-                	<textarea class="form-control" rows="2" style="width:500px;" id="intro"><?=$intro?></textarea>
+                	<textarea class="form-control" rows="2" style="width:500px;" id="intro"><?=$myinfo[0]['intro']?></textarea>
                     &nbsp;<button type="submit" class="btn btn-default" id="changeintro">소개말 변경</button>
                     </Form>
                     </div>
