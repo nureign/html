@@ -177,20 +177,18 @@
                         <td class="warning">사용레벨</td>
 						<td class="warning">소지개수</td>
                     </tr>
-                    <tr>
 					<?
 					for( $i=0; $i<count($inventory); $i++ )
 					{
 						if( $inventory[$i]['table_name'] != 'grocery_item' )
 							continue;
 						
-						echo '<td>' . $inventory[$i][0]['name'] . '</td>
+						echo '<tr><td>' . $inventory[$i][0]['name'] . '</td>
 							  <td>' . $inventory[$i][0]['explain'] . '</td>
 							  <td>' . $inventory[$i][0]['level'] . '</td>
-							  <td>' . $inventory[$i]['num'] . '</td>';
+							  <td>' . $inventory[$i]['num'] . '</td></tr>';
 					}
 					?>
-                    </tr>
             	</table>
                </div>
                <div class="tab-pane fade" id="character">
@@ -207,23 +205,21 @@
                         <td class="warning">특수능력</td>
                         <td class="warning">소지개수</td>
                     </tr>
-                    <tr>
                     <?
 						for( $i=0; $i<count($inventory); $i++ )
 						{
 							if( $inventory[$i]['table_name'] != 'character_item' )
 								continue;
 							
-							echo '<td>' . ($inventory[$i]['equip'] ? '착용중' : '') . '</td>
+							echo '<tr><td>' . ($inventory[$i]['equip'] ? '착용중' : '') . '</td>
 								  <td>' . $inventory[$i][0]['name'] . '</td>
 								  <td>' . $inventory[$i][0]['low_power'] . ' ~ ' . $inventory[$i][0]['max_power'] . '</td>
 								  <td>' . $inventory[$i][0]['defense'] . '</td>
 								  <td>' . $inventory[$i][0]['stat1'] . ' / ' . $inventory[$i][0]['stat2'] . ' / ' . $inventory[$i][0]['stat3'] . ' / ' . $inventory[$i][0]['stat4'] . ' / ' . $inventory[$i][0]['stat5'] . ' / ' . $inventory[$i][0]['stat6'] . '</td>
 								  <td>' . $inventory[$i][0]['special'] . '</td>
-								  <td>' . $inventory[$i]['num'] . '</td>';
+								  <td>' . $inventory[$i]['num'] . '</td></tr>';
 						}
 					?>
-                    </tr>
             	</table>
                </div>
                <div class="tab-pane fade" id="base">
@@ -233,28 +229,26 @@
 					</tr>
 					<tr>
 						<td class="warning">이름</td>
+						<td class="warning">타입</td>
 						<td class="warning">공격력</td>
 						<td class="warning">방어력</td>
-						<td class="warning">체력</td>
+						<td class="warning">내구력</td>
 						<td class="warning">사용레벨</td>
-						<td class="warning">소지개수</td>
 					</tr>
-					<tr>
 					<?
 						for( $i=0; $i<count($inventory); $i++ )
 						{
 							if( $inventory[$i]['table_name'] != 'base_item' )
 								continue;
 							
-							echo '<td>' . $inventory[$i][0]['name'] . '</td>
-								  <td>' . $inventory[$i][0]['min_power'] . ' ~ ' . $inventory[$i][0]['max_power'] . '</td>
+							echo '<tr><td>' . $inventory[$i][0]['name'] . '</td>
+								  <td>' . $inventory[$i][0]['type'] . '</td>
+								  <td>' . $inventory[$i][0]['low_power'] . ' ~ ' . $inventory[$i][0]['max_power'] . '</td>
 								  <td>' . $inventory[$i][0]['min_defense'] . ' ~ ' . $inventory[$i][0]['max_defense'] . '</td>
-								  <td>' . $inventory[$i][0]['durability'] . '</td>
-								  <td>' . $inventory[$i][0]['level'] . '</td>
-								  <td>' . $inventory[$i]['num'] . '</td>';
+								  <td>' . $inventory[$i][0]['durability'] . 'HP</td>
+								  <td>' . $inventory[$i][0]['level'] . '</td></tr>';
 						}
 					?>
-					</tr>
 				</table>
                </div>
 			</div>

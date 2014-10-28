@@ -45,7 +45,7 @@
 				<td>'.$base_item[$i]['durability'].'</td>
 				<td>'.$base_item[$i]['popular'].'</td>
 				<td>'.$base_item[$i]['price'].' 루비</td>
-				<td><button type="button" class="btn btn-default">구매</button></td>
+				<td><button type="button" class="btn btn-default buy" value="'.$base_item[$i]['no'].'">구매</button></td>
               </tr>';
 	}	
 ?>  
