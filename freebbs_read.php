@@ -10,13 +10,55 @@
 	@session_start();
 	
 	$id = $_SESSION['id'];
+	$no = $_GET['no'];
+	$number = $_POST['bbs_no'];
+	$comments = $_POST['one_comment'];
 
 	if( !isset($id) )
 	{
-		echo ("<div align='center'>로그인을 하시기 바랍니다.</div>");
+		echo "<script>alert('Logout, Please You should try Log-in again'); history.back(-1);</script>";
 		exit;
 	}
 
+	$wwww = $mysqli->query("select * from project_members WHERE id = '$id'");
+	$help = $wwww->fetch_array();
+	
+	$qqqq = $mysqli->query("select * from bbs_free WHERE no = '$no'");
+	$watching = $qqqq->fetch_array();
+	$watching['no'];
+	$watching['subject'];
+	$watching['content'];
+	$watching['nickname'];
+	$wathcing['today'];
+	$watching['admin'];
+	
+	$myname = $help['name'];
+	
+	if ($watching['admin'] == '1')
+	{
+		$watching['no'] = "공지";
+	}
+	
+	$bbs_no = $watching['no']; //여기서 바뀌어버림 글자가...
+	
+	/*
+		type	no	nickname	content	today
+	*/
+	$ccccd = $mysqli->query("select * from bbs_comment WHERE type = '자유' and no = '$no'");
+	$comment = $ccccd->fetch_array();
+
+	if (!isset($comments))
+	{
+	}
+	else
+	{
+		$freedom = "자유";	
+		//echo $freedom."<br>".$number."<br>".$myname."<br>".$comments;
+		//exit;									
+		$mysqli->query("insert into bbs_comment (type, no, nickname, content) Values('$freedom', '$number', '$myname', '$comments')");
+		echo "<script>alert('Comment Done!'); history.back(-1);</script>";
+		exit;
+	}
 ?>
 <!-- 로우 전체 시작 -->
 <div class="row" align="center">
@@ -28,25 +70,46 @@
     <div align="right" class="width" style="margin-right:70px;"><a href="./freebbs_list.php"<button type="button" class="btn btn-warning">게시판으로 돌아가기</button></a></div><br />
 	<table class="table table-bordered" style="width:900px;">
     	<tr align="center" style="background-color:#F3F3F3;">
-        	<td align="center" width="100px">23423번 내용</td>
-            <td width="350px">천제의 퀘스트 어뜩케 하나용?ㅠ</td>
-            <td align="center" width="150px">갤럭시슝슝</td>
-            <td align="center" width="100px">14-10-25 19:25</td>
+        	<td align="center" width="100px"><?=$watching['no']?>번 글</td>
+            <td width="350px"><?=$watching['subject']?></td>
+            <td align="center" width="150px"><?=$watching['nickname']?> 님</td>
+            <td align="center" width="150px"><?=$watching['today']?></td>
         </tr>
         <tr>
         	<td colspan="4" style="padding-left:50px; padding-right:50px; text-align:left;">
-            	<br /><br />사실 천체의 퀘스트? 천제의 퀘스트? 그거 잘 모르겠어요. 지금 레벨은 20인데 너무 퀘스트 달렸나봐요 어케하죠?<br /><br /><br />
+            	<br /><br /><?=$watching['content']?><br /><br /><br />
             </td>
         </tr>
-        <tr>
-        	<td width="50px" align="center">닉네임은닉넴</td>
-            <td colspan="3" width="850px">한줄댓글 입니당... 제가 봤을 땐 조금 더 고렙이 되셔야 할듯여</td>
-        </tr>
+        <?
+			if ($comment['nickname'] != '')
+			{
+				$comment_result = $mysqli->query("SELECT * FROM bbs_comment WHERE type='자유' and no='$no' order by today ASC") or trigger_error($mysqli->error.$sql);
+				while ($display_comment = $comment_result->fetch_array())
+				{
+					echo "
+							<tr>
+							<td width='50px' align='center'>".$display_comment['nickname']."</td>
+							<td colspan='2' width='800px'>".$display_comment['content']."</td>
+							<td width='150px' align='center'>".$display_comment['today']."</td>
+							</tr>
+						";
+				}
+			}
+			else
+			{
+				echo "
+						<tr>
+						<td colspan='4' align='center'>댓글이 없습니다.</td>
+						</tr>
+					";
+			}
+		?>
         <tr>
         	<td colspan="4" align="center">
-            <form class="form-inline" role="form">
+            <form class="form-inline" role="form" action="./freebbs_read.php" method="post">
 				<div class="form-group">
-                <input type="text" class="form-control" placeholder="한줄댓글 작성" maxlength="50" style="width:550px;">
+                <input type="text" class="form-control" placeholder="한줄댓글 작성" maxlength="50" style="width:550px;" name="one_comment">
+                <input type="hidden" name="bbs_no" value="<?=$no?>" />
                 </div>
 				<button type="submit" class="btn btn-default">댓글작성</button>
             </form>

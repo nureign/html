@@ -34,6 +34,11 @@
     var message = "신규 이벤트는 14년 11월 11일에 공개합니다!";
     alert(message);
 	}
+	
+	function search_info(){
+	var message = "검색기능은 차후 업데이트에 기능구현 하겠습니다.";
+	alert(message);
+	}
 	</script>
     
 </head>

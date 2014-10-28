@@ -13,16 +13,17 @@
 
 	if( !isset($id) )
 	{
-		echo ("<div align='center'>로그인을 하시기 바랍니다.</div>");
+		echo "<script>alert('Logout, Please You should try Log-in again'); history.back(-1);</script>";
 		exit;
 	}
+//no	item_name	item_type	subject	nickname	price_type	price	today	admin
 
 ?>
 <!-- 로우 전체 시작 -->
 <div class="row" align="center">
 	<div class="col-xs-1"><!--여백--></div>
 
-    <!-- 자유토론 시작 -->
+    <!-- 거래게시판 시작 -->
 	<div class="col-xs-10">
 	<h2 align="center">거래게시판 커뮤니티</h2><br />
 	<table class="table table-bordered" style="width:900px;">
@@ -33,27 +34,47 @@
             <td>케릭명</td>
             <td>날짜</td>
         </tr>
-        <tr>
-        	<td align="center" width="100px">공지</td>
-            <td align="center" width="100px">-</td>
-            <td width="350px">에스트렐라 거래게시판 입니다.</td>
-            <td align="center" width="150px">어스GM</td>
-            <td align="center" width="100px">14-10-25 19:25</td>
-        </tr>
-        <tr>
-        	<td align="center" width="100px">공지</td>
-            <td align="center" width="100px">-</td>
-            <td width="350px">게시판 이용규칙 (V1.0)</td>
-            <td align="center" width="150px">어스GM</td>
-            <td align="center" width="100px">14-10-25 20:00</td>
-        </tr>
-        <tr>
-        	<td align="center" width="100px">1198</td>
-            <td align="center" width="100px">새살쏙쏙연고</td>
-            <td><span style="color:#A60000; font-size:small;">[팝니다] </span><a href="./tradebbs_read.php">저렴하게 팔아요!! 컨텍하세여!</a></td>
-            <td align="center" width="150px">훗샤광</td>
-            <td align="center" width="100px">14-10-22 22:00</td>
-        </tr>
+        <?
+		//no	item_name	item_type	subject	nickname	price_type	price	today	admin
+		$result = $mysqli->query("SELECT * FROM bbs_trade WHERE admin < 1 order by no DESC limit 10") or trigger_error($mysqli->error.$sql);
+		$result_notice = $mysqli->query("SELECT * FROM bbs_trade WHERE admin = 1 order by no DESC") or trigger_error($mysqli->error.$sql);
+		
+		while ($showme_n = $result_notice->fetch_array())
+		{
+			$number = $showme_n['no'];
+			$showme_n['no'] = "공지";
+			echo "<tr>
+					<td align='center' width='100px'>".$showme_n['no']."</td>
+					<td align='center' width='150px'>-</td>
+					<td><a href='./tradebbs_read.php?no=".$number."'>".$showme_n['subject']."</a></td>
+					<td align='center' width='150px'>".$showme_n['nickname']."</td>
+					<td align='center' width='150px'>".$showme_n['today']."</td>
+				  </tr>
+				  ";
+		}
+		
+		while ($showme = $result->fetch_array())
+		{
+			$number = $showme['no'];
+			if ($showme['item_type'] == '팝니다')
+			{
+				$category = "<span style='color:#A60000; font-size:small;'>[팝니다]&nbsp;</span>";
+			}
+			else
+			{
+				$category = "<span style='color:#474BFE; font-size:small;'>[삽니다]&nbsp;</span>";
+			}
+				
+			echo "<tr>
+					<td align='center' width='100px'>".$showme['no']."</td>
+					<td align='center' width='150px'>".$showme['item_name']."</td>
+					<td>".$category."<a href='./tradebbs_read.php?no=".$number."'>".$showme['subject']."</a></td>
+					<td align='center' width='150px'>".$showme['nickname']."</td>
+					<td align='center' width='150px'>".$showme['today']."</td>
+				  </tr>
+				  ";
+		}
+		?>
         <tr>
         	<td align="center" colspan="5">
             <form class="form-inline" role="form">
@@ -67,7 +88,7 @@
 				<div class="form-group">
                 <input type="text" class="form-control" i	d="whatareuwant" placeholder="무엇을 찾으시겠어요?">
                 </div>
-				<button type="submit" class="btn btn-default">검색</button>
+				<a href="#" onClick="search_info()"><button type="button" class="btn btn-default">검색</button></a>
                 <a href="./tradebbs_write.php"><button type="button" class="btn btn-info">글쓰기</button></a>
             </form>
             
@@ -76,7 +97,7 @@
       </td>
     </table><br />
 	</div>     
-    <!-- 자유토론 닫기 -->
+    <!-- 거래게시판 닫기 -->
 
 	<div class="col-xs-1"><!-- 공백 --></div>
 </div>
