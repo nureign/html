@@ -45,7 +45,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">설정<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#" onClick="message()">내정보</a></li>
+                <li><a href="./account.php">내정보</a></li>
                 <li><a href="#" onClick="message_secure()">보안설정</a></li>
               </ul>
             </li>
