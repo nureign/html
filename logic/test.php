@@ -6,7 +6,12 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 	$sql = "SET NAMES UTF8";
 	$mysqli->query($sql);
 	
-	$max_level = 100;
+	for( $i=1; $i<=50; $i++ )
+	{
+		$sql = "INSERT INTO popular (table_name, no, popular) VALUES ('character_item', '$i', 0);";
+		$mysqli->query($sql);
+	}
+	/*$max_level = 100;
 
 	$exp = array();
 	for($i=0; $i<$max_level; $i++)
@@ -26,7 +31,7 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 
 	$hp_model = json_encode($hp);
 	$sql = "INSERT INTO config ( name, config ) VALUES ( 'maxhp', '$hp_model' ) ON DUPLICATE KEY UPDATE config = '$hp_model';";
-	$mysqli->query($sql);
+	$mysqli->query($sql);*/
 }
 
 $mysqli->close();

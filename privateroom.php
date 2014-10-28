@@ -25,7 +25,7 @@
             	<td class="right" width="300px"><img src="./images/privateroom_assi.jpg" alt="..." width="250px" height="200px"></td>
                 <td align="left">
                 	<h4 align="center">개인룸 비서</h4><br />
-					환영합니다! <?=$myinfo[0]['name']?>님! 저는 당신의 업무를 도와드리는 충실한 비서입니다. <br />
+					환영합니다! <?=$_SESSION['name']?>님! 저는 당신의 업무를 도와드리는 충실한 비서입니다. <br />
                     이곳에서 주인님이 보기 편하도록 종합현황 데이터를 제공하고 있습니다.<br />
                     이곳저곳에서 수집하고 계신 아이템 현황도 보기 쉽게 인벤토리에 넣어놓았습니다.<br />
                     구매를 하실 때 마다 제가 물건을 가질러 오지만 기쁜마음으로 일을 하고 있습니다.<br />
@@ -61,7 +61,7 @@
                 	<div class="form-group has-success">
                     <Form class="form-inline" role="form" method="post" action="javascript:;">
 					<label class="control-label" for="inputSuccess1">소개말 상태 / 변경</label>&nbsp;
-                	<textarea class="form-control" rows="2" style="width:500px;" id="intro"><?=$myinfo[0]['intro']?></textarea>
+                	<textarea class="form-control" rows="2" style="width:500px;" id="intro"><?=$_SESSION['myinfo']['intro']?></textarea>
                     &nbsp;<button type="submit" class="btn btn-default" id="changeintro">소개말 변경</button>
                     </Form>
                     </div>
@@ -84,27 +84,27 @@
             </tr>
             <tr>
             	<td class="warning">공격력</td>
-                <td><?=$myinfo[0]['low_power']?> ~ <?=$myinfo[0]['max_power']?></td>
+                <td><?=$_SESSION['myinfo']['low_power']?> ~ <?=$_SESSION['myinfo']['max_power']?></td>
                 <td class="warning">방어력</td>
-                <td><?=$myinfo[0]['defense']?></td>
+                <td><?=$_SESSION['myinfo']['defense']?></td>
                 <td class="warning">성향보정치</td>
                 <td>무기성애자</td>
             </tr>
             <tr>
             	<td class="warning">근력</td>
-                <td><?=$myinfo[0]['stat1']?> (+0)</td>
+                <td><?=$_SESSION['myinfo']['stat1']?> (+0)</td>
                 <td class="warning">민첩</td>
-                <td><?=$myinfo[0]['stat2']?> (+0)</td>
+                <td><?=$_SESSION['myinfo']['stat2']?> (+0)</td>
                 <td class="warning">지력</td>
-                <td><?=$myinfo[0]['stat3']?> (+0)</td>
+                <td><?=$_SESSION['myinfo']['stat3']?> (+0)</td>
             </tr>
             <tr>
             	<td class="warning">예지력</td>
-                <td><?=$myinfo[0]['stat4']?> (+0)</td>
+                <td><?=$_SESSION['myinfo']['stat4']?> (+0)</td>
                 <td class="warning">행운</td>
-                <td><?=$myinfo[0]['stat5']?> (+0)</td>
+                <td><?=$_SESSION['myinfo']['stat5']?> (+0)</td>
                 <td class="warning">매력</td>
-                <td><?=$myinfo[0]['stat6']?> (+0)</td>
+                <td><?=$_SESSION['myinfo']['stat6']?> (+0)</td>
             </tr>
          </table>
         <!-- 종합스텟 닫기 -->
@@ -115,19 +115,19 @@
             </tr>
             <tr>
             	<td class="warning" width="40px">왼손</td>
-                <td width="60px" id="lefthand"><?=$myinfo[0]['lefthand']?></td>
+                <td width="60px" id="lefthand"><?=$_SESSION['myinfo']['lefthand']?></td>
                 <td class="warning" width="40px">오른손</td>
-                <td width="60px" id="righthand"><?=$myinfo[0]['righthand']?></td>
+                <td width="60px" id="righthand"><?=$_SESSION['myinfo']['righthand']?></td>
                 <td class="warning" width="40px">상의</td>
-                <td width="60px" id="top"><?=$myinfo[0]['top']?></td>
+                <td width="60px" id="top"><?=$_SESSION['myinfo']['top']?></td>
                 <td class="warning" width="40px">하의</td>
-                <td width="60px" id="pants"><?=$myinfo[0]['pants']?></td>
+                <td width="60px" id="pants"><?=$_SESSION['myinfo']['pants']?></td>
             </tr>
             <tr>
             	<td class="warning" width="40px">신발</td>
-                <td width="60px" id="shoes"><?=$myinfo[0]['shoes']?></td>
+                <td width="60px" id="shoes"><?=$_SESSION['myinfo']['shoes']?></td>
                 <td class="warning" width="40px">악세사리</td>
-                <td width="60px" id="accessory"><?=$myinfo[0]['accessory']?></td>
+                <td width="60px" id="accessory"><?=$_SESSION['myinfo']['accessory']?></td>
                 <td style="background-color:#EAFEBA" width="40px">특수아이템1</td>
                 <td width="60px"><strong>의문의 넥클레스</strong></td>
                 <td style="background-color:#EAFEBA" width="40px">특수아이템2</td>
@@ -136,22 +136,21 @@
             <tr>
             	<td colspan="8">
 				<Form class="form-inline" role="form" method="post" action="#">
-					<select class="form-control">
+					<select class="form-control" id="parts">
                         <option>왼손</option>
                         <option>오른손</option>
                         <option>상의</option>
                         <option>하의</option>
                         <option>신발</option>
                         <option>악세사리</option>
-                        <option>특수아이템1</option>
-                        <option>특수아이템2</option>
+                        <!--<option>특수아이템1</option>
+                        <option>특수아이템2</option>-->
                     </select>
-					<select class="form-control">
+					<select class="form-control" id="partslist">
                         <option>가지고 있는 아이템 표시</option>
                         <option>무기종류면 무기만 아니면 방어구 이런식</option>
                     </select>
-					<input type="hidden" id="id" value="" />
-					<button type="submit" class="btn btn-default">아이템 장착 변경</button>
+					<button type="button" class="btn btn-default" id="changeitem">아이템 장착 변경</button>
 				</Form>
                 </td>
             </tr>
@@ -178,15 +177,15 @@
 						<td class="warning">소지개수</td>
                     </tr>
 					<?
-					for( $i=0; $i<count($inventory); $i++ )
+					for( $i=0; $i<count($_SESSION['inventory']); $i++ )
 					{
-						if( $inventory[$i]['table_name'] != 'grocery_item' )
+						if( $_SESSION['inventory'][$i]['table_name'] != 'grocery_item' )
 							continue;
 						
-						echo '<tr><td>' . $inventory[$i][0]['name'] . '</td>
-							  <td>' . $inventory[$i][0]['explain'] . '</td>
-							  <td>' . $inventory[$i][0]['level'] . '</td>
-							  <td>' . $inventory[$i]['num'] . '</td></tr>';
+						echo '<tr><td>' . $_SESSION['inventory'][$i][0]['name'] . '</td>
+							  <td>' . $_SESSION['inventory'][$i][0]['explain'] . '</td>
+							  <td>' . $_SESSION['inventory'][$i][0]['level'] . '</td>
+							  <td>' . $_SESSION['inventory'][$i]['num'] . '</td></tr>';
 					}
 					?>
             	</table>
@@ -206,18 +205,18 @@
                         <td class="warning">소지개수</td>
                     </tr>
                     <?
-						for( $i=0; $i<count($inventory); $i++ )
+						for( $i=0; $i<count($_SESSION['inventory']); $i++ )
 						{
-							if( $inventory[$i]['table_name'] != 'character_item' )
+							if( $_SESSION['inventory'][$i]['table_name'] != 'character_item' )
 								continue;
 							
-							echo '<tr><td>' . ($inventory[$i]['equip'] ? '착용중' : '') . '</td>
-								  <td>' . $inventory[$i][0]['name'] . '</td>
-								  <td>' . $inventory[$i][0]['low_power'] . ' ~ ' . $inventory[$i][0]['max_power'] . '</td>
-								  <td>' . $inventory[$i][0]['defense'] . '</td>
-								  <td>' . $inventory[$i][0]['stat1'] . ' / ' . $inventory[$i][0]['stat2'] . ' / ' . $inventory[$i][0]['stat3'] . ' / ' . $inventory[$i][0]['stat4'] . ' / ' . $inventory[$i][0]['stat5'] . ' / ' . $inventory[$i][0]['stat6'] . '</td>
-								  <td>' . $inventory[$i][0]['special'] . '</td>
-								  <td>' . $inventory[$i]['num'] . '</td></tr>';
+							echo '<tr><td>' . ($_SESSION['inventory'][$i]['equip'] ? '착용중' : '') . '</td>
+								  <td>' . $_SESSION['inventory'][$i][0]['name'] . '</td>
+								  <td>' . $_SESSION['inventory'][$i][0]['low_power'] . ' ~ ' . $_SESSION['inventory'][$i][0]['max_power'] . '</td>
+								  <td>' . $_SESSION['inventory'][$i][0]['defense'] . '</td>
+								  <td>' . $_SESSION['inventory'][$i][0]['stat1'] . ' / ' . $_SESSION['inventory'][$i][0]['stat2'] . ' / ' . $_SESSION['inventory'][$i][0]['stat3'] . ' / ' . $_SESSION['inventory'][$i][0]['stat4'] . ' / ' . $_SESSION['inventory'][$i][0]['stat5'] . ' / ' . $_SESSION['inventory'][$i][0]['stat6'] . '</td>
+								  <td>' . $_SESSION['inventory'][$i][0]['special'] . '</td>
+								  <td>' . $_SESSION['inventory'][$i]['num'] . '</td></tr>';
 						}
 					?>
             	</table>
@@ -236,17 +235,17 @@
 						<td class="warning">사용레벨</td>
 					</tr>
 					<?
-						for( $i=0; $i<count($inventory); $i++ )
+						for( $i=0; $i<count($_SESSION['inventory']); $i++ )
 						{
-							if( $inventory[$i]['table_name'] != 'base_item' )
+							if( $_SESSION['inventory'][$i]['table_name'] != 'base_item' )
 								continue;
 							
-							echo '<tr><td>' . $inventory[$i][0]['name'] . '</td>
-								  <td>' . $inventory[$i][0]['type'] . '</td>
-								  <td>' . $inventory[$i][0]['low_power'] . ' ~ ' . $inventory[$i][0]['max_power'] . '</td>
-								  <td>' . $inventory[$i][0]['min_defense'] . ' ~ ' . $inventory[$i][0]['max_defense'] . '</td>
-								  <td>' . $inventory[$i][0]['durability'] . 'HP</td>
-								  <td>' . $inventory[$i][0]['level'] . '</td></tr>';
+							echo '<tr><td>' . $_SESSION['inventory'][$i][0]['name'] . '</td>
+								  <td>' . $_SESSION['inventory'][$i][0]['type'] . '</td>
+								  <td>' . $_SESSION['inventory'][$i][0]['low_power'] . ' ~ ' . $_SESSION['inventory'][$i][0]['max_power'] . '</td>
+								  <td>' . $_SESSION['inventory'][$i][0]['min_defense'] . ' ~ ' . $_SESSION['inventory'][$i][0]['max_defense'] . '</td>
+								  <td>' . $_SESSION['inventory'][$i][0]['durability'] . 'HP</td>
+								  <td>' . $_SESSION['inventory'][$i][0]['level'] . '</td></tr>';
 						}
 					?>
 				</table>

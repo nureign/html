@@ -12,7 +12,6 @@ $('.buy').click(function(){
 		type: 'POST',
 		url: './logic/charactermarket_buyitem.php',
 		data: {
-			id: sessionStorage.getItem('id'),
 			item: buy.val()
 		},
 		success: function(data) {

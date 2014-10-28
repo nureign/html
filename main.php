@@ -73,22 +73,22 @@
             	<!-- 케릭터이름, 소개말, 직책, 성향 -->
                 <ol class="breadcrumb">
                 <li class="active">캐릭터 이름</a></li>
-                <li id="name"><?=$name?></li>
+                <li id="name"><?=$_SESSION['myinfo']['name']?></li>
                 </ol>
                 <ol class="breadcrumb">
                 <li class="active">캐릭터 소개말</a></li>
-                <li id="intro"><?=$intro?></li>
+                <li id="intro"><?=$_SESSION['myinfo']['intro']?></li>
                 </ol>
                 <ol class="breadcrumb">
                 <li class="active">직책 (레벨)</a></li>
-                <li id="level"><?=$class?>(Lv.<?=$level?>)</li>
+                <li id="level"><?=$_SESSION['myinfo']['class']?>(Lv.<?=$_SESSION['myinfo']['level']?>)</li>
                 </ol>
 
                <div class="panel panel-default">
                 <table class="table table-condensed" align="center">
                     <tr class="active">
                         <td class="active" align="center" width="100px">성향</td>
-                        <td colspan="4" align="center" class="success" id='tendency'><?=$tendency?></td>
+                        <td colspan="4" align="center" class="success" id='tendency'><?=$_SESSION['myinfo']['tendency']?></td>
                     </tr>
                 </table>
                 </div>
@@ -99,7 +99,7 @@
                     <div class="progress, form-control" style="background-color:#FEE;">
                     <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?=$hp_per?>%;" id="hp_per"><?=$hp_per?>%</div>
                     </div>
-                    <span class="input-group-addon" id="hp_text"><?=$hp?> / <?=$maxhp?></span>
+                    <span class="input-group-addon" id="hp_text"><?=$_SESSION['myinfo']['hp']?> / <?=$_SESSION['myinfo']['maxhp']?></span>
                 </div>
                 <!-- 체력부분 닫기 -->
             
@@ -109,7 +109,7 @@
                     <div class="progress, form-control" style="background-color:#FFE7D9;">
                     <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?=$mental_per?>%;" id="mental_per"><?=$mental_per?>%</div>
                     </div>
-                    <span class="input-group-addon" id="mental_text"><?=$mental?> / <?=$mental?></span>
+                    <span class="input-group-addon" id="mental_text"><?=$_SESSION['myinfo']['mental']?> / <?=$_SESSION['myinfo']['mental']?></span>
                 </div>
                 <!-- 멘탈부분 닫기 -->
     
@@ -119,7 +119,7 @@
                     <div class="progress, form-control" style="background-color:#F4FFFF;">
                     <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?=$exp_per?>%;" id="exp_per"><?=$exp_per?>%</div>
                     </div>
-                    <span class="input-group-addon" id="exp_text"><?=$exp?> / <?=$exp_model[$level]?></span>
+                    <span class="input-group-addon" id="exp_text"><?=$_SESSION['myinfo']['exp']?> / <?=$exp_model[$_SESSION['myinfo']['level']]?></span>
                 </div>
                 <!-- 경험치부분 닫기 -->
             </td>
@@ -136,10 +136,10 @@
                             </tr>
                             </tr>
                             <tr class="warning">
-                            <td class="warning" align="center" id="stat1"><?=$stat1?></td>
-                            <td class="warning" align="center" id="stat2"><?=$stat2?></td>
-                            <td class="warning" align="center" id="stat3"><?=$stat3?></td>
-                            <td class="warning" align="center" id="stat4"><?=$stat4?></td>
+                            <td class="warning" align="center" id="stat1"><?=$_SESSION['myinfo']['stat1']?></td>
+                            <td class="warning" align="center" id="stat2"><?=$_SESSION['myinfo']['stat2']?></td>
+                            <td class="warning" align="center" id="stat3"><?=$_SESSION['myinfo']['stat3']?></td>
+                            <td class="warning" align="center" id="stat4"><?=$_SESSION['myinfo']['stat4']?></td>
                             </tr>
                             <tr class="danger">
                             <td class="danger" align="center">행운</td>
@@ -148,10 +148,10 @@
                             <td class="danger" align="center">루비</td>
                             </tr>
                             <tr class="warning">
-                            <td class="warning" align="center" id="stat5"><?=$stat5?></td>
-                            <td class="warning" align="center" id="stat6"><?=$stat6?></td>
-                            <td class="warning" align="center" id="honor"><?=$honor?></td>
-                            <td class="warning" align="center" id="ruby"><?=$ruby?></td>
+                            <td class="warning" align="center" id="stat5"><?=$_SESSION['myinfo']['stat5']?></td>
+                            <td class="warning" align="center" id="stat6"><?=$_SESSION['myinfo']['stat6']?></td>
+                            <td class="warning" align="center" id="honor"><?=$_SESSION['myinfo']['honor']?></td>
+                            <td class="warning" align="center" id="ruby"><?=$_SESSION['myinfo']['ruby']?></td>
                             </tr>
                         </table>
                    </div>
@@ -163,22 +163,22 @@
                         <table class="table table-condensed" align="center">
                             <tr align="center">
                             <td class="active" width="90px">왼손 무기</td>
-                            <td id="lefthand"><?=$lefthand?></td>
+                            <td id="lefthand"><?=$_SESSION['myinfo']['lefthand']?></td>
                             <td class="active" width="90px">오른손 무기</td>
-                            <td id="righthand"><?=$righthand?></td>
+                            <td id="righthand"><?=$_SESSION['myinfo']['righthand']?></td>
                             </tr>
                             </tr>
                             <tr align="center">
                             <td class="active">상의</td>
-                            <td id="top"><?=$top?></td>
+                            <td id="top"><?=$_SESSION['myinfo']['top']?></td>
                             <td class="active">하의</td>
-                            <td id="pants"><?=$pants?></td>
+                            <td id="pants"><?=$_SESSION['myinfo']['pants']?></td>
                             </tr>
                             <tr align="center">
                             <td class="active">신발</td>
-                            <td id="shoes"><?=$shoes?></td>
+                            <td id="shoes"><?=$_SESSION['myinfo']['shoes']?></td>
                             <td class="active">악세사리</td>
-                            <td id="accessory"><?=$accessory?></td>
+                            <td id="accessory"><?=$_SESSION['myinfo']['accessory']?></td>
                             </tr>
                         </table>
                 </div>

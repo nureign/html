@@ -5,77 +5,122 @@ session_start();
 $id = $_SESSION['id'];
 
 if( !isset($id) )
-{
 	exit;
-}
+
+/*
+**	모험하기 전투로그에서 얻은 경험치 합산 및 레벨업 처리 루틴
+*/
 
 $sql = "SELECT * FROM battlelog_queue WHERE id = '$id' LIMIT 1;";
 $result = $mysqli->query($sql);
 
 while( $row = $result->fetch_array() )
 {
-	$exp = $row['exp'];
-	$ruby = $row['ruby'];
-	$hp = $row['hp'];
+	$log_exp	= $row['exp'];
+	$log_ruby	= $row['ruby'];
+	$log_hp		= $row['hp'];
 
-	$sql = "UPDATE project_members SET exp = exp + '$exp', ruby = ruby + '$ruby', hp = '$hp' WHERE id = '$id';";
+	$sql = "UPDATE project_members SET exp = exp + '$log_exp', ruby = ruby + '$log_ruby', hp = '$log_hp' WHERE id = '$id';";
 	$mysqli->query($sql);
 
 	$sql = "DELETE FROM battlelog_queue WHERE id = '$id';";
 	$mysqli->query($sql);
 }
 
+/*
+**	내정보 세션으로 가져오기
+*/
+
+unset($_SESSION['myinfo']);
+
 $sql = "SELECT * FROM project_members WHERE id = '$id';";
 $result = $mysqli->query($sql);
 
-while( $row = $result->fetch_array() )
+if( $row = $result->fetch_assoc() )
 {
-	$name = $row['name'];
-	$class = $row['class'];
-	$level = $row['level'];
-	$tendency = $row['tendency'];
-	$hp = $row['hp'];
-	$maxhp = $row['maxhp'];
-	$mental = $row['mental'];
-	$exp = $row['exp'];
-	$stat1 = $row['stat1'];
-	$stat2 = $row['stat2'];
-	$stat3 = $row['stat3'];
-	$stat4 = $row['stat4'];
-	$stat5 = $row['stat5'];
-	$stat6 = $row['stat6'];
-	$honor = $row['honor'];
-	$ruby = $row['ruby'];
-	$lefthand = $row['lefthand'];
-	$righthand = $row['righthand'];
-	$top = $row['top'];
-	$pants = $row['pants'];
-	$shoes = $row['shoes'];
-	$accessory = $row['accessory'];
-	$intro = $row['intro'];
+	$_SESSION['myinfo'] = $row;
 }
 
-$sql = "SELECT * FROM config WHERE name = 'exp' OR name = 'maxhp';";
+$sql = "SELECT * FROM config;";
 $result = $mysqli->query($sql);
 
 while( $row = $result->fetch_array() )
 {
 	if( $row['name'] == 'exp' )
+	{
 		$exp_model = json_decode($row['config'], true);
+	}
 	else if( $row['name'] == 'maxhp' )
+	{
 		$hp_model = json_decode($row['config'], true);
+	}
 }
 
-if( $exp_model[$level] <= $exp )
+if( $exp_model[$_SESSION['myinfo']['level']] <= $_SESSION['myinfo']['exp'] )
 {
-	$level++;
-	$maxhp = $hp_model[$level];
-	$sql = "UPDATE project_members SET level = '$level', hp = '$maxhp', maxhp = '$maxhp' WHERE id = '$id';";
+	$_SESSION['myinfo']['level']++;
+	$_SESSION['myinfo']['maxhp'] = $hp_model[$_SESSION['myinfo']['level']];
+	$sql = "UPDATE project_members SET level = '" . $_SESSION['myinfo']['level'] . "', hp = '" . $_SESSION['myinfo']['maxhp'] . "', maxhp = '" . $_SESSION['myinfo']['maxhp'] . "' WHERE id = '$id';";
 	$mysqli->query($sql);
 }
 
-$hp_per = floor($hp / $maxhp * 100);
-$mental_per = floor($mental / $mental * 100);
-$exp_per = floor($exp / $exp_model[$level] * 100);
+$hp_per = floor($_SESSION['myinfo']['hp'] / $_SESSION['myinfo']['maxhp'] * 100);
+$mental_per = floor($_SESSION['myinfo']['mental'] / $_SESSION['myinfo']['mental'] * 100);
+$exp_per = floor($_SESSION['myinfo']['exp'] / $exp_model[$_SESSION['myinfo']['level']] * 100);
+
+/*
+**	인벤토리 정보 세션으로 가져오기
+*/
+
+unset($_SESSION['inventory']);
+
+$sql = "SELECT * FROM inventory WHERE id = '$id';";
+$result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
+
+while( $row = $result->fetch_assoc() )
+{
+	$_SESSION['inventory'][] = $row;
+}
+
+for( $i=0; $i<count($_SESSION['inventory']); $i++ )
+{
+	$sql = "SELECT * FROM " . $_SESSION['inventory'][$i]['table_name'] . " WHERE no = " . $_SESSION['inventory'][$i]['no'];
+	$result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
+
+	while( $row = $result->fetch_assoc() )
+	{
+		$_SESSION['inventory'][$i][] = $row;
+	}
+}
+
+$_SESSION['myinfo']['low_power'] = 1;
+$_SESSION['myinfo']['max_power'] = 1;
+$_SESSION['myinfo']['defense'] = 0;
+
+for( $i=0; $i<count($_SESSION['inventory']); $i++ )
+{
+	if( $_SESSION['inventory'][$i]['table_name'] != 'character_item' || $_SESSION['inventory'][$i]['equip'] != 1 )
+		continue;
+	
+	$_SESSION['myinfo']['low_power'] += $_SESSION['inventory'][$i][0]['low_power'];
+	$_SESSION['myinfo']['max_power'] += $_SESSION['inventory'][$i][0]['max_power'];
+	$_SESSION['myinfo']['defense'] += $_SESSION['inventory'][$i][0]['defense'];
+	
+	// 장비처리
+	if( $_SESSION['inventory'][$i]['slot'] )
+	{
+		$sql = "SELECT name FROM character_item WHERE no = " . $_SESSION['inventory'][$i][0]['no'];
+		$result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
+
+		while( $row = $result->fetch_assoc() )
+		{
+			$_SESSION['myinfo'][$_SESSION['inventory'][$i]['slot']] = $row['name'];
+		}
+	}
+}
+
+$_SESSION['myinfo']['low_power'] += $_SESSION['myinfo']['stat1'];
+$_SESSION['myinfo']['max_power'] += $_SESSION['myinfo']['stat1']*2;
+$_SESSION['myinfo']['defense'] += $_SESSION['myinfo']['stat2'];
 
 ?>
