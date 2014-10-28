@@ -60,7 +60,7 @@
         <button class="btn btn-default" type="button" id="AuthConfirm">확인</button>
       </span>
     </div><!-- /input-group -->
-    인증이 완료되었습니다. / 인증이 불일치 합니다.
+
   </div>
   </div>
   <div class="form-group">
