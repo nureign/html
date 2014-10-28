@@ -76,35 +76,35 @@
             </tr>
             <tr>
             	<td class="warning">체력보너스</td>
-                <td>+100</td>
+                <td>+0</td>
                 <td class="warning">멘탈보너스</td>
-                <td>+100</td>
+                <td>+0</td>
                 <td class="warning">경험치보너스</td>
-                <td>+50</td>
+                <td>+0</td>
             </tr>
             <tr>
             	<td class="warning">공격력</td>
-                <td>10 (+30)</td>
+                <td><?=$myinfo[0]['low_power']?> ~ <?=$myinfo[0]['max_power']?></td>
                 <td class="warning">방어력</td>
-                <td>10 (+20)</td>
+                <td><?=$myinfo[0]['defense']?></td>
                 <td class="warning">성향보정치</td>
-                <td>무기성애자 +5%</td>
+                <td>무기성애자</td>
             </tr>
             <tr>
             	<td class="warning">근력</td>
-                <td><?=$stat1?> (+5)</td>
+                <td><?=$myinfo[0]['stat1']?> (+0)</td>
                 <td class="warning">민첩</td>
-                <td><?=$stat2?> (+3)</td>
+                <td><?=$myinfo[0]['stat2']?> (+0)</td>
                 <td class="warning">지력</td>
-                <td><?=$stat3?> (+0)</td>
+                <td><?=$myinfo[0]['stat3']?> (+0)</td>
             </tr>
             <tr>
             	<td class="warning">예지력</td>
-                <td><?=$stat4?> (+0)</td>
+                <td><?=$myinfo[0]['stat4']?> (+0)</td>
                 <td class="warning">행운</td>
-                <td><?=$stat5?> (+330)</td>
+                <td><?=$myinfo[0]['stat5']?> (+0)</td>
                 <td class="warning">매력</td>
-                <td><?=$stat6?> (+5)</td>
+                <td><?=$myinfo[0]['stat6']?> (+0)</td>
             </tr>
          </table>
         <!-- 종합스텟 닫기 -->
@@ -115,19 +115,19 @@
             </tr>
             <tr>
             	<td class="warning" width="40px">왼손</td>
-                <td width="60px" id="lefthand"><?=$lefthand?></td>
+                <td width="60px" id="lefthand"><?=$myinfo[0]['lefthand']?></td>
                 <td class="warning" width="40px">오른손</td>
-                <td width="60px" id="righthand"><?=$righthand?></td>
+                <td width="60px" id="righthand"><?=$myinfo[0]['righthand']?></td>
                 <td class="warning" width="40px">상의</td>
-                <td width="60px" id="top"><?=$top?></td>
+                <td width="60px" id="top"><?=$myinfo[0]['top']?></td>
                 <td class="warning" width="40px">하의</td>
-                <td width="60px" id="pants"><?=$pants?></td>
+                <td width="60px" id="pants"><?=$myinfo[0]['pants']?></td>
             </tr>
             <tr>
             	<td class="warning" width="40px">신발</td>
-                <td width="60px" id="shoes"><?=$shoes?></td>
+                <td width="60px" id="shoes"><?=$myinfo[0]['shoes']?></td>
                 <td class="warning" width="40px">악세사리</td>
-                <td width="60px" id="accessory"><?=$accessory?></td>
+                <td width="60px" id="accessory"><?=$myinfo[0]['accessory']?></td>
                 <td style="background-color:#EAFEBA" width="40px">특수아이템1</td>
                 <td width="60px"><strong>의문의 넥클레스</strong></td>
                 <td style="background-color:#EAFEBA" width="40px">특수아이템2</td>
@@ -161,7 +161,7 @@
         
           <div class="bs-example bs-example-tabs">
             <ul id="myTab" class="nav nav-tabs" role="tablist">
-              <li class="active"><a href="#grocery" role="tab" data-toggle="tab">편의점</a></li>
+              <li class="active"><a href="#grocery" role="tab" data-toggle="tab">편의점 아이템</a></li>
               <li><a href="#character" role="tab" data-toggle="tab">케릭터시장 아이템</a></li>
               <li><a href="#base" role="tab" data-toggle="tab">베이스시장 아이템</a></li>
             </ul>
@@ -172,24 +172,24 @@
                         <td colspan="8" style="background-color:#FFCCA2"><strong>인벤토리</strong></td>
                     </tr>
                     <tr>
-                        <td class="warning">타입</td>
                         <td class="warning">이름</td>
-                        <td class="warning">속성</td>
-                        <td class="warning">공방력</td>
-                        <td class="warning">내구도</td>
-                        <td class="warning">스텟변화</td>
-                        <td class="warning">특수능력</td>
-                        <td class="warning">소지개수</td>
+                        <td class="warning">설명</td>
+                        <td class="warning">사용레벨</td>
+						<td class="warning">소지개수</td>
                     </tr>
                     <tr>
-                        <td>무기</td>
-                        <td>젓가락</td>
-                        <td>물리</td>
-                        <td>1~2</td>
-                        <td>100</td>
-                        <td>없음</td>
-                        <td>없음</td>
-                        <td>1</td>
+					<?
+					for( $i=0; $i<count($inventory); $i++ )
+					{
+						if( $inventory[$i]['table_name'] != 'grocery_item' )
+							continue;
+						
+						echo '<td>' . $inventory[$i][0]['name'] . '</td>
+							  <td>' . $inventory[$i][0]['explain'] . '</td>
+							  <td>' . $inventory[$i][0]['level'] . '</td>
+							  <td>' . $inventory[$i]['num'] . '</td>';
+					}
+					?>
                     </tr>
             	</table>
                </div>
@@ -199,53 +199,63 @@
                         <td colspan="8" style="background-color:#FFCCA2"><strong>인벤토리</strong></td>
                     </tr>
                     <tr>
-                        <td class="warning">타입</td>
+						<td class="warning">착용</td>
                         <td class="warning">이름</td>
-                        <td class="warning">속성</td>
-                        <td class="warning">공방력</td>
-                        <td class="warning">내구도</td>
-                        <td class="warning">스텟변화</td>
+                        <td class="warning">공격력</td>
+                        <td class="warning">방어력</td>
+                        <td class="warning">능력변화량</td>
                         <td class="warning">특수능력</td>
                         <td class="warning">소지개수</td>
                     </tr>
                     <tr>
-                        <td>무기</td>
-                        <td>젓가락</td>
-                        <td>물리</td>
-                        <td>1~2</td>
-                        <td>100</td>
-                        <td>없음</td>
-                        <td>없음</td>
-                        <td>1</td>
+                    <?
+						for( $i=0; $i<count($inventory); $i++ )
+						{
+							if( $inventory[$i]['table_name'] != 'character_item' )
+								continue;
+							
+							echo '<td>' . ($inventory[$i]['equip'] ? '착용중' : '') . '</td>
+								  <td>' . $inventory[$i][0]['name'] . '</td>
+								  <td>' . $inventory[$i][0]['low_power'] . ' ~ ' . $inventory[$i][0]['max_power'] . '</td>
+								  <td>' . $inventory[$i][0]['defense'] . '</td>
+								  <td>' . $inventory[$i][0]['stat1'] . ' / ' . $inventory[$i][0]['stat2'] . ' / ' . $inventory[$i][0]['stat3'] . ' / ' . $inventory[$i][0]['stat4'] . ' / ' . $inventory[$i][0]['stat5'] . ' / ' . $inventory[$i][0]['stat6'] . '</td>
+								  <td>' . $inventory[$i][0]['special'] . '</td>
+								  <td>' . $inventory[$i]['num'] . '</td>';
+						}
+					?>
                     </tr>
             	</table>
                </div>
                <div class="tab-pane fade" id="base">
                 <table class="table table-condensed width center">
-                                    <tr>
-                                        <td colspan="8" style="background-color:#FFCCA2"><strong>인벤토리</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="warning">타입</td>
-                                        <td class="warning">이름</td>
-                                        <td class="warning">속성</td>
-                                        <td class="warning">공방력</td>
-                                        <td class="warning">내구도</td>
-                                        <td class="warning">스텟변화</td>
-                                        <td class="warning">특수능력</td>
-                                        <td class="warning">소지개수</td>
-                                    </tr>
-                                    <tr>
-                                        <td>무기</td>
-                                        <td>젓가락</td>
-                                        <td>물리</td>
-                                        <td>1~2</td>
-                                        <td>100</td>
-                                        <td>없음</td>
-                                        <td>없음</td>
-                                        <td>1</td>
-                                    </tr>
-                                </table>
+					<tr>
+						<td colspan="8" style="background-color:#FFCCA2"><strong>인벤토리</strong></td>
+					</tr>
+					<tr>
+						<td class="warning">이름</td>
+						<td class="warning">공격력</td>
+						<td class="warning">방어력</td>
+						<td class="warning">체력</td>
+						<td class="warning">사용레벨</td>
+						<td class="warning">소지개수</td>
+					</tr>
+					<tr>
+					<?
+						for( $i=0; $i<count($inventory); $i++ )
+						{
+							if( $inventory[$i]['table_name'] != 'base_item' )
+								continue;
+							
+							echo '<td>' . $inventory[$i][0]['name'] . '</td>
+								  <td>' . $inventory[$i][0]['min_power'] . ' ~ ' . $inventory[$i][0]['max_power'] . '</td>
+								  <td>' . $inventory[$i][0]['min_defense'] . ' ~ ' . $inventory[$i][0]['max_defense'] . '</td>
+								  <td>' . $inventory[$i][0]['durability'] . '</td>
+								  <td>' . $inventory[$i][0]['level'] . '</td>
+								  <td>' . $inventory[$i]['num'] . '</td>';
+						}
+					?>
+					</tr>
+				</table>
                </div>
 			</div>
           </div>

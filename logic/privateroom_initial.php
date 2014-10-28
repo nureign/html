@@ -37,10 +37,38 @@ while( $row = $result->fetch_array() )
 $sql = "SELECT * FROM inventory WHERE id = '$id';";
 $result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
 
-while( $row = $result->fetch_array() )
+while( $row = $result->fetch_assoc() )
 {
 	$inventory[] = $row;
 }
 
+for( $i=0; $i<count($inventory); $i++ )
+{
+	$sql = "SELECT * FROM " . $inventory[$i]['table_name'] . " WHERE no = " . $inventory[$i]['no'];
+	$result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
+
+	while( $row = $result->fetch_assoc() )
+	{
+		$inventory[$i][] = $row;
+	}
+}
+
+$myinfo[0]['low_power'] = 0;
+$myinfo[0]['max_power'] = 0;
+$myinfo[0]['defense'] = 0;
+
+for( $i=0; $i<count($inventory); $i++ )
+{
+	if( $inventory[$i]['table_name'] != 'character_item' )
+		continue;
+	
+	$myinfo[0]['low_power'] += $inventory[$i][0]['low_power'];
+	$myinfo[0]['max_power'] += $inventory[$i][0]['max_power'];
+	$myinfo[0]['defense'] += $inventory[$i][0]['defense'];
+}
+
+$myinfo[0]['low_power'] += $myinfo[0]['stat1'];
+$myinfo[0]['max_power'] += $myinfo[0]['stat1']*2;
+$myinfo[0]['defense'] += $myinfo[0]['stat2'];
 
 ?>
