@@ -16,7 +16,8 @@
 	{
 		exit();
 	}
-	if ($password == $password2)
+
+	if ($password == $password2 and $password != '' and $password2 != '')
 	{
 		include_once "./common/db_conn.php";
 		
@@ -28,7 +29,7 @@
 	}
 	else
 	{
-		echo "<script>alert('패스워드를 확인해주세요.'); history.back(-1);</script>";
+		echo "<script>alert('패스워드가 일치하지 않습니다.'); history.back(-1);</script>";
 	}
 
 
