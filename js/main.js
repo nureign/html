@@ -16,7 +16,7 @@ $('#adventure').click(function() {
 
 $('#planetattack').click(function() {
 
-	location.href = './planetattack.php';
+	location.href = './planetready.php';
 
 });
 
