@@ -157,32 +157,99 @@
             </tr>
         </table>
         <!-- 종합 아이템 현황 닫기 -->
-        <!-- 인벤토리 -->
-        <table class="table table-condensed width center">
-        	<tr>
-            	<td colspan="8" style="background-color:#FFCCA2"><strong>인벤토리</strong></td>
-            </tr>
-            <tr>
-            	<td class="warning">타입</td>
-                <td class="warning">이름</td>
-                <td class="warning">속성</td>
-                <td class="warning">공방력</td>
-                <td class="warning">내구도</td>
-                <td class="warning">스텟변화</td>
-                <td class="warning">특수능력</td>
-                <td class="warning">소지개수</td>
-            </tr>
-            <tr>
-            	<td>무기</td>
-                <td>젓가락</td>
-                <td>물리</td>
-                <td>1~2</td>
-                <td>100</td>
-                <td>없음</td>
-                <td>없음</td>
-                <td>1</td>
-            </tr>
-        </table>
+        <!-- 인벤토리 --> <!-- 그로서리(편의점), 케릭터 아이템, 베이스 아이템 -->
+        
+          <div class="bs-example bs-example-tabs">
+            <ul id="myTab" class="nav nav-tabs" role="tablist">
+              <li class="active"><a href="#grocery" role="tab" data-toggle="tab">편의점</a></li>
+              <li><a href="#character" role="tab" data-toggle="tab">케릭터시장 아이템</a></li>
+              <li><a href="#base" role="tab" data-toggle="tab">베이스시장 아이템</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+              <div class="tab-pane fade in active" id="grocery">
+                <table class="table table-condensed width center">
+                    <tr>
+                        <td colspan="8" style="background-color:#FFCCA2"><strong>인벤토리</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="warning">타입</td>
+                        <td class="warning">이름</td>
+                        <td class="warning">속성</td>
+                        <td class="warning">공방력</td>
+                        <td class="warning">내구도</td>
+                        <td class="warning">스텟변화</td>
+                        <td class="warning">특수능력</td>
+                        <td class="warning">소지개수</td>
+                    </tr>
+                    <tr>
+                        <td>무기</td>
+                        <td>젓가락</td>
+                        <td>물리</td>
+                        <td>1~2</td>
+                        <td>100</td>
+                        <td>없음</td>
+                        <td>없음</td>
+                        <td>1</td>
+                    </tr>
+            	</table>
+               </div>
+               <div class="tab-pane fade" id="character">
+				<table class="table table-condensed width center">
+                    <tr>
+                        <td colspan="8" style="background-color:#FFCCA2"><strong>인벤토리</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="warning">타입</td>
+                        <td class="warning">이름</td>
+                        <td class="warning">속성</td>
+                        <td class="warning">공방력</td>
+                        <td class="warning">내구도</td>
+                        <td class="warning">스텟변화</td>
+                        <td class="warning">특수능력</td>
+                        <td class="warning">소지개수</td>
+                    </tr>
+                    <tr>
+                        <td>무기</td>
+                        <td>젓가락</td>
+                        <td>물리</td>
+                        <td>1~2</td>
+                        <td>100</td>
+                        <td>없음</td>
+                        <td>없음</td>
+                        <td>1</td>
+                    </tr>
+            	</table>
+               </div>
+               <div class="tab-pane fade" id="base">
+                <table class="table table-condensed width center">
+                                    <tr>
+                                        <td colspan="8" style="background-color:#FFCCA2"><strong>인벤토리</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="warning">타입</td>
+                                        <td class="warning">이름</td>
+                                        <td class="warning">속성</td>
+                                        <td class="warning">공방력</td>
+                                        <td class="warning">내구도</td>
+                                        <td class="warning">스텟변화</td>
+                                        <td class="warning">특수능력</td>
+                                        <td class="warning">소지개수</td>
+                                    </tr>
+                                    <tr>
+                                        <td>무기</td>
+                                        <td>젓가락</td>
+                                        <td>물리</td>
+                                        <td>1~2</td>
+                                        <td>100</td>
+                                        <td>없음</td>
+                                        <td>없음</td>
+                                        <td>1</td>
+                                    </tr>
+                                </table>
+               </div>
+			</div>
+          </div>
+        
         <!-- 인벤토리 닫기 -->
 		</div>
     </div>
