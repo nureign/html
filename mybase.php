@@ -6,6 +6,7 @@
 	include_once "./common/header.php";
 	include_once "./common/nav.php";
 	include_once "./common/db_conn.php";
+	include_once "./logic/mybase_initial.php";
 ?>
 
 <!-- 윗 상단 로우 전체 시작 -->
@@ -59,16 +60,16 @@
 	<table class="table table-hover">
 		 <h3>기지방호시스템 설정</h3>
          <tr align="center">
-         	<td class="success"><strong>무기시스템</strong></td>
-            <td>없음</td>
-            <td class="success"><strong>방어시스템</strong></td>
-            <td>없음</td>
+         	<td class="success"><strong>방어시스템1</strong></td>
+            <td><?=$defense1?></td>
+            <td class="success"><strong>방어시스템2</strong></td>
+            <td><?=$defense2?></td>
          </tr>
          <tr align="center">
-         	<td class="success"><strong>방공시스템</strong></td>
-            <td>없음</td>
+         	<td class="success"><strong>방어시스템3</strong></td>
+            <td><?=$defense3?></td>
             <td class="success"><strong>방어벽</strong></td>
-            <td>없음</td>
+            <td><?=$wall?></td>
          </tr>
 	</table>
 
@@ -77,7 +78,7 @@
     	<tr align="center">
         	<td>
                 <div class="form-group">
-                    무기시스템 변경 :
+                    방어시스템1 변경 :
             </td>
             <td>
 				<select class="form-control" id="weapons_system">
@@ -91,7 +92,7 @@
             </td>
             <td>
 				<div class="form-group">
-                    방어시스템 변경 : 
+                    방어시스템2 변경 : 
             </td>
             <td>
 				<select class="form-control" id="defense_system">
@@ -107,7 +108,7 @@
          <tr align="center">
          	<td>
                 <div class="form-group">
-                    방공시스템 변경 : 
+                    방어시스템3 변경 : 
             </td>
             <td>
 				<select class="form-control" id="weapons_system">

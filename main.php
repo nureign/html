@@ -217,13 +217,13 @@
                         <td class="warning">없음</td>
                     </tr>
                     <tr align="center">
-						<td class="danger">무기시스템</td>
+						<td class="danger">방어시스템1</td>
                         <td class="warning">RX-d</td>
-                        <td class="danger">방어시스템</td>
+                        <td class="danger">방어시스템2</td>
                         <td class="warning">NDV-3</td>
                     </tr>
                     <tr align="center">
-						<td class="danger">방공시스템</td>
+						<td class="danger">방어시스템3</td>
                         <td class="warning">종이미사일</td>
                         <td class="danger">방어벽</td>
                         <td class="warning">종이벽</td>
