@@ -219,15 +219,15 @@
                     </tr>
                     <tr align="center">
 						<td class="danger">방어시스템1</td>
-                        <td class="warning">RX-d</td>
+                        <td class="warning"><?=$_SESSION['myinfo']['defense1']?></td>
                         <td class="danger">방어시스템2</td>
-                        <td class="warning">NDV-3</td>
+                        <td class="warning"><?=$_SESSION['myinfo']['defense2']?></td>
                     </tr>
                     <tr align="center">
 						<td class="danger">방어시스템3</td>
-                        <td class="warning">종이미사일</td>
+                        <td class="warning"><?=$_SESSION['myinfo']['defense3']?></td>
                         <td class="danger">방어시스템4</td>
-                        <td class="warning">종이벽</td>
+                        <td class="warning"><?=$_SESSION['myinfo']['defense4']?></td>
                     </tr>
                     <tr align="center">
 						<td class="danger">티타늄보유</td>

@@ -334,14 +334,14 @@
                                             <td>일반병사(LV 1)</td>
                                             <td>10</td>
                                             <td>5</td>
-                                            <td>무방비</td>
+                                            <td>없음</td>
                                             <td>1</td>
                                             <td>티타늄 10</td>
                                             
                                             <td>일반병사(LV 1)</td>
                                             <td>10</td>
                                             <td>5</td>
-                                            <td>무방비</td>
+                                            <td>없음</td>
                                             <td>1</td>
                                             <td>티타늄 10</td>
                                         </tr>
@@ -508,14 +508,14 @@
                                             <td>이온탱크(Lv 1)</td>
                                             <td>100</td>
                                             <td>30</td>
-                                            <td>무방비</td>
+                                            <td>없음</td>
                                             <td>2</td>
                                             <td>티타늄 300<br />팔라듐 10</td>
                                             
                                             <td>정찰바이크(LV 1)</td>
                                             <td>100</td>
                                             <td>5</td>
-                                            <td>무방비</td>
+                                            <td>없음</td>
                                             <td>2</td>
                                             <td>티타늄 300<br />팔라듐 10</td>
                                         </tr>
@@ -572,7 +572,7 @@
                                             <td>자폭로봇(LV 1)</td>
                                             <td>10</td>
                                             <td>1000</td>
-                                            <td>무방비</td>
+                                            <td>없음</td>
                                             <td>10</td>
                                             <td>티타늄 5<br />팔라듐 500</td></td>
                                             
@@ -651,7 +651,7 @@
                                             <td>종이비행기(LV 1)</td>
                                             <td>10</td>
                                             <td>5</td>
-                                            <td>무방비</td>
+                                            <td>없음</td>
                                             <td>2</td>
                                             <td>티타늄 20</td>
                                             
@@ -1011,7 +1011,7 @@
           </tr>
           <tr>
             <td class="info">특수능력</td>
-            <td>무방비</td>
+            <td>없음</td>
             <td class="info">-</td>
             <td>-</td>
           </tr>

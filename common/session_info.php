@@ -97,7 +97,18 @@ function session_refresh()
 	$_SESSION['myinfo']['low_power'] = 1;
 	$_SESSION['myinfo']['max_power'] = 1;
 	$_SESSION['myinfo']['defense'] = 0;
-
+	//장착아이템
+	$_SESSION['myinfo']['lefthand'] = '없음';
+	$_SESSION['myinfo']['righthand'] = '없음';
+	$_SESSION['myinfo']['top'] = '없음';
+	$_SESSION['myinfo']['pants'] = '없음';
+	$_SESSION['myinfo']['shoes'] = '없음';
+	$_SESSION['myinfo']['accessory'] = '없음';
+	//기지방호시스템
+	$_SESSION['myinfo']['defense1'] = '무방비';
+	$_SESSION['myinfo']['defense2'] = '무방비';
+	$_SESSION['myinfo']['defense3'] = '무방비';
+	$_SESSION['myinfo']['defense4'] = '무방비';
 	for( $i=0; $i<count($_SESSION['inventory']); $i++ )
 	{
 		if( $_SESSION['inventory'][$i]['table_name'] == 'character_item' && $_SESSION['inventory'][$i]['equip'] == 1 )

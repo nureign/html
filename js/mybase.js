@@ -27,15 +27,23 @@ $('#changedef').click(function(){
 				
 				if( parsed['def1'] != null )
 					$('#def1').text( parsed['def1'] );
+				else
+					$('#def1').text( '무방비' );
 
 				if( parsed['def2'] != null )
 					$('#def2').text( parsed['def2'] );
+				else
+					$('#def2').text( '무방비' );
 
 				if( parsed['def3'] != null )
 					$('#def3').text( parsed['def3'] );
+				else
+					$('#def3').text( '무방비' );
 
 				if( parsed['def4'] != null )
 					$('#def4').text( parsed['def4'] );
+				else
+					$('#def4').text( '무방비' );
 			}
 
 		}
