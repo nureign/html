@@ -5,8 +5,8 @@
 	
 	include_once "./common/header.php";
 	include_once "./common/nav.php";
-	include_once "./common/db_conn.php";
-	include_once "./logic/mybase_initial.php";
+	//include_once "./common/db_conn.php";
+	//include_once "./logic/mybase_initial.php";
 ?>
 
 <!-- 윗 상단 로우 전체 시작 -->
@@ -61,15 +61,15 @@
 		 <h3>기지방호시스템 설정</h3>
          <tr align="center">
          	<td class="success"><strong>방어시스템1</strong></td>
-            <td><?=$defense1?></td>
+            <td id="def1"><?=$_SESSION['myinfo']['defense1']?></td>
             <td class="success"><strong>방어시스템2</strong></td>
-            <td><?=$defense2?></td>
+            <td id="def2"><?=$_SESSION['myinfo']['defense2']?></td>
          </tr>
          <tr align="center">
          	<td class="success"><strong>방어시스템3</strong></td>
-            <td><?=$defense3?></td>
-            <td class="success"><strong>방어벽</strong></td>
-            <td><?=$wall?></td>
+            <td id="def3"><?=$_SESSION['myinfo']['defense3']?></td>
+            <td class="success"><strong>방어시스템4</strong></td>
+            <td id="def4"><?=$_SESSION['myinfo']['defense4']?></td>
          </tr>
 	</table>
 
@@ -81,12 +81,17 @@
                     방어시스템1 변경 :
             </td>
             <td>
-				<select class="form-control" id="weapons_system">
-					<option>변경안함</option>
-					<option>장착해제</option>
-					<option>거대촉수</option>
-					<option>고주파직격탄</option>
-					<option>초음속탄환발사기</option>
+				<select class="form-control" id="changedef1">
+					<option id="0">무방비</option>
+					<?
+					for($i=0; $i<count($_SESSION['inventory']); $i++)
+					{
+						if( $_SESSION['inventory'][$i]['table_name'] == 'base_item'  )
+						{
+							echo '<option id="'.$_SESSION['inventory'][$i]['info']['no'].'">'.$_SESSION['inventory'][$i]['info']['name'].' ('.$_SESSION['inventory'][$i]['info']['type'].')</option>';
+						}
+					}
+					?>
 				</select>
                 </div>
             </td>
@@ -95,12 +100,17 @@
                     방어시스템2 변경 : 
             </td>
             <td>
-				<select class="form-control" id="defense_system">
-					<option>변경안함</option>
-					<option>장착해제</option>
-					<option>방어탄환회전기</option>
-					<option>순간차폐벽</option>
-					<option>LVD-30 레이저빔</option>
+				<select class="form-control" id="changedef2" disabled>
+					<option id="0">무방비</option>
+					<?
+					for($i=0; $i<count($_SESSION['inventory']); $i++)
+					{
+						if( $_SESSION['inventory'][$i]['table_name'] == 'base_item'  )
+						{
+							echo '<option id="'.$_SESSION['inventory'][$i]['info']['no'].'">'.$_SESSION['inventory'][$i]['info']['name'].' ('.$_SESSION['inventory'][$i]['info']['type'].')</option>';
+						}
+					}
+					?>
 				</select>
                 </div>
             </td>
@@ -111,32 +121,42 @@
                     방어시스템3 변경 : 
             </td>
             <td>
-				<select class="form-control" id="weapons_system">
-                    <option>변경안함</option>
-                    <option>장착해제</option>
-                    <option>멀티탄환기</option>
-                    <option>나무화살</option>
-                    <option>빔스의 헬게이트</option>
+				<select class="form-control" id="changedef3" disabled>
+                    <option id="0">무방비</option>
+                    <?
+					for($i=0; $i<count($_SESSION['inventory']); $i++)
+					{
+						if( $_SESSION['inventory'][$i]['table_name'] == 'base_item'  )
+						{
+							echo '<option id="'.$_SESSION['inventory'][$i]['info']['no'].'">'.$_SESSION['inventory'][$i]['info']['name'].' ('.$_SESSION['inventory'][$i]['info']['type'].')</option>';
+						}
+					}
+					?>
 				</select>
                 </div>
             </td>
             <td>
                 <div class="form-group">
-                    방어벽 변경 : 
+                    방어시스템4 변경 : 
             </td>
             <td>
-				<select class="form-control" id="defense_system">
-					<option>변경안함</option>
-					<option>장착해제</option>
-					<option>박스벽 (35)</option>
-					<option>크리스탈벽 (50)</option>
-					<option>형상자기합금 (3)</option>
+				<select class="form-control" id="changedef4" disabled>
+					<option id="0">무방비</option>
+					<?
+					for($i=0; $i<count($_SESSION['inventory']); $i++)
+					{
+						if( $_SESSION['inventory'][$i]['table_name'] == 'base_item'  )
+						{
+							echo '<option id="'.$_SESSION['inventory'][$i]['info']['no'].'">'.$_SESSION['inventory'][$i]['info']['name'].' ('.$_SESSION['inventory'][$i]['info']['type'].')</option>';
+						}
+					}
+					?>
 				</select>
                 </div>
             </td>
          </tr>
          <tr align="center">
-         	<td colspan="4"><button type="submit" class="btn btn-default">방호 시스템 변경</button></td>
+         	<td colspan="4"><button type="button" class="btn btn-default" id="changedef">방호 시스템 변경</button></td>
          </tr>	
 	</table>
 	</form>
@@ -314,14 +334,14 @@
                                             <td>일반병사(LV 1)</td>
                                             <td>10</td>
                                             <td>5</td>
-                                            <td>없음</td>
+                                            <td>무방비</td>
                                             <td>1</td>
                                             <td>티타늄 10</td>
                                             
                                             <td>일반병사(LV 1)</td>
                                             <td>10</td>
                                             <td>5</td>
-                                            <td>없음</td>
+                                            <td>무방비</td>
                                             <td>1</td>
                                             <td>티타늄 10</td>
                                         </tr>
@@ -488,14 +508,14 @@
                                             <td>이온탱크(Lv 1)</td>
                                             <td>100</td>
                                             <td>30</td>
-                                            <td>없음</td>
+                                            <td>무방비</td>
                                             <td>2</td>
                                             <td>티타늄 300<br />팔라듐 10</td>
                                             
                                             <td>정찰바이크(LV 1)</td>
                                             <td>100</td>
                                             <td>5</td>
-                                            <td>없음</td>
+                                            <td>무방비</td>
                                             <td>2</td>
                                             <td>티타늄 300<br />팔라듐 10</td>
                                         </tr>
@@ -552,7 +572,7 @@
                                             <td>자폭로봇(LV 1)</td>
                                             <td>10</td>
                                             <td>1000</td>
-                                            <td>없음</td>
+                                            <td>무방비</td>
                                             <td>10</td>
                                             <td>티타늄 5<br />팔라듐 500</td></td>
                                             
@@ -631,7 +651,7 @@
                                             <td>종이비행기(LV 1)</td>
                                             <td>10</td>
                                             <td>5</td>
-                                            <td>없음</td>
+                                            <td>무방비</td>
                                             <td>2</td>
                                             <td>티타늄 20</td>
                                             
@@ -991,7 +1011,7 @@
           </tr>
           <tr>
             <td class="info">특수능력</td>
-            <td>없음</td>
+            <td>무방비</td>
             <td class="info">-</td>
             <td>-</td>
           </tr>
@@ -1017,6 +1037,7 @@
   <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
   <script src='http://dimsemenov-static.s3.amazonaws.com/dist/jquery.magnific-popup.min.js'></script>
   <script src="./js/popup.js"></script>
+  <script src="js/mybase.js"></script>
   
   </body>
 </html>

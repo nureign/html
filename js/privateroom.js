@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-	GetPartsList();
+	//GetPartsList();
 });
 
 $('#changeintro').click(function() {
@@ -26,6 +26,8 @@ $('#changeintro').click(function() {
 
 $('#parts').change(function(){
 
+	$('#partslist').empty();
+	$('#partslist').append('<option>데이터를 불러오는 중...</option>');
 	GetPartsList();
 
 });
@@ -33,7 +35,9 @@ $('#parts').change(function(){
 $('#changeitem').click(function(){
 
 	//alert( $('#partslist').val() ); 아수라의 검
-	
+	if( $('#partslist').val() == '데이터를 불러오는 중...' )
+		return;
+
 	SetParts( $('#partslist').val() );
 });
 
@@ -79,6 +83,7 @@ function SetParts(itemname)
 			
 			if( data != 'null' )
 			{
+				console.log(data);
 				alert('아이템을 장착하였습니다!');
 				$('#lefthand').empty();
 				$('#righthand').empty();

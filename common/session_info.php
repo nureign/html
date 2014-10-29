@@ -1,98 +1,112 @@
 <?php
 
-//session_start();
-
-$id = $_SESSION['id'];
-
-if( !isset($id) )
-	return;
+session_start();
 
 function session_refresh()
 {
-	/*
-	**	³»Á¤º¸ ¼¼¼ÇÀ¸·Î °¡Á®¿À±â
-	*/
+	// ì„¸ì…˜ ì•„ì´ë”” ì €ìž¥
+	$id = $_SESSION['id'];
 	
+	if( !isset($id) )
+		return;
+
+	// ì„¸ì…˜ ì •ë³´ ì‚­ì œ
+	unset($_SESSION['myinfo']);
+	unset($_SESSION['inventory']);
+
+	// DB ì ‘ì†
 	$mysqli = mysqli_init();
 
-	if( $mysqli->real_connect('localhost', 'project', 'project!', 'project') )
+	if( !( $mysqli->real_connect('localhost', 'project', 'project!', 'project') ) )
+		return;
+
+	/*
+	**	ë‚´ì •ë³´ ì„¸ì…˜ìœ¼ë¡œ ê°€ì ¸ì˜¤ê¸°
+	*/
+	
+	$sql = "SELECT * FROM battlelog_queue WHERE id = '$id' LIMIT 1;";
+	$result = $mysqli->query($sql);
+
+	while( $row = $result->fetch_array() )
 	{
-		unset($_SESSION['myinfo']);
+		$log_exp	= $row['exp'];
+		$log_ruby	= $row['ruby'];
+		$log_hp		= $row['hp'];
 
-		$sql = "SELECT * FROM project_members WHERE id = '$id';";
-		$result = $mysqli->query($sql);
+		$sql = "UPDATE project_members SET exp = exp + '$log_exp', ruby = ruby + '$log_ruby', hp = '$log_hp' WHERE id = '$id';";
+		$mysqli->query($sql);
 
-		if( $row = $result->fetch_assoc() )
+		$sql = "DELETE FROM battlelog_queue WHERE id = '$id';";
+		$mysqli->query($sql);
+	}
+
+	$sql = "SELECT * FROM project_members WHERE id = '$id';";
+	$result = $mysqli->query($sql);
+
+	if( $row = $result->fetch_assoc() )
+	{
+		$_SESSION['myinfo'] = $row;
+	}
+
+	$sql = "SELECT * FROM config;";
+	$result = $mysqli->query($sql);
+
+	while( $row = $result->fetch_array() )
+	{
+		if( $row['name'] == 'exp' )
 		{
-			$_SESSION['myinfo'] = $row;
+			$_SESSION['exp_model'] = json_decode($row['config'], true);
 		}
-
-		$sql = "SELECT * FROM config;";
-		$result = $mysqli->query($sql);
-
-		while( $row = $result->fetch_array() )
+		else if( $row['name'] == 'maxhp' )
 		{
-			if( $row['name'] == 'exp' )
-			{
-				$exp_model = json_decode($row['config'], true);
-			}
-			else if( $row['name'] == 'maxhp' )
-			{
-				$hp_model = json_decode($row['config'], true);
-			}
+			$_SESSION['hp_model'] = json_decode($row['config'], true);
 		}
+	}
 
-		if( $exp_model[$_SESSION['myinfo']['level']] <= $_SESSION['myinfo']['exp'] )
-		{
-			$_SESSION['myinfo']['level']++;
-			$_SESSION['myinfo']['maxhp'] = $hp_model[$_SESSION['myinfo']['level']];
-			$sql = "UPDATE project_members SET level = '" . $_SESSION['myinfo']['level'] . "', hp = '" . $_SESSION['myinfo']['maxhp'] . "', maxhp = '" . $_SESSION['myinfo']['maxhp'] . "' WHERE id = '$id';";
-			$mysqli->query($sql);
-		}
+	if( $_SESSION['exp_model'][$_SESSION['myinfo']['level']] <= $_SESSION['myinfo']['exp'] )
+	{
+		$_SESSION['myinfo']['level']++;
+		$_SESSION['myinfo']['maxhp'] = $_SESSION['hp_model'][$_SESSION['myinfo']['level']];
+		$sql = "UPDATE project_members SET level = '" . $_SESSION['myinfo']['level'] . "', hp = '" . $_SESSION['myinfo']['maxhp'] . "', maxhp = '" . $_SESSION['myinfo']['maxhp'] . "' WHERE id = '$id';";
+		$mysqli->query($sql);
+	}
 
-		$hp_per = floor($_SESSION['myinfo']['hp'] / $_SESSION['myinfo']['maxhp'] * 100);
-		$mental_per = floor($_SESSION['myinfo']['mental'] / $_SESSION['myinfo']['mental'] * 100);
-		$exp_per = floor($_SESSION['myinfo']['exp'] / $exp_model[$_SESSION['myinfo']['level']] * 100);
+	/*
+	**	ì¸ë²¤í† ë¦¬ ì •ë³´ ì„¸ì…˜ìœ¼ë¡œ ê°€ì ¸ì˜¤ê¸°
+	*/
 
-		/*
-		**	ÀÎº¥Åä¸® Á¤º¸ ¼¼¼ÇÀ¸·Î °¡Á®¿À±â
-		*/
+	$sql = "SELECT * FROM inventory WHERE id = '$id';";
+	$result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
 
-		unset($_SESSION['inventory']);
+	while( $row = $result->fetch_assoc() )
+	{
+		$_SESSION['inventory'][] = $row;
+	}
 
-		$sql = "SELECT * FROM inventory WHERE id = '$id';";
+	for( $i=0; $i<count($_SESSION['inventory']); $i++ )
+	{
+		$sql = "SELECT * FROM " . $_SESSION['inventory'][$i]['table_name'] . " WHERE no = " . $_SESSION['inventory'][$i]['no'];
 		$result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
 
 		while( $row = $result->fetch_assoc() )
 		{
-			$_SESSION['inventory'][] = $row;
+			$_SESSION['inventory'][$i]['info'] = $row;
 		}
+	}
 
-		for( $i=0; $i<count($_SESSION['inventory']); $i++ )
+	$_SESSION['myinfo']['low_power'] = 1;
+	$_SESSION['myinfo']['max_power'] = 1;
+	$_SESSION['myinfo']['defense'] = 0;
+
+	for( $i=0; $i<count($_SESSION['inventory']); $i++ )
+	{
+		if( $_SESSION['inventory'][$i]['table_name'] == 'character_item' && $_SESSION['inventory'][$i]['equip'] == 1 )
 		{
-			$sql = "SELECT * FROM " . $_SESSION['inventory'][$i]['table_name'] . " WHERE no = " . $_SESSION['inventory'][$i]['no'];
-			$result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
-
-			while( $row = $result->fetch_assoc() )
-			{
-				$_SESSION['inventory'][$i]['info'] = $row;
-			}
-		}
-
-		$_SESSION['myinfo']['low_power'] = 1;
-		$_SESSION['myinfo']['max_power'] = 1;
-		$_SESSION['myinfo']['defense'] = 0;
-
-		for( $i=0; $i<count($_SESSION['inventory']); $i++ )
-		{
-			if( $_SESSION['inventory'][$i]['table_name'] != 'character_item' || $_SESSION['inventory'][$i]['equip'] != 1 )
-				continue;
-			
 			$_SESSION['myinfo']['low_power'] += $_SESSION['inventory'][$i]['info']['low_power'];
 			$_SESSION['myinfo']['max_power'] += $_SESSION['inventory'][$i]['info']['max_power'];
 			$_SESSION['myinfo']['defense'] += $_SESSION['inventory'][$i]['info']['defense'];
 			
-			// ÀåºñÃ³¸®
+			// ìž¥ë¹„ì²˜ë¦¬
 			if( $_SESSION['inventory'][$i]['slot'] )
 			{
 				$sql = "SELECT name FROM character_item WHERE no = " . $_SESSION['inventory'][$i]['info']['no'];
@@ -104,13 +118,29 @@ function session_refresh()
 				}
 			}
 		}
-
-		$_SESSION['myinfo']['low_power'] += $_SESSION['myinfo']['stat1'];
-		$_SESSION['myinfo']['max_power'] += $_SESSION['myinfo']['stat1']*2;
-		$_SESSION['myinfo']['defense'] += $_SESSION['myinfo']['stat2'];
-
-		echo var_dump($_SESSION['inventory']);
-		echo $_SESSION['inventory'][1]['info']['name'];
+		else if( $_SESSION['inventory'][$i]['table_name'] == 'base_item' && $_SESSION['inventory'][$i]['equip'] == 1 )
+		{
+			if( $_SESSION['inventory'][$i]['slot'] )
+			{
+				$sql = "SELECT name, type FROM base_item WHERE no = " . $_SESSION['inventory'][$i]['info']['no'];
+				$result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
+				
+				while( $row = $result->fetch_assoc() )
+				{
+					$_SESSION['myinfo'][$_SESSION['inventory'][$i]['slot']] = $row['name'] . ' (' . $row['type'] . ')';
+				}
+			}
+		}
 	}
+
+	$_SESSION['myinfo']['low_power'] += $_SESSION['myinfo']['stat1'];
+	$_SESSION['myinfo']['max_power'] += $_SESSION['myinfo']['stat1']*2;
+	$_SESSION['myinfo']['defense'] += $_SESSION['myinfo']['stat2'];
+
+	//echo var_dump($_SESSION['inventory']);
+	//echo $_SESSION['inventory'][1]['info']['name'];
+
+	return;
 }
+
 ?>

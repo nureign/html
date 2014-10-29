@@ -5,8 +5,8 @@
 	
 	include_once "./common/header.php";
 	include_once "./common/nav.php";
-	include_once "./common/db_conn.php";
-	//include_once "./common/session_info.php";
+	// 세션변수 초기화
+	session_refresh();
 	include_once "./logic/main_initial.php";
 ?> 
     <!-- Carousel
@@ -120,7 +120,7 @@
                     <div class="progress, form-control" style="background-color:#F4FFFF;">
                     <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?=$exp_per?>%;" id="exp_per"><?=$exp_per?>%</div>
                     </div>
-                    <span class="input-group-addon" id="exp_text"><?=$_SESSION['myinfo']['exp']?> / <?=$exp_model[$_SESSION['myinfo']['level']]?></span>
+                    <span class="input-group-addon" id="exp_text"><?=$_SESSION['myinfo']['exp']?> / <?=$_SESSION['exp_model'][$_SESSION['myinfo']['level']]?></span>
                 </div>
                 <!-- 경험치부분 닫기 -->
             </td>
@@ -226,7 +226,7 @@
                     <tr align="center">
 						<td class="danger">방어시스템3</td>
                         <td class="warning">종이미사일</td>
-                        <td class="danger">방어벽</td>
+                        <td class="danger">방어시스템4</td>
                         <td class="warning">종이벽</td>
                     </tr>
                     <tr align="center">

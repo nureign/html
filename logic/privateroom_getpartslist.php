@@ -29,4 +29,6 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 	echo json_encode($partslist);
 }
 
+$mysql->close();
+
 ?>

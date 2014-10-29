@@ -5,8 +5,8 @@
 	
 	include_once "./common/header.php";
 	include_once "./common/nav.php";
-	include_once "./common/db_conn.php";
-	include_once "./logic/privateroom_initial.php";
+	//include_once "./common/db_conn.php";
+	//include_once "./logic/privateroom_initial.php";
 ?>
 <!-- 로우 전체 시작 -->
 <div class="row" align="center">
@@ -147,8 +147,15 @@
                         <option>특수아이템2</option>-->
                     </select>
 					<select class="form-control" id="partslist">
-                        <option>가지고 있는 아이템 표시</option>
-                        <option>무기종류면 무기만 아니면 방어구 이런식</option>
+						<?
+						for($i=0; $i<count($_SESSION['inventory']); $i++)
+						{
+							if( $_SESSION['inventory'][$i]['info']['type'] == 'weapons' )
+							{
+								echo '<option>'.$_SESSION['inventory'][$i]['info']['name'].'</option>';
+							}
+						}
+						?>
                     </select>
 					<button type="button" class="btn btn-default" id="changeitem">아이템 장착 변경</button>
 				</Form>

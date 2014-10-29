@@ -12,6 +12,4 @@
 	{
 		exit('Connect Error');
 	}
-
-	$mysqli->query('set names utf8');
 ?>

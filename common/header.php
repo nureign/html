@@ -1,4 +1,10 @@
-<? session_start() ?>
+<?
+
+session_start();
+
+include_once "./common/session_info.php";
+
+?>
 
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
