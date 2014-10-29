@@ -12,7 +12,6 @@ $('#changeintro').click(function() {
 		type: 'POST',
 		url: './logic/privateroom_changeintro.php',
 		data: {
-			id: sessionStorage.getItem('id'),
 			intro: intro.val()
 		},
 		success: function(data) {
@@ -45,7 +44,6 @@ function GetPartsList()
 		type: 'POST',
 		url: './logic/privateroom_getpartslist.php',
 		data: {
-			id: sessionStorage.getItem('id'),
 			parts: GetPartsName()
 		},
 		success: function(data) {
@@ -59,7 +57,7 @@ function GetPartsList()
 
 			for(var i=0; i<parsed.length; i++)
 			{
-				var temp = '<option>' + parsed[0][i]['name'] + '</option>';
+				var temp = '<option>' + parsed[i] + '</option>';
 				$('#partslist').append(temp);
 			}
 		}
@@ -79,6 +77,37 @@ function SetParts(itemname)
 		},
 		success: function(data) {
 			
+			if( data != 'null' )
+			{
+				alert('아이템을 장착하였습니다!');
+				$('#lefthand').empty();
+				$('#righthand').empty();
+				$('#top').empty();
+				$('#pants').empty();
+				$('#shoes').empty();
+				$('#accessory').empty();
+				
+				var parsed = JSON.parse(data);
+				
+				if( parsed['lefthand'] != null )
+					$('#lefthand').text( parsed['lefthand'] );
+
+				if( parsed['righthand'] != null )
+					$('#righthand').text( parsed['righthand'] );
+
+				if( parsed['top'] != null )
+					$('#top').text( parsed['top'] );
+
+				if( parsed['pants'] != null )
+					$('#pants').text( parsed['pants'] );
+
+				if( parsed['shoes'] != null )
+					$('#shoes').text( parsed['shoes'] );
+
+				if( parsed['accessory'] != null )
+					$('#accessory').text( parsed['accessory'] );
+			}
+
 		}
 	});
 }

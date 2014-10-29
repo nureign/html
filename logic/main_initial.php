@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+@session_start();
 
 $id = $_SESSION['id'];
 
@@ -26,10 +26,6 @@ while( $row = $result->fetch_array() )
 	$sql = "DELETE FROM battlelog_queue WHERE id = '$id';";
 	$mysqli->query($sql);
 }
-
-/*
-**	내정보 세션으로 가져오기
-*/
 
 unset($_SESSION['myinfo']);
 
@@ -89,7 +85,7 @@ for( $i=0; $i<count($_SESSION['inventory']); $i++ )
 
 	while( $row = $result->fetch_assoc() )
 	{
-		$_SESSION['inventory'][$i][] = $row;
+		$_SESSION['inventory'][$i]['info'] = $row;
 	}
 }
 
@@ -102,14 +98,14 @@ for( $i=0; $i<count($_SESSION['inventory']); $i++ )
 	if( $_SESSION['inventory'][$i]['table_name'] != 'character_item' || $_SESSION['inventory'][$i]['equip'] != 1 )
 		continue;
 	
-	$_SESSION['myinfo']['low_power'] += $_SESSION['inventory'][$i][0]['low_power'];
-	$_SESSION['myinfo']['max_power'] += $_SESSION['inventory'][$i][0]['max_power'];
-	$_SESSION['myinfo']['defense'] += $_SESSION['inventory'][$i][0]['defense'];
+	$_SESSION['myinfo']['low_power'] += $_SESSION['inventory'][$i]['info']['low_power'];
+	$_SESSION['myinfo']['max_power'] += $_SESSION['inventory'][$i]['info']['max_power'];
+	$_SESSION['myinfo']['defense'] += $_SESSION['inventory'][$i]['info']['defense'];
 	
 	// 장비처리
 	if( $_SESSION['inventory'][$i]['slot'] )
 	{
-		$sql = "SELECT name FROM character_item WHERE no = " . $_SESSION['inventory'][$i][0]['no'];
+		$sql = "SELECT name FROM character_item WHERE no = " . $_SESSION['inventory'][$i]['info']['no'];
 		$result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
 
 		while( $row = $result->fetch_assoc() )

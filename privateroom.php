@@ -25,7 +25,7 @@
             	<td class="right" width="300px"><img src="./images/privateroom_assi.jpg" alt="..." width="250px" height="200px"></td>
                 <td align="left">
                 	<h4 align="center">개인룸 비서</h4><br />
-					환영합니다! <?=$_SESSION['name']?>님! 저는 당신의 업무를 도와드리는 충실한 비서입니다. <br />
+					환영합니다! <?=$_SESSION['myinfo']['name']?>님! 저는 당신의 업무를 도와드리는 충실한 비서입니다. <br />
                     이곳에서 주인님이 보기 편하도록 종합현황 데이터를 제공하고 있습니다.<br />
                     이곳저곳에서 수집하고 계신 아이템 현황도 보기 쉽게 인벤토리에 넣어놓았습니다.<br />
                     구매를 하실 때 마다 제가 물건을 가질러 오지만 기쁜마음으로 일을 하고 있습니다.<br />
@@ -109,7 +109,7 @@
          </table>
         <!-- 종합스텟 닫기 -->
         <!-- 종합 아이템 현황 --> 
-		<table class="table table-condensed width center">
+		<table class="table table-condensed width center" id="itemstatus">
         	<tr>
             	<td colspan="8" class="success"><strong>종합 아이템 현황</strong></td>
             </tr>
@@ -182,9 +182,9 @@
 						if( $_SESSION['inventory'][$i]['table_name'] != 'grocery_item' )
 							continue;
 						
-						echo '<tr><td>' . $_SESSION['inventory'][$i][0]['name'] . '</td>
-							  <td>' . $_SESSION['inventory'][$i][0]['explain'] . '</td>
-							  <td>' . $_SESSION['inventory'][$i][0]['level'] . '</td>
+						echo '<tr><td>' . $_SESSION['inventory'][$i]['info']['name'] . '</td>
+							  <td>' . $_SESSION['inventory'][$i]['info']['explain'] . '</td>
+							  <td>' . $_SESSION['inventory'][$i]['info']['level'] . '</td>
 							  <td>' . $_SESSION['inventory'][$i]['num'] . '</td></tr>';
 					}
 					?>
@@ -211,11 +211,11 @@
 								continue;
 							
 							echo '<tr><td>' . ($_SESSION['inventory'][$i]['equip'] ? '착용중' : '') . '</td>
-								  <td>' . $_SESSION['inventory'][$i][0]['name'] . '</td>
-								  <td>' . $_SESSION['inventory'][$i][0]['low_power'] . ' ~ ' . $_SESSION['inventory'][$i][0]['max_power'] . '</td>
-								  <td>' . $_SESSION['inventory'][$i][0]['defense'] . '</td>
-								  <td>' . $_SESSION['inventory'][$i][0]['stat1'] . ' / ' . $_SESSION['inventory'][$i][0]['stat2'] . ' / ' . $_SESSION['inventory'][$i][0]['stat3'] . ' / ' . $_SESSION['inventory'][$i][0]['stat4'] . ' / ' . $_SESSION['inventory'][$i][0]['stat5'] . ' / ' . $_SESSION['inventory'][$i][0]['stat6'] . '</td>
-								  <td>' . $_SESSION['inventory'][$i][0]['special'] . '</td>
+								  <td>' . $_SESSION['inventory'][$i]['info']['name'] . '</td>
+								  <td>' . $_SESSION['inventory'][$i]['info']['low_power'] . ' ~ ' . $_SESSION['inventory'][$i]['info']['max_power'] . '</td>
+								  <td>' . $_SESSION['inventory'][$i]['info']['defense'] . '</td>
+								  <td>' . $_SESSION['inventory'][$i]['info']['stat1'] . ' / ' . $_SESSION['inventory'][$i]['info']['stat2'] . ' / ' . $_SESSION['inventory'][$i]['info']['stat3'] . ' / ' . $_SESSION['inventory'][$i]['info']['stat4'] . ' / ' . $_SESSION['inventory'][$i]['info']['stat5'] . ' / ' . $_SESSION['inventory'][$i]['info']['stat6'] . '</td>
+								  <td>' . $_SESSION['inventory'][$i]['info']['special'] . '</td>
 								  <td>' . $_SESSION['inventory'][$i]['num'] . '</td></tr>';
 						}
 					?>
@@ -240,12 +240,12 @@
 							if( $_SESSION['inventory'][$i]['table_name'] != 'base_item' )
 								continue;
 							
-							echo '<tr><td>' . $_SESSION['inventory'][$i][0]['name'] . '</td>
-								  <td>' . $_SESSION['inventory'][$i][0]['type'] . '</td>
-								  <td>' . $_SESSION['inventory'][$i][0]['low_power'] . ' ~ ' . $_SESSION['inventory'][$i][0]['max_power'] . '</td>
-								  <td>' . $_SESSION['inventory'][$i][0]['min_defense'] . ' ~ ' . $_SESSION['inventory'][$i][0]['max_defense'] . '</td>
-								  <td>' . $_SESSION['inventory'][$i][0]['durability'] . 'HP</td>
-								  <td>' . $_SESSION['inventory'][$i][0]['level'] . '</td></tr>';
+							echo '<tr><td>' . $_SESSION['inventory'][$i]['info']['name'] . '</td>
+								  <td>' . $_SESSION['inventory'][$i]['info']['type'] . '</td>
+								  <td>' . $_SESSION['inventory'][$i]['info']['low_power'] . ' ~ ' . $_SESSION['inventory'][$i]['info']['max_power'] . '</td>
+								  <td>' . $_SESSION['inventory'][$i]['info']['min_defense'] . ' ~ ' . $_SESSION['inventory'][$i]['info']['max_defense'] . '</td>
+								  <td>' . $_SESSION['inventory'][$i]['info']['durability'] . 'HP</td>
+								  <td>' . $_SESSION['inventory'][$i]['info']['level'] . '</td></tr>';
 						}
 					?>
 				</table>

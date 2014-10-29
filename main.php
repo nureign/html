@@ -6,6 +6,7 @@
 	include_once "./common/header.php";
 	include_once "./common/nav.php";
 	include_once "./common/db_conn.php";
+	//include_once "./common/session_info.php";
 	include_once "./logic/main_initial.php";
 ?> 
     <!-- Carousel

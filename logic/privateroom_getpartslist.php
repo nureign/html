@@ -1,6 +1,8 @@
 <?php
 
-$id = $_POST['id'];
+session_start();
+
+$id = $_SESSION['id'];
 $parts = $_POST['parts'];
 
 if( $parts == 'lefthand' || $parts == 'righthand' )
@@ -16,26 +18,15 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 	$sql = "SET NAMES UTF8";
 	$mysqli->query($sql);
 
-	$sql = "SELECT * FROM inventory WHERE table_name = 'character_item' AND id = '$id';";
-	$result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
+	$partslist = array();
 
-	while( $row = $result->fetch_assoc() )
+	for( $i=0; $i<count($_SESSION['inventory']); $i++ )
 	{
-		$inventory[] = $row;
-	}
-
-	for( $i=0; $i<count($inventory); $i++ )
-	{
-		$sql = "SELECT * FROM character_item WHERE type = '$parts' AND no = " . $inventory[$i]['no'];
-		$result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
-
-		while( $row = $result->fetch_assoc() )
-		{
-			$inventory[$i][] = $row;
-		}
+		if( $_SESSION['inventory'][$i]['info']['type'] == $parts )
+			array_push($partslist, $_SESSION['inventory'][$i]['info']['name']);
 	}
 	
-	echo json_encode($inventory);
+	echo json_encode($partslist);
 }
 
 ?>

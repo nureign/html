@@ -1,6 +1,8 @@
 <?php
 
-$id = $_POST['id'];
+session_start();
+
+$id = $_SESSION['id'];
 $intro = $_POST['intro'];
 
 if( !isset($id) )
