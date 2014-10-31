@@ -200,11 +200,7 @@
 				<table class="table table-condensed" style="width:550px;" align="center">
           			<tr>
 						<td class="danger" align="center">기지 이름</td>
-                        <td class="warning" align="center">아이리스의 집</td>
-                    </tr>
-                    <tr>
-                    	<td class="danger" align="center">기지 소개말</td>
-                        <td class="warning" align="center">우리집 좀 그만터세요ㅜㅜ</td>
+                        <td class="warning" align="center"><?=$_SESSION['myinfo']['name']?>의 집</td>
                     </tr>
 				</table>
                 <!-- 기지 이름 및 소개말 -->
@@ -213,7 +209,7 @@
 				<table class="table table-condensed" style="width:550px;" align="center">
           			<tr align="center">
 						<td class="danger" width="150px">커맨드센터 레벨</td>
-                        <td class="warning">1</td>
+                        <td class="warning"><?=$_SESSION['base']['commandcenter']?></td>
                         <td class="danger" width="150px">보호막</td>
                         <td class="warning">없음</td>
                     </tr>
@@ -231,9 +227,9 @@
                     </tr>
                     <tr align="center">
 						<td class="danger">티타늄보유</td>
-                        <td class="warning">1000</td>
+                        <td class="warning"><?=$_SESSION['myinfo']['titanium']?></td>
                         <td class="danger">팔라듐보유</td>
-                        <td class="warning">300</td>
+                        <td class="warning"><?=$_SESSION['myinfo']['palladium']?></td>
                     </tr>
 				</table>
                 <!-- 기지 현황 닫기 -->

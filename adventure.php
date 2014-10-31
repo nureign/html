@@ -151,12 +151,6 @@ body {
           <div class="panel-body">
 			<button type="button" class="btn btn-default" id="skip">스킵</button><br/><br/>
             <ul class="list-group" id="battlelog">
-            	<!--<li class="list-group-item">모에모에 이(/가) 고블린에게 도전하였다!<br />소지하고 있던 엑스칼리버로 적을 두동강 냈다! 적은 13500 데미지를 입었다!</li>
-                <li class="list-group-item">고블린 이(/가) 모에모에에게 강력한 토네이도 발차기를 시전하였다!<br />모에모에는 1300 데미지를 입었다!</li>
-              <li class="list-group-item list-group-item-success">전투에서 승리하였습니다.<br />골드 100,000, 엘릭서 500,000을 획득하였습니다!</li>
-              <li class="list-group-item list-group-item-info">스킬작동!</li>
-              <li class="list-group-item list-group-item-warning">특수아이템 발동!!!!!!</li>
-              <li class="list-group-item list-group-item-danger">아직미정(보스전 활용)</li>-->
             </ul>
           </div>
         </div>

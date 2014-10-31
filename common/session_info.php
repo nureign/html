@@ -12,6 +12,8 @@ function session_refresh()
 
 	// 세션 정보 삭제
 	unset($_SESSION['myinfo']);
+	unset($_SESSION['resource']);
+	unset($_SESSION['base']);
 	unset($_SESSION['inventory']);
 
 	// DB 접속
@@ -61,14 +63,46 @@ function session_refresh()
 		{
 			$_SESSION['hp_model'] = json_decode($row['config'], true);
 		}
+		else if( $row['name'] == 'resource' )
+		{
+			$_SESSION['res_model'] = json_decode($row['config'], true);
+		}
+		else
+		{
+			$_SESSION[ $row['name'] ] = json_decode( $row['config'], true );
+		}
 	}
-
+	
 	if( $_SESSION['exp_model'][$_SESSION['myinfo']['level']] <= $_SESSION['myinfo']['exp'] )
 	{
 		$_SESSION['myinfo']['level']++;
 		$_SESSION['myinfo']['maxhp'] = $_SESSION['hp_model'][$_SESSION['myinfo']['level']];
 		$sql = "UPDATE project_members SET level = '" . $_SESSION['myinfo']['level'] . "', hp = '" . $_SESSION['myinfo']['maxhp'] . "', maxhp = '" . $_SESSION['myinfo']['maxhp'] . "' WHERE id = '$id';";
 		$mysqli->query($sql);
+	}
+
+	/*
+	**	자원 정보 세션으로 가져오기
+	*/
+
+	$sql = "SELECT * FROM resource WHERE id = '$id';";
+	$result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
+
+	if( $row = $result->fetch_assoc() )
+	{
+		$_SESSION['resource'] = $row;
+	}
+
+	/*
+	**	기지관리 정보
+	*/
+
+	$sql = "SELECT * FROM base WHERE id = '$id';";
+	$result = $mysqli->query($sql) or trigger_error($mysqli->error."[$sql]");
+
+	if( $row = $result->fetch_assoc() )
+	{
+		$_SESSION['base'] = $row;
 	}
 
 	/*

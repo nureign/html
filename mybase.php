@@ -184,19 +184,19 @@
 					<table class="table table-condensed">
 						<tr class="warning" align="center">
           					<td>레벨</td>
-            				<td>1</td>
+            				<td id="cc_level"><?=$_SESSION['base']['commandcenter']?></td>
           				</tr>
                     	<tr class="warning" align="center">
                             <td>건물 HP</td>
-                            <td>3000</td>
+                            <td id="cc_hp"><?=$_SESSION['cc_hp'][$_SESSION['base']['commandcenter']]?></td>
                     	</tr>
 						<tr class="info" align="center">
                             <td colspan="2">
-                                <h6><font color="red">※다음 업그레이드에 필요한 자원은 미네랄 500이 필요합니다.</font></h6>
+                                <h6><font color="red">※다음 업그레이드에 필요한 자원은 <span id="cc_price"><?=$_SESSION['cc_price'][$_SESSION['base']['commandcenter']]?></span> 루비가 필요합니다.</font></h6>
                                 <h6><font color="#FF6600">사용 가능한 시설 : 건물 HP +500 / 인사과 +2 / 레이다 +2 / 생활관 +0</font></h6>
                                 <form class="form-inline" role="form" method="post" action="mybase_upgrade.php">
                                     <input type="hidden" id="cc_upgrade" value="" />
-                                    <button type="submit" class="btn btn-default">커맨드센터 업그레이드</button>
+                                    <button type="button" class="btn btn-default" id="upgrade_cc">커맨드센터 업그레이드</button>
                                 </form>
                             </td>
                         </tr>
@@ -222,23 +222,23 @@
 					<table class="table table-condensed">
 						<tr class="warning" align="center">
           					<td>레벨</td>
-            				<td>1</td>
+            				<td id="ra_level"><?=$_SESSION['base']['rader']?></td>
           				</tr>
                     	<tr class="warning" align="center">
                             <td>공격감지 확률</td>
-                            <td>0%</td>
+                            <td id="ra_stat1"><?=$_SESSION['ra_stat'][$_SESSION['base']['rader']]?>%</td>
                     	</tr>
 						<tr class="warning" align="center">
                             <td>회피율 확률</td>
-                            <td>0%</td>
+                            <td id="ra_stat2"><?=$_SESSION['ra_stat'][$_SESSION['base']['rader']]?>%</td>
                     	</tr>
 						<tr class="info" align="center">
                             <td colspan="2">
-                                <h6><font color="red">※커맨드센터 레벨이 2가 되어야 합니다.</font></h6>
-                                <h6><font color="#FF6600">공격 감지 및 회피율 확률 증가 : 1% / 1%</font></h6>
+                                <h6><font color="red"><span id="ra_warn"></span></font></h6>
+                                <h6><font color="#FF6600">공격 감지 및 회피율 확률 증가 : <span id="ra_stat1_next"><?=$_SESSION['ra_stat'][$_SESSION['base']['rader']+1]?></span>% / <span id="ra_stat2_next"><?=$_SESSION['ra_stat'][$_SESSION['base']['rader']+1]?></span>%</font></h6>
                                 <form class="form-inline" role="form" method="post" action="mybase_upgrade.php">
                                     <input type="hidden" id="radar_upgrade" value="" />
-                                    <button type="submit" class="btn btn-default" disabled="disabled">레이다 업그레이드</button>
+                                    <button type="button" class="btn btn-default" disabled="disabled" id="upgrade_ra">레이다 업그레이드</button>
                                 </form>
                             </td>
                         </tr>
@@ -265,15 +265,15 @@
 					<table class="table table-condensed">
 						<tr class="warning" align="center">
           					<td>레벨</td>
-            				<td>1</td>
+            				<td id="de_level"><?=$_SESSION['base']['department']?></td>
           				</tr>
 						<tr class="info" align="center">
                             <td colspan="2">
-                                <h6><font color="red">※커맨드센터 레벨이 2가 되어야 합니다.</font></h6>
+                                <h6><font color="red"><span id="de_warn"></span></font></h6>
                                 <h6><font color="#FF6600">사용 가능한 유닛 : 저격수</font></h6>
                                 <form class="form-inline" role="form" method="post" action="mybase_upgrade.php">
                                     <input type="hidden" id="hr_upgrade" value="" />
-                                    <button type="submit" class="btn btn-default" disabled="disabled">인사과 업그레이드</button>
+                                    <button type="button" class="btn btn-default" disabled="disabled" id="upgrade_de">인사과 업그레이드</button>
                                 </form>
                             </td>
                         </tr>
@@ -318,26 +318,11 @@
                                             <td class="warning">이름</td>
                                             <td class="warning">체력</td>
                                             <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
-                                            <td class="warning">인구수</td>
-                                            <td class="warning">배치비용</td>
-                                            
-                                            <td rowspan="2"><img src="./images/base_g_unit1.gif" alt="일반병사" width="80"></td>
-                                            <td class="warning">이름</td>
-                                            <td class="warning">체력</td>
-                                            <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
+                                            <td class="warning">추가공격</td>
                                             <td class="warning">인구수</td>
                                             <td class="warning">배치비용</td>
                                         </tr>
                                         <tr class="center">
-                                            <td>일반병사(LV 1)</td>
-                                            <td>10</td>
-                                            <td>5</td>
-                                            <td>없음</td>
-                                            <td>1</td>
-                                            <td>티타늄 10</td>
-                                            
                                             <td>일반병사(LV 1)</td>
                                             <td>10</td>
                                             <td>5</td>
@@ -350,15 +335,7 @@
                                             <td class="warning">이름</td>
                                             <td class="warning">체력</td>
                                             <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
-                                            <td class="warning">인구수</td>
-                                            <td class="warning">배치비용</td>
-                                            
-                                            <td rowspan="2"><img src="./images/base_g_unit2_un.gif" alt="저격병" width="80"></td>
-                                            <td class="warning">이름</td>
-                                            <td class="warning">체력</td>
-                                            <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
+                                            <td class="warning">추가공격</td>
                                             <td class="warning">인구수</td>
                                             <td class="warning">배치비용</td>
                                         </tr>
@@ -369,28 +346,13 @@
                                             <td>방공시스템</td>
                                             <td>2</td>
                                             <td>티타늄 30</td>
-                                            
-                                            <td>저격병(생산불가)</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
                                         </tr>
                                         <tr class="center">
                                             <td rowspan="2"><img src="./images/base_g_unit3.gif" alt="패스루트" width="80"></td>
                                             <td class="warning">이름</td>
                                             <td class="warning">체력</td>
                                             <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
-                                            <td class="warning">인구수</td>
-                                            <td class="warning">배치비용</td>
-                                            
-                                            <td rowspan="2"><img src="./images/base_g_unit3_un.gif" alt="패스루트" width="80"></td>
-                                            <td class="warning">이름</td>
-                                            <td class="warning">체력</td>
-                                            <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
+                                            <td class="warning">추가공격</td>
                                             <td class="warning">인구수</td>
                                             <td class="warning">배치비용</td>
                                         </tr>
@@ -401,28 +363,13 @@
                                             <td>방어벽</td>
                                             <td>1</td>
                                             <td>티타늄 20</td>
-                                            
-                                            <td>패스루트(생산불가)</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
                                         </tr>
                                         <tr class="center">
                                             <td rowspan="2"><img src="./images/base_g_unit4.gif" alt="암살자" width="80"></td>
                                             <td class="warning">이름</td>
                                             <td class="warning">체력</td>
                                             <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
-                                            <td class="warning">인구수</td>
-                                            <td class="warning">배치비용</td>
-                                            
-                                            <td rowspan="2"><img src="./images/base_g_unit4_un.gif" alt="암살자" width="80"></td>
-                                            <td class="warning">이름</td>
-                                            <td class="warning">체력</td>
-                                            <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
+                                            <td class="warning">추가공격</td>
                                             <td class="warning">인구수</td>
                                             <td class="warning">배치비용</td>
                                         </tr>
@@ -433,27 +380,13 @@
                                             <td>기지커맨더</td>
                                             <td>1</td>
                                             <td>티타늄 1000</td>
-                                            
-                                            <td>암살자(생산불가)</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
+										</tr>
                                         <tr class="center">
                                             <td rowspan="2"><img src="./images/base_g_unit5.gif" alt="화염방사병" width="80"></td>
                                             <td class="warning">이름</td>
                                             <td class="warning">체력</td>
                                             <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
-                                            <td class="warning">인구수</td>
-                                            <td class="warning">배치비용</td>
-                                            
-                                            <td rowspan="2"><img src="./images/base_g_unit5_un.gif" alt="화염방사병" width="80"></td>
-                                            <td class="warning">이름</td>
-                                            <td class="warning">체력</td>
-                                            <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
+                                            <td class="warning">추가공격</td>
                                             <td class="warning">인구수</td>
                                             <td class="warning">배치비용</td>
                                         </tr>
@@ -464,13 +397,6 @@
                                             <td>공격시스템</td>
                                             <td>2</td>
                                             <td>티타늄 110<br />팔라듐 5</td>
-                                            
-                                            <td>화염방사병(생산불가)</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
                                         </tr>
                                     </table>
 								</div>
@@ -492,15 +418,7 @@
                                             <td class="warning">이름</td>
                                             <td class="warning">체력</td>
                                             <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
-                                            <td class="warning">인구수</td>
-                                            <td class="warning">배치비용</td>
-                                            
-                                            <td rowspan="2"><img src="./images/base_m_unit2.gif" alt="정찰바이크" width="80"></td>
-                                            <td class="warning">이름</td>
-                                            <td class="warning">체력</td>
-                                            <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
+                                            <td class="warning">추가공격</td>
                                             <td class="warning">인구수</td>
                                             <td class="warning">배치비용</td>
                                         </tr>
@@ -511,7 +429,17 @@
                                             <td>없음</td>
                                             <td>2</td>
                                             <td>티타늄 300<br />팔라듐 10</td>
-                                            
+                                        </tr>
+										<tr class="center">
+                                            <td rowspan="2"><img src="./images/base_m_unit2.gif" alt="정찰바이크" width="80"></td>
+                                            <td class="warning">이름</td>
+                                            <td class="warning">체력</td>
+                                            <td class="warning">공격력</td>
+                                            <td class="warning">추가공격</td>
+                                            <td class="warning">인구수</td>
+                                            <td class="warning">배치비용</td>
+                                        </tr>
+										<tr class="center">
                                             <td>정찰바이크(LV 1)</td>
                                             <td>100</td>
                                             <td>5</td>
@@ -524,15 +452,7 @@
                                             <td class="warning">이름</td>
                                             <td class="warning">체력</td>
                                             <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
-                                            <td class="warning">인구수</td>
-                                            <td class="warning">배치비용</td>
-                                            
-                                            <td rowspan="2"><img src="./images/base_m_unit3_un.gif" alt="톱날로봇" width="80"></td>
-                                            <td class="warning">이름</td>
-                                            <td class="warning">체력</td>
-                                            <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
+                                            <td class="warning">추가공격</td>
                                             <td class="warning">인구수</td>
                                             <td class="warning">배치비용</td>
                                         </tr>
@@ -543,28 +463,13 @@
                                             <td>방어벽</td>
                                             <td>5</td>
                                             <td>티타늄 50<br />팔라듐 80</td>
-                                            
-                                            <td>톱날로봇(사용불가)</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
                                         </tr>
                                         <tr class="center">
                                             <td rowspan="2"><img src="./images/base_m_unit4.gif" alt="자폭로봇" width="80"></td>
                                             <td class="warning">이름</td>
                                             <td class="warning">체력</td>
                                             <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
-                                            <td class="warning">인구수</td>
-                                            <td class="warning">배치비용</td>
-                                            
-                                            <td rowspan="2"><img src="./images/base_m_unit4_un.gif" alt="자폭로봇" width="80"></td>
-                                            <td class="warning">이름</td>
-                                            <td class="warning">체력</td>
-                                            <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
+                                            <td class="warning">추가공격</td>
                                             <td class="warning">인구수</td>
                                             <td class="warning">배치비용</td>
                                         </tr>
@@ -575,28 +480,13 @@
                                             <td>없음</td>
                                             <td>10</td>
                                             <td>티타늄 5<br />팔라듐 500</td></td>
-                                            
-                                            <td>자폭로봇(생산불가)</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
                                         </tr>
                                         <tr class="center">
                                             <td rowspan="2"><img src="./images/base_m_unit5.gif" alt="팔라딘" width="80"></td>
                                             <td class="warning">이름</td>
                                             <td class="warning">체력</td>
                                             <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
-                                            <td class="warning">인구수</td>
-                                            <td class="warning">배치비용</td>
-                                            
-                                            <td rowspan="2"><img src="./images/base_m_unit5_un.gif" alt="팔라딘" width="80"></td>
-                                            <td class="warning">이름</td>
-                                            <td class="warning">체력</td>
-                                            <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
+                                            <td class="warning">추가공격</td>
                                             <td class="warning">인구수</td>
                                             <td class="warning">배치비용</td>
                                         </tr>
@@ -607,13 +497,6 @@
                                             <td>공격시스템</td>
                                             <td>1</td>
                                             <td>티타늄 1000<br />팔라듐 300</td>
-                                            
-                                            <td>팔라딘(생산불가)</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
                                         </tr>
                                     </table>
 								</div>
@@ -635,15 +518,7 @@
                                             <td class="warning">이름</td>
                                             <td class="warning">체력</td>
                                             <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
-                                            <td class="warning">인구수</td>
-                                            <td class="warning">배치비용</td>
-                                            
-                                            <td rowspan="2"><img src="./images/base_p_unit1_un.gif" alt="종이비행기" width="80"></td>
-                                            <td class="warning">이름</td>
-                                            <td class="warning">체력</td>
-                                            <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
+                                            <td class="warning">추가공격</td>
                                             <td class="warning">인구수</td>
                                             <td class="warning">배치비용</td>
                                         </tr>
@@ -654,28 +529,13 @@
                                             <td>없음</td>
                                             <td>2</td>
                                             <td>티타늄 20</td>
-                                            
-                                            <td>종이비행기(생산불가)</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
                                         </tr>
                                         <tr class="center">
                                             <td rowspan="2"><img src="./images/base_p_unit2.gif" alt="하이퍼플락기" width="80"></td>
                                             <td class="warning">이름</td>
                                             <td class="warning">체력</td>
                                             <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
-                                            <td class="warning">인구수</td>
-                                            <td class="warning">배치비용</td>
-                                            
-                                            <td rowspan="2"><img src="./images/base_p_unit2_un.gif" alt="하이퍼플락기" width="80"></td>
-                                            <td class="warning">이름</td>
-                                            <td class="warning">체력</td>
-                                            <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
+                                            <td class="warning">추가공격</td>
                                             <td class="warning">인구수</td>
                                             <td class="warning">배치비용</td>
                                         </tr>
@@ -686,27 +546,13 @@
                                             <td>방어시스템</td>
                                             <td>2</td>
                                             <td>티타늄 50</td>
-                                            
-                                            <td>하이퍼플락기(생산불가)</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
                                         </tr>
                                         <tr class="center">
                                             <td rowspan="2"><img src="./images/base_p_unit3.gif" alt="미정" width="80"></td>
                                             <td class="warning">이름</td>
                                             <td class="warning">체력</td>
                                             <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
-                                            <td class="warning">인구수</td>
-                                            <td class="warning">배치비용</td>
-                                            
-                                            <td rowspan="2"><img src="./images/base_p_unit3_un.gif" alt="미정" width="80"></td>
-                                            <td class="warning">이름</td>
-                                            <td class="warning">체력</td>
-                                            <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
+                                            <td class="warning">추가공격</td>
                                             <td class="warning">인구수</td>
                                             <td class="warning">배치비용</td>
                                         </tr>
@@ -717,28 +563,13 @@
                                             <td>미정</td>
                                             <td>3</td>
                                             <td>티타늄 200<br />팔라듐 30</td>
-                                            
-                                            <td>암살자(생산불가)</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
                                         </tr>
                                         <tr class="center">
                                             <td rowspan="2"><img src="./images/base_p_unit4.gif" alt="EMP 통제함" width="80"></td>
                                             <td class="warning">이름</td>
                                             <td class="warning">체력</td>
                                             <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
-                                            <td class="warning">인구수</td>
-                                            <td class="warning">배치비용</td>
-                                            
-                                            <td rowspan="2"><img src="./images/base_p_unit4_un.gif" alt="EMP 통제함" width="80"></td>
-                                            <td class="warning">이름</td>
-                                            <td class="warning">체력</td>
-                                            <td class="warning">공격력</td>
-                                            <td class="warning">우선타겟</td>
+                                            <td class="warning">추가공격</td>
                                             <td class="warning">인구수</td>
                                             <td class="warning">배치비용</td>
                                         </tr>
@@ -749,13 +580,6 @@
                                             <td>모든시스템</td>
                                             <td>10</td>
                                             <td>티타늄 500<br />팔라듐 500</td>
-                                            
-                                            <td>EMP 통제함(생산불가)</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
                                         </tr>
                                     </table>
 								</div>
@@ -784,19 +608,19 @@
 					<table class="table table-condensed">
                         <tr class="warning" align="center">
                             <td>레벨</td>
-                            <td>1</td>
+                            <td id="do_level"><?=$_SESSION['base']['dorm']?></td>
                         </tr>
                         <tr class="warning" align="center">
                             <td>공간 사용수치</td>
-                            <td>0/10</td>
+                            <td id="do_stat">0 / <?=$_SESSION['do_stat'][$_SESSION['base']['dorm']]?></td>
                         </tr>
 						<tr class="info" align="center">
                             <td colspan="2">
-								<h6><font color="red">※커맨드센터 레벨이 3이 되어야 합니다.</font></h6>
-                                <h6><font color="#FF6600">최대 유닛 수치 증가 : +10</font></h6>
+								<h6><font color="red"><span id="do_warn"></span></font></h6>
+                                <h6><font color="#FF6600">최대 유닛 수치 증가 : <span id="do_stat_next"><?=$_SESSION['do_stat'][$_SESSION['base']['dorm']+1]?></span></font></h6>
                                 <form class="form-inline" role="form">
                                     <input type="hidden" id="email" value="" />
-                                    <button type="submit" class="btn btn-default" disabled="disabled">생활관 업그레이드</button>
+                                    <button type="button" class="btn btn-default" disabled="disabled" id="upgrade_do">생활관 업그레이드</button>
                                 </form>
                             </td>
                         </tr>
@@ -852,7 +676,7 @@
                 <td>타입</td>
                 <td>이름</td>
                 <td>수집레벨</td>
-                <td>수집량</td>
+                <td>수집량(시간당)</td>
                 <td>저장된자원</td>
                 <td>업그레이드</td>
              </tr>
@@ -860,9 +684,9 @@
              	<td><img src="./images/resource_chul.gif" alt="철" width="50"></td>
                 <td>일반자원</td>
                 <td>철</td>
-                <td>1</td>
-                <td>100</td>
-                <td>0</td>
+                <td><?=$_SESSION['resource']['metal']?></td>
+                <td><?=$_SESSION['resource']['metal']*$_SESSION['res_model']['metal']?></td>
+                <td><?=$_SESSION['myinfo']['metal']?></td>
                 <td><Form role="form"><input type='hidden' id='res' value='chul'>
 					<button type='submit' class='btn btn-default'>+50 루비</button></Form></td>
              </tr>
@@ -870,9 +694,9 @@
              	<td><img src="./images/resource_guri.gif" alt="구리" width="50"></td>
                 <td>일반자원</td>
                 <td>구리</td>
-                <td>1</td>
-                <td>100</td>
-                <td>0</td>
+                <td><?=$_SESSION['resource']['copper']?></td>
+                <td><?=$_SESSION['resource']['copper']*$_SESSION['res_model']['copper']?></td>
+                <td><?=$_SESSION['myinfo']['copper']?></td>
                 <td><Form role="form"><input type='hidden' id='res' value='guri'>
 					<button type='submit' class='btn btn-default'>+50 루비</button></Form></td>
              </tr>
@@ -880,9 +704,9 @@
              	<td><img src="./images/resource_jusuk.gif" alt="주석" width="50"></td>
                 <td>일반자원</td>
                 <td>주석</td>
-                <td>1</td>
-                <td>100</td>
-                <td>0</td>
+                <td><?=$_SESSION['resource']['sin']?></td>
+                <td><?=$_SESSION['resource']['sin']*$_SESSION['res_model']['sin']?></td>
+                <td><?=$_SESSION['myinfo']['sin']?></td>
                 <td><Form role="form"><input type='hidden' id='res' value='jusuk'>
 					<button type='submit' class='btn btn-default'>+50 루비</button></Form></td>
              </tr>
@@ -890,9 +714,9 @@
              	<td><img src="./images/resource_nap.gif" alt="납" width="50"></td>
                 <td>일반자원</td>
                 <td>납</td>
-                <td>1</td>
-                <td>100</td>
-                <td>0</td>
+                <td><?=$_SESSION['resource']['lead']?></td>
+                <td><?=$_SESSION['resource']['lead']*$_SESSION['res_model']['lead']?></td>
+                <td><?=$_SESSION['myinfo']['lead']?></td>
                 <td><Form role="form"><input type='hidden' id='res' value='nap'>
 			   <button type='submit' class='btn btn-default'>+50 루비</button></Form></td>
              </tr>
@@ -900,9 +724,9 @@
              	<td><img src="./images/resource_uranium.gif" alt="우라늄" width="50"></td>
                 <td>일반자원</td>
                 <td>우라늄</td>
-                <td>1</td>
-                <td>100</td>
-                <td>0</td>
+                <td><?=$_SESSION['resource']['uranium']?></td>
+                <td><?=$_SESSION['resource']['uranium']*$_SESSION['res_model']['uranium']?></td>
+                <td><?=$_SESSION['myinfo']['uranium']?></td>
                 <td><Form role="form"><input type='hidden' id='res' value='uranium'>
 					<button type='submit' class='btn btn-default'>+100 루비</button></Form></td>
              </tr>
@@ -910,9 +734,9 @@
              	<td><img src="./images/resource_titanium.gif" alt="티타늄" width="50"></td>
                 <td>가치자원-일반</td>
                 <td>티타늄</td>
-                <td>1</td>
-                <td>10</td>
-                <td>0</td>
+                <td><?=$_SESSION['resource']['titanium']?></td>
+                <td><?=$_SESSION['resource']['titanium']*$_SESSION['res_model']['titanium']?></td>
+                <td><?=$_SESSION['myinfo']['titanium']?></td>
                 <td><Form role="form"><input type='hidden' id='res' value='titanium'>
 					<button type='submit' class='btn btn-default'>+500 루비</button></Form></td>
              </tr>
@@ -920,9 +744,9 @@
              	<td><img src="./images/resource_palladium.gif" alt="팔라듐" width="50"></td>
                 <td>가치자원-고급</td>
                 <td>팔라듐</td>
-                <td>1</td>
-                <td>1</td>
-                <td>0</td>
+                <td><?=$_SESSION['resource']['palladium']?></td>
+                <td><?=$_SESSION['resource']['palladium']*$_SESSION['res_model']['palladium']?></td>
+                <td><?=$_SESSION['myinfo']['palladium']?></td>
                 <td><Form role="form"><input type='hidden' id='res' value='palladium'>
 					<button type='submit' class='btn btn-default'>+1000 루비</button></Form></td>
              </tr>
@@ -940,7 +764,7 @@
 			<td>유닛타입</td>
          	<td>유닛이름</td>
             <td>레벨</td>
-            <td>우선타겟</td>
+            <td>추가공격</td>
             <td>공격력</td>
             <td>업그레이드 금액</td>
 			<td>업그레이드</td>
