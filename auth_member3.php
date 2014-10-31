@@ -35,6 +35,12 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 		$joindate = $row['reg_date'];
 	}
 
+	$sql = "INSERT INTO base ( id ) VALUES ( '$id' );";
+	$mysqli->query($sql);
+
+	$sql = "INSERT INTO resource ( id ) VALUES ( '$id' );";
+	$mysqli->query($sql);
+
 	echo json_encode(array('id'=>$id, 'joindate'=>$joindate));
 }
 
