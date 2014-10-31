@@ -93,8 +93,8 @@ if( $mysqli->real_connect("localhost", "project", "project!", "project") )
 	));
 
 	// 몬스터 스탯 배분
-	$m_stat = array( 1, 1, 1, 1, 1, 1 );
-	for($i=0; $i<$m_level*6; $i++)
+	$m_stat = array( 1, 0, 0, 0, 0, 0 );
+	for($i=0; $i<$m_level*3; $i++)
 	{
 		$rand = rand( 0, 5 );
 		$m_stat[$rand]++;

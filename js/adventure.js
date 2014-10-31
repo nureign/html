@@ -122,7 +122,15 @@ function InitialSetup(data)
 					{
 						clearTimeout(timer);
 						bgm.pause();
-						PlaySound('./sounds/victory.mp3');
+						console.log(data);
+						if( JSON.parse(data)['p_hp'] == 0 )
+						{
+							PlaySound('./sounds/lose.mp3');
+						}
+						else
+						{
+							PlaySound('./sounds/victory.mp3');
+						}
 					}
 				}
 			});
